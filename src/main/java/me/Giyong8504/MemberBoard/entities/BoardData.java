@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @Entity
 @Data
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class BoardData extends BaseEntity{
+public class BoardData extends BaseEntity{ //공통부분을 상속받아 사용
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) // 자동으로 1씩 증가
