@@ -23,4 +23,10 @@ public class BoardService {
     public List<BoardData> findAll() {
         return boardDataRepository.findAll();
     }
+
+    // JPA에서 제공하는 findById()로 id를 받아 조회 후 없으면 예외 반환.
+    public BoardData findById(Long id) {
+        return boardDataRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("not found" + id));
+    }
 }

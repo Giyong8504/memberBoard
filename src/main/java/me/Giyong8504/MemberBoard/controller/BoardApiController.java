@@ -7,10 +7,7 @@ import me.Giyong8504.MemberBoard.entities.BoardData;
 import me.Giyong8504.MemberBoard.service.BoardService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -35,5 +32,13 @@ public class BoardApiController {
                 .stream().map(BoardDataResponse::new).toList();
 
         return ResponseEntity.ok().body(boards);
+    }
+
+    // {id}에 값이 들어오면 findBoard()로 넘어가 {id} 글을 찾고 게시글 정보를 body에 담아 웹브라우저에 보낸다.
+    @GetMapping("/api/boards/{id}")
+    public ResponseEntity<BoardDataResponse> findBoard(@PathVariable Long id) {
+        BoardData boardData = boardService.findById(id);
+
+        return ResponseEntity.ok(new BoardDataResponse(boardData));
     }
 }
