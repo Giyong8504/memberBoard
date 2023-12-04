@@ -48,7 +48,7 @@ public class BoardService {
         BoardData boardData = boardDataRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("not found" +id));
 
-        boardData.update(request.getTitle(), request.getContent(), request.getAuthor());
+        boardData.update(request.getTitle(), request.getContent());
 
         return boardData;
     }

@@ -11,5 +11,4 @@ public class UpdateBoardDataRequest {
 
     private String title;
     private String content;
-    private String author;
 }
