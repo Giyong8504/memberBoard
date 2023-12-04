@@ -3,6 +3,7 @@ package me.Giyong8504.MemberBoard.controller;
 import lombok.RequiredArgsConstructor;
 import me.Giyong8504.MemberBoard.dto.AddBoardDataRequest;
 import me.Giyong8504.MemberBoard.dto.BoardDataResponse;
+import me.Giyong8504.MemberBoard.dto.UpdateBoardDataRequest;
 import me.Giyong8504.MemberBoard.entities.BoardData;
 import me.Giyong8504.MemberBoard.service.BoardService;
 import org.springframework.http.HttpStatus;
@@ -48,5 +49,13 @@ public class BoardApiController {
         boardService.delete(id);
 
         return ResponseEntity.ok().build();
+    }
+
+    //PUT 요청시 {id}으로 요청이 들어오면 Request Body 정보가 request로 넘어가 응답 값을 body 담아 반환한다.
+    @PutMapping("/api/boards/{id}")
+    public ResponseEntity<BoardData> updateBoard(@PathVariable Long id, @RequestBody UpdateBoardDataRequest request) {
+        BoardData updateBoardData = boardService.update(id, request);
+
+        return ResponseEntity.ok().body(updateBoardData);
     }
 }

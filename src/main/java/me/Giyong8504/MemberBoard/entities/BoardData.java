@@ -31,4 +31,10 @@ public class BoardData extends BaseEntity{ //공통부분을 상속받아 사용
         this.content = content;
         this.author = author;
     }
+
+    public void update(String title, String content, String author) {
+        this.title = title;
+        this.content = content;
+        this.author = author;
+    }
 }
