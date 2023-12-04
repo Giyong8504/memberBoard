@@ -41,4 +41,12 @@ public class BoardApiController {
 
         return ResponseEntity.ok(new BoardDataResponse(boardData));
     }
+
+    // {id}값이 들어오면 deleteBoard()로 넘어가 해당 id값의 글을 삭제 요청한다.
+    @DeleteMapping("/api/boards/{id}")
+    public ResponseEntity<Void> deleteBoard(@PathVariable Long id) {
+        boardService.delete(id);
+
+        return ResponseEntity.ok().build();
+    }
 }

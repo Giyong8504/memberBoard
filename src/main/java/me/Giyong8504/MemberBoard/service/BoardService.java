@@ -29,4 +29,9 @@ public class BoardService {
         return boardDataRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("not found" + id));
     }
+
+    // 삭제기능 : id 값으로 삭제한다.
+    public void delete(Long id) {
+        boardDataRepository.deleteById(id);
+    }
 }
