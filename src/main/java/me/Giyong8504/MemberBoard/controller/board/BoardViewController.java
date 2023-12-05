@@ -21,6 +21,6 @@ public class BoardViewController {
                 .stream().map(BoardListViewResponse::new).toList();
         model.addAttribute("board", board);
 
-        return "board";
+        return "board/boardList";
     }
 }
