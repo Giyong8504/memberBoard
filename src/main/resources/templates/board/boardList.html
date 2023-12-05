@@ -1,15 +1,28 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>게시판 목록</title>
-</head>
-<body>
-    <div>
-        <h1>회원제 게시판</h1>
-    </div>
-    <div>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns="http://www.w3.org/1999/html"
+      layout:decorate="~{layouts/boardMain}">
 
+<!-- layout:fragment로 content를 지정하여 내용만 작성 -->
+<section layout:fragment="content">
+    <div>
+        <h1>게시판 목록</h1>
+        <table border="1" >
+            <thead>
+                <tr>
+                    <th>NO</th>
+                    <th>TITLE</th>
+                    <th>NAME</th>
+                </tr>
+            </thead>
+            <tbody> <!-- th:each 를 사용하여 model 객체의 정보를 하나씩 item에 담아 내용 출력. -->
+                <tr th:each="item : ${board}" th:object="${item}">
+                    <th th:text="${item.id}"></th>
+                    <th th:text="${item.title}"></th>
+                    <th th:text="${item.author}"></th>
+                </tr>
+            </tbody>
+        </table>
     </div>
-</body>
+</section>
 </html>
