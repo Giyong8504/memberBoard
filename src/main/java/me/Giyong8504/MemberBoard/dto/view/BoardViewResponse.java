@@ -1,11 +1,13 @@
 package me.Giyong8504.MemberBoard.dto.view;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import me.Giyong8504.MemberBoard.entities.BoardData;
 
 import java.time.LocalDateTime;
 
 @Getter
+@NoArgsConstructor
 public class BoardViewResponse {
 
     private Long id;

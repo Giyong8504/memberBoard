@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns="http://www.w3.org/1999/html"
+      layout:decorate="~{layouts/boardMain}">
+
+<!-- layout:fragment로 content를 지정하여 내용만 작성 -->
+<section layout:fragment="content">
+    <div>
+        <h1>글 수정</h1>
+    </div>
+    <div>
+        <board>
+            <!-- id 값을 숨겨서 id를 함께 요청 -->
+            <input type="hidden" th:value="${board.id}">
+
+            <div><!-- th:value로 title 값 요청 -->
+                <input type="text" placeholder="제목 입력" id="title" th:value="${board.title}">
+            </div>
+            <div><!-- th:value로 content 값 요청 -->
+                <textarea rows="10" placeholder="내용 입력" id="content" th:value="${board.content}"></textarea>
+            </div>
+            <div><!-- th:if로 id가 있을 경우 수정, 없을 경우 등록 -->
+                <button type="button" th:if="${board.id} != null" id="modify-btn">수정</button>
+                <button type="button" th:if="${board.id} == null" id="create-btn">등록</button>
+            </div>
+        </board>
+    </div>
+    <scrpit src="/js/board/board.js"></scrpit>
+</section>
+</html>

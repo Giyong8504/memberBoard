@@ -15,10 +15,14 @@
             <div th:text="${#temporals.format(board.reg_dt, 'yyyy-MM-dd HH:mm')}"></div>
             <div th:text="${board.content}"></div>
             <div>
-                <button type="button">수정</button>
+                <!-- 수정 -->
+                <button type="button" id="modify-btn"
+                        th:onclick="|location.href='@{/new-board?id={boardId}(boardId=${board.id})}'|">수정</button>
 
                 <!-- id 값인 delete-btn을 js가 조회하여 삭제 기능을 실행함. -->
                 <button type="button" id="delete-btn">삭제</button>
+
+
             </div>
         </div>
     </board>
