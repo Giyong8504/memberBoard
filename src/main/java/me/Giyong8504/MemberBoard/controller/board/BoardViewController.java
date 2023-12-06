@@ -39,7 +39,7 @@ public class BoardViewController {
     }
 
     // 게시글 수정, 생성
-    @GetMapping("/newBoard")
+    @GetMapping("new-board")
     public String newBoard(@RequestParam(required = false) Long id, Model model) {
         if (id == null) { // id가 없을 경우 새로 생성
             model.addAttribute("board", new BoardViewResponse());
@@ -47,6 +47,6 @@ public class BoardViewController {
             BoardData boardData = boardService.findById(id);
             model.addAttribute("board", new BoardViewResponse(boardData));
         }
-        return "/board/newBoard";
+        return "board/newBoard";
     }
 }

@@ -39,8 +39,8 @@ if (modifyButton) {
             })
         })
         .then(() => {
-            alert('수정 되었습니다');
-            location.replace('/board/${id}');
+            alert('수정 되었습니다.');
+            location.replace(`/board/${id}`);
         });
     });
 }
