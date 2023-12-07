@@ -7,7 +7,7 @@
 <section layout:fragment="content">
     <div>
         <h1>게시판 목록</h1>
-        <table border="1" >
+        <table class="table">
             <thead>
                 <tr>
                     <th>NO</th>
@@ -17,7 +17,7 @@
                 </tr>
             </thead>
             <tbody> <!-- th:each 를 사용하여 model 객체의 정보를 하나씩 item에 담아 내용 출력. -->
-                <tr th:each="item : ${board}" th:object="${item}">
+                <tr th:each="item : ${board}">
                     <td th:text="${item.id}"></td>
                     <td>
                         <a th:href="@{/board/{id}(id=${item.id})}" th:text="${item.title}"></a>
