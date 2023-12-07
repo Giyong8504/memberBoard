@@ -23,7 +23,7 @@
                         <a th:href="@{/board/{id}(id=${item.id})}" th:text="${item.title}"></a>
                     </td>
                     <td th:text="${item.author}"></td>
-                    <td th:text="${item.reg_dt}"></td>
+                    <td th:text="${#temporals.format(item.reg_dt, 'yyyy-MM-dd HH:mm')}"></td>
                 </tr>
             </tbody>
         </table>
