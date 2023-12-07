@@ -19,7 +19,6 @@ public class BoardData extends BaseEntity{ //공통부분을 상속받아 사용
     private String title;
 
     @Column(nullable = false)
-
     private String content;
 
     @Column(nullable = false)

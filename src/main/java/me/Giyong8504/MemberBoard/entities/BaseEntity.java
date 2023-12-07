@@ -7,12 +7,13 @@ import lombok.Getter;
 import lombok.Setter;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.time.LocalDateTime;
 
 @Setter @Getter
 @MappedSuperclass
-@EntityListeners(AutoCloseable.class)
+@EntityListeners(AuditingEntityListener.class)
 public abstract class BaseEntity {
 
     @CreatedDate
@@ -20,6 +21,6 @@ public abstract class BaseEntity {
     private LocalDateTime regDt;
 
     @LastModifiedDate
-    @Column(nullable = false, insertable = false) // 수정 될 때만 날짜 변경
+    @Column(insertable = false) // 수정 될 때만 날짜 변경
     private LocalDateTime modDt;
 }
