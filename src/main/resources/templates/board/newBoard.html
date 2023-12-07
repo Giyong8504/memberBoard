@@ -5,14 +5,17 @@
 
 <!-- layout:fragment로 content를 지정하여 내용만 작성 -->
 <section layout:fragment="content">
-    <div>
-        <h1>글 수정</h1>
+    <div> <!-- 수정, 등록에 맞춰 현재 작업 제목을 노출함 -->
+        <h1 th:if="${board.id} != null">글 수정</h1>
+        <h1 th:if="${board.id} == null">글 등록</h1>
     </div>
     <div>
         <board>
             <!-- id 값을 숨겨서 id를 함께 요청 -->
-            <input type="hidden" th:value="${board.id}">
-
+            <input type="hidden" id="board-id" th:value="${board.id}">
+            <div>
+                <input type="text" placeholder="작성자" id="author" th:value="${board.author}">
+            </div>
             <div><!-- th:value로 title 값 요청 -->
                 <input type="text" placeholder="제목 입력" id="title" th:value="${board.title}">
             </div>
