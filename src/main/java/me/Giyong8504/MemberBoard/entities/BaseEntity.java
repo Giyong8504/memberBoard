@@ -17,7 +17,7 @@ import java.time.LocalDateTime;
 public abstract class BaseEntity {
 
     @CreatedDate
-    @Column(nullable = false, updatable = false) //생성시에만 날짜 생성
+    @Column(updatable = false) //생성시에만 날짜 생성
     private LocalDateTime regDt;
 
     @LastModifiedDate
