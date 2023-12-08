@@ -19,7 +19,7 @@ public class MvcConfig implements WebMvcConfigurer {
         return ms;
     }
 
-    @Override
+    @Override // 시작페이지를 "/" 아닌 "index"로 바꿔준다.
     public void addViewControllers(ViewControllerRegistry registry) {
         registry.addViewController("/")
                 .setViewName("index");
