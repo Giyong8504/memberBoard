@@ -23,21 +23,23 @@ public class QUser extends EntityPathBase<User> {
 
     public final StringPath email = createString("email");
 
-    public final NumberPath<Long> id = createNumber("id", Long.class);
-
     public final StringPath mobile = createString("mobile");
 
     //inherited
     public final DateTimePath<java.time.LocalDateTime> modDt = _super.modDt;
 
-    public final StringPath nickname = createString("nickname");
-
-    public final StringPath password = createString("password");
-
     //inherited
     public final DateTimePath<java.time.LocalDateTime> regDt = _super.regDt;
 
     public final EnumPath<me.Giyong8504.MemberBoard.commons.Role> role = createEnum("role", me.Giyong8504.MemberBoard.commons.Role.class);
+
+    public final StringPath userId = createString("userId");
+
+    public final StringPath userNm = createString("userNm");
+
+    public final NumberPath<Long> userNo = createNumber("userNo", Long.class);
+
+    public final StringPath userPw = createString("userPw");
 
     public QUser(String variable) {
         super(User.class, forVariable(variable));

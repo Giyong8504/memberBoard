@@ -1,5 +1,9 @@
 package me.Giyong8504.MemberBoard.models.user;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import lombok.*;
 import me.Giyong8504.MemberBoard.commons.Role;
 import org.springframework.security.core.GrantedAuthority;
@@ -11,41 +15,45 @@ import java.util.Collection;
 @Builder
 public class UserInfo implements UserDetails {
 
-    private Long id;
+    private Long userNo;
+    private String userId;
+    private String userNm;
+    private String userPw;
     private String email;
-    private String password;
-    private String nickname;
     private String mobile;
-    private Role role;
     private Collection<GrantedAuthority> authorities; // 권한에 대한 내용
 
-
-    @Override // 인가에 대한 권한
-    public Collection<? extends GrantedAuthority> getAuthorities() {
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() { // 인가에 대한 권한
         return authorities;
     }
 
-    @Override // 사용자 id를 반환(고유한 값)
-    public String getUsername() {
-        return null;
+    @Override
+    public String getPassword() { // 사용자 패스워드 반환
+        return userPw;
     }
 
-    @Override // 계정 만료 여부 반환
+    @Override
+    public String getUsername() { // 사용자 이름 반환.
+        return userId;
+    }
+
+    @Override
     public boolean isAccountNonExpired() {
         return true;
     }
 
-    @Override // 계정 잠금 여부 변환
+    @Override
     public boolean isAccountNonLocked() {
         return true;
     }
 
-    @Override // 패스워드 만료 여부 반환
+    @Override
     public boolean isCredentialsNonExpired() {
         return true;
     }
 
-    @Override // 계정 사용 가능 여부 확인
+    @Override
     public boolean isEnabled() {
         return true;
     }
