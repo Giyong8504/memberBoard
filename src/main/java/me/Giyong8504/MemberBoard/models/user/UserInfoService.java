@@ -1,8 +1,7 @@
-package me.Giyong8504.MemberBoard.service;
+package me.Giyong8504.MemberBoard.models.user;
 
 import lombok.RequiredArgsConstructor;
 import me.Giyong8504.MemberBoard.entities.User;
-import me.Giyong8504.MemberBoard.models.user.UserInfo;
 import me.Giyong8504.MemberBoard.repositories.UserRepository;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -11,7 +10,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
-public class MemberInfoService implements UserDetailsService { // 정보를 조회하는 서비스 기능
+public class UserInfoService implements UserDetailsService { // 정보를 조회하는 서비스 기능
 
     private final UserRepository userRepository;
 

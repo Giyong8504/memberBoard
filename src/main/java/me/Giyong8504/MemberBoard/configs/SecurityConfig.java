@@ -68,6 +68,7 @@ public class SecurityConfig {
         );
     }
 
+    @Bean
     public PasswordEncoder passwordEncoder() { //암호 해시화
         return new BCryptPasswordEncoder();
     }

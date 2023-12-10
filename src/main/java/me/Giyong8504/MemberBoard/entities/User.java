@@ -4,7 +4,6 @@ import jakarta.persistence.*;
 import lombok.*;
 import me.Giyong8504.MemberBoard.commons.Role;
 
-@Table(name= "user")
 @Entity
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
