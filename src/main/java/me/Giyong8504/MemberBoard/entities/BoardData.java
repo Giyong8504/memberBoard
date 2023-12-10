@@ -1,13 +1,11 @@
 package me.Giyong8504.MemberBoard.entities;
 
 import jakarta.persistence.*;
-import lombok.AccessLevel;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Entity
-@Data
+@Getter
+@Setter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class BoardData extends BaseEntity{ //공통부분을 상속받아 사용
 
