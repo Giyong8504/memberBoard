@@ -17,7 +17,7 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-
+        http.csrf().disable(); // csrf 비활성화
         //회원 인증 설정 - 로그인
         http.formLogin(f -> {
             f.loginPage("/login") // 로그인 페이지 설정
@@ -35,7 +35,7 @@ public class SecurityConfig {
 
         http.authorizeHttpRequests(c -> {
             //.requestMatchers("/admin/**").hasAuthority("ADMIN") // "/admin/" 경로 요청은 'ADMIN' 권한을 가진 사용자만 접근 가능
-            c.requestMatchers("/mypage/**", "/user/myInfo/**", "/new-board").authenticated() // "/mypage/" 경로 요청은 인증된 사용자만 접근 가능
+            c.requestMatchers("/mypage/**", "/new-board", "/board/**").authenticated() // "/mypage", "/board" 경로 요청은 인증된 사용자만 접근 가능
                     .anyRequest().permitAll(); // 그 외 모든 요청은 누구나 접근 가능
         });
 
