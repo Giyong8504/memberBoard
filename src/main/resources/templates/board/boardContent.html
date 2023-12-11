@@ -4,7 +4,7 @@
       layout:decorate="~{layouts/boardMain}">
 
 <!-- layout:fragment로 content를 지정하여 내용만 작성 -->
-<section layout:fragment="content">
+<main layout:fragment="content">
     <div>
         <h1 th:text="${board.title}"></h1>
     </div>
@@ -25,5 +25,5 @@
         </div>
     </board>
     <script src="/js/board/board.js"></script>
-</section>
+</main>
 </html>

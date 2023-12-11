@@ -4,7 +4,7 @@
       layout:decorate="~{layouts/boardMain}">
 
 <!-- layout:fragment로 content를 지정하여 내용만 작성 -->
-<section layout:fragment="content">
+<main layout:fragment="content">
     <div> <!-- 수정, 등록에 맞춰 현재 작업 제목을 노출함 -->
         <h1 th:if="${board.id} != null">글 수정</h1>
         <h1 th:if="${board.id} == null">글 등록</h1>
@@ -29,5 +29,5 @@
         </board>
     </div>
     <script src="/js/board/board.js"></script>
-</section>
+</main>
 </html>

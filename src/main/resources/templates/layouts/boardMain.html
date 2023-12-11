@@ -10,10 +10,10 @@
 </head>
 <body>
     <!-- 공통되는 header, footer.html을 th:replace 로 가져와 사용-->
-    <div th:replace="outlines/header::header"></div>
+    <header th:replace="outlines/header::header"></header>
 
-    <div layout:fragment="content"></div>
+    <main layout:fragment="content"></main>
 
-    <div th:replace="outlines/footer::footer"></div>
+    <footer th:replace="outlines/footer::footer"></footer>
 </body>
 </html>

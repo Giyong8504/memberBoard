@@ -8,6 +8,7 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequiredArgsConstructor
@@ -26,9 +27,9 @@ public class UserController {
         userJoinService.join(joinForm, errors);
 
         if (errors.hasErrors()) {
-            return "user/login";
+            return "user/join";
         }
-        return "redirect:user/login";
+        return "redirect:/login";
     }
 
     @GetMapping("/login")

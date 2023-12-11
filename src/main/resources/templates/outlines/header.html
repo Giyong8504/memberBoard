@@ -1,24 +1,22 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<section>
-    <div th:fragment="header">
+<header th:fragment="header">
+    <div class="">
+        <a href="#" class="btn btn-primary">메인으로</a>
+
+        <ul class="">
+            <li><a href="/board" class="">Board</a></li>
+            <li><a href="#">about</a></li>
+        </ul>
+
+        <form class="" role="search">
+            <input type="search" class="" placeholder="Search..." aria-label="Search">
+        </form>
+
         <div class="">
-            <a href="#" class="btn btn-primary">메인으로</a>
-
-            <ul class="">
-                <li><a href="/board" class="">Board</a></li>
-                <li><a href="#">about</a></li>
-            </ul>
-
-            <form class="" role="search">
-                <input type="search" class="" placeholder="Search..." aria-label="Search">
-            </form>
-
-            <div class="">
-                <button type="button" class="">Login</button>
-                <button type="button" class="">Sign-up</button>
-            </div>
+            <button type="button" class="">Login</button>
+            <button type="button" class="">Sign-up</button>
         </div>
     </div>
-</section>
+</header>
 </html>
