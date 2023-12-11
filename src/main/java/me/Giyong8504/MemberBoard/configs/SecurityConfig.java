@@ -20,7 +20,7 @@ public class SecurityConfig {
 
         //회원 인증 설정 - 로그인
         http.formLogin(f -> {
-            f.loginPage("/user/login") // 로그인 페이지 설정
+            f.loginPage("/login") // 로그인 페이지 설정
                     .usernameParameter("userId") // 사용자 아이디 파라미터 설정
                     .passwordParameter("userPw") // 사용자 비밀번호 파라미터 설정
                     .successHandler(new LoginSuccessHandler()) //로그인 성공시 핸들러 설정.
@@ -29,7 +29,7 @@ public class SecurityConfig {
 
         // 회원 설정 - 로그아웃
         http.logout(f -> {
-            f.logoutRequestMatcher(new AntPathRequestMatcher("/user/logout")) //로그아웃 URL 설정
+            f.logoutRequestMatcher(new AntPathRequestMatcher("/logout")) //로그아웃 URL 설정
                     .logoutSuccessUrl("/board"); // 로그아웃 성공 후 이동할 페이지
         });
 
@@ -46,7 +46,7 @@ public class SecurityConfig {
                 if (URI.indexOf("/admin") != -1) { // 관리자 페이지로 접근 시
                     res.sendError(HttpServletResponse.SC_UNAUTHORIZED, "NOT AUTHORIZED"); // 401 Unauthorized 에러 반환
                 } else { // 회원 전용 페이지로 접근 시
-                    String redirectURL = req.getContextPath() + "/user/login"; // 로그인 페이지로 리다이렉트 URL 생성
+                    String redirectURL = req.getContextPath() + "/login"; // 로그인 페이지로 리다이렉트 URL 생성
                     res.sendRedirect(redirectURL); // 로그인 페이지로 리다이렉트
                 }
             });

@@ -42,6 +42,6 @@ public class LoginFailureHandler implements AuthenticationFailureHandler { // �
         }
 
         // 실패시 로그인 페이지로 다시 돌아간다.
-        response.sendRedirect(request.getContextPath() + "/user/login");
+        response.sendRedirect(request.getContextPath() + "/login");
     }
 }
