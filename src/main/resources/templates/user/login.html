@@ -3,7 +3,7 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns="http://www.w3.org/1999/html"
       layout:decorate="~{layouts/userMain}">
 
-<!-- layout:fragment로 content를 지정하여 내용만 작성 -->
+<!-- layout:fragment로 userContent를 지정하여 내용만 작성 -->
 <main layout:fragment="userContent">
     <div>
         <h1>로그인페이지</h1>
@@ -18,6 +18,11 @@
                 <div th:if="${session.requiredUserPw != null}" th:text="${session.requiredUserPw}"></div>
             </div>
             <button type="submit">로그인</button>
+            <div>
+                <a href="#">비밀번호 찾기</a>
+                <a href="#">아이디 찾기</a>
+                <a href="/join">회원가입</a>
+            </div>
         </form>
     </div>
 </main>

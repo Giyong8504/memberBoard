@@ -12,7 +12,7 @@
         <input type="hidden" id="board-id" th:value="${board.id}">
         <div>
             <!-- 날짜의 형식 지정, 작성 내용 가져오기 -->
-            <div th:text="${#temporals.format(board.reg_dt, 'yyyy-MM-dd HH:mm')}"></div>
+            <div th:text="|작성자 : ${board.author}   ${#temporals.format(board.reg_dt, 'yyyy-MM-dd HH:mm')}|"></div>
             <div th:text="${board.content}"></div>
             <div>
                 <!-- 수정 -->

@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <header th:fragment="header">
     <div class="">
-        <a href="#" class="btn btn-primary">메인으로</a>
+        <a href="/" class="btn btn-primary">메인으로</a>
 
         <ul class="">
             <li><a href="/board" class="">Board</a></li>
@@ -14,8 +14,8 @@
         </form>
 
         <div class="">
-            <button type="button" class="">Login</button>
-            <button type="button" class="">Sign-up</button>
+            <button type="button" class="" onclick="location.href='/login'">로그인</button>
+            <button type="button" class="" onclick="location.href='/join'">회원가입</button>
         </div>
     </div>
 </header>

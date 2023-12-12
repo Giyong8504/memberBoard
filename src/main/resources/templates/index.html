@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns="http://www.w3.org/1999/html"
+      layout:decorate="~{layouts/boardMain}">
+
+<!-- layout:fragment로 content를 지정하여 내용만 작성 -->
+<main layout:fragment="content">
+  <div>
+    <h1>메인 소개 페이지</h1>
+    <p>회원 전용 게시판 입니다.</p>
+    <button type="button" onclick="location.href='/board'">보러가기</button>
+  </div>
+</main>
+</html>
