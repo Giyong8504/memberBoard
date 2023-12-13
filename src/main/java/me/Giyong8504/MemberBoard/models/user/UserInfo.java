@@ -21,6 +21,7 @@ public class UserInfo implements UserDetails {
     private String userPw;
     private String email;
     private String mobile;
+    private Role role;
     private Collection<GrantedAuthority> authorities; // 권한에 대한 내용
 
     @Override
