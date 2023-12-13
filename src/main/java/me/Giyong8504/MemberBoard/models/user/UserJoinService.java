@@ -31,7 +31,7 @@ public class UserJoinService {
                 .userNm(form.getUserNm())
                 .email(form.getEmail())
                 .mobile(form.getMobile())
-                .role(Role.USER)
+                .role(Role.USER) // 회원가입시 기본 USER로 일반회원.
                 .build();
 
         userRepository.saveAndFlush(user);

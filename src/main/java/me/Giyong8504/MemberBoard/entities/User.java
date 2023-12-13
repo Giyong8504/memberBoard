@@ -29,7 +29,7 @@ public class User extends BaseEntity {
     @Column(length = 11)
     private String mobile;
 
-    @Enumerated(EnumType.STRING)
+    @Enumerated(EnumType.STRING) // 이름 그대로로 저장하기 위해 STRING 사용
     private Role role = Role.USER;
 
     @Builder
