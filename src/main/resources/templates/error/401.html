@@ -1,0 +1,9 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<main>
+    <th:block th:replace="~{error/_message::common}"></th:block>
+    <h2>접근 권한이 없습니다.</h2>
+    <button type="button" onclick="location.href='/board'">돌아가기</button>
+</main>
+</html>
