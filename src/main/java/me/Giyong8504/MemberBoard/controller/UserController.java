@@ -37,4 +37,16 @@ public class UserController {
 
         return "user/login";
     }
+
+    @GetMapping("/mypage")
+    public String myPage() {
+
+        return "user/mypage";
+    }
+
+    @GetMapping("/admin/index")
+    public String adIndex() {
+
+        return "admin/index";
+    }
 }
