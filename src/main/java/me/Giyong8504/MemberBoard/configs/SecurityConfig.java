@@ -35,8 +35,8 @@ public class SecurityConfig {
 
         // 회원 인가 설정 (접근 통제)
         http.authorizeHttpRequests(c -> {
-            c.requestMatchers("/admin/**").hasAuthority("ADMIN"); // "/admin/" 경로 요청은 'ADMIN' 권한을 가진 사용자만 접근 가능
-            c.requestMatchers("/mypage/**", "/new-board" ).authenticated() // "/mypage/**","/new-board" 경로 요청은 인증된 사용자만 접근 가능
+            c.requestMatchers("/admin/**").hasAuthority("ADMIN") // "/admin/" 경로 요청은 'ADMIN' 권한을 가진 사용자만 접근 가능
+                .requestMatchers("/mypage/**", "/new-board" ).authenticated() // "/mypage/**","/new-board" 경로 요청은 인증된 사용자만 접근 가능
                     .anyRequest().permitAll(); // 그 외 모든 요청은 누구나 접근 가능
         });
 
