@@ -14,16 +14,16 @@ public class User extends BaseEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long userNo;
 
-    @Column(length = 40, nullable = false, unique = true)
+    @Column(length = 40, unique = true)
     private String userId;
 
-    @Column(length = 40, nullable = false)
+    @Column(length = 40, unique = true)
     private String userNm;
 
-    @Column(length = 60, nullable = false)
+    @Column(length = 60)
     private String userPw;
 
-    @Column(nullable = false)
+    @Column(unique = true)
     private String email;
 
     @Column(length = 11)
@@ -41,5 +41,11 @@ public class User extends BaseEntity {
         this.userNm = userNm;
         this.mobile = mobile;
         this.role = role;
+    }
+
+    public User update(String userNm) {
+        this.userNm = userNm;
+
+        return this;
     }
 }
