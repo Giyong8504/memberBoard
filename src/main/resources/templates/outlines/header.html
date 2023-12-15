@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <header th:fragment="header">
     <div class="">
         <a href="/" class="btn btn-primary">메인으로</a>
@@ -13,9 +14,19 @@
             <input type="search" class="" placeholder="Search..." aria-label="Search">
         </form>
 
-        <div class="">
+        <!-- 로그인하지 않았을 경우 노출 / 로그인 후 사라짐-->
+        <div class="" sec:authorize="isAnonymous()">
             <button type="button" class="" onclick="location.href='/login'">로그인</button>
             <button type="button" class="" onclick="location.href='/join'">회원가입</button>
+            <div>
+                <a href="/oauth2/authorization/google">
+                    <img src="/img/google.png">
+                </a>
+            </div>
+        </div>
+
+        <!-- 로그인 했을 경우 노출되는 버튼 / 로그아웃 후 사라짐 -->
+        <div sec:authorize="isAuthenticated()">
             <button type="button" class="" onclick="location.href='/logout'">로그아웃</button>
         </div>
     </div>
