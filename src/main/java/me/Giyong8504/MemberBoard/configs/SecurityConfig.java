@@ -1,6 +1,8 @@
 package me.Giyong8504.MemberBoard.configs;
 
 import jakarta.servlet.http.HttpServletResponse;
+import lombok.RequiredArgsConstructor;
+import me.Giyong8504.MemberBoard.configs.oauth.OAuth2UserCustomService;
 import me.Giyong8504.MemberBoard.models.user.LoginFailureHandler;
 import me.Giyong8504.MemberBoard.models.user.LoginSuccessHandler;
 import org.springframework.context.annotation.Bean;
@@ -13,7 +15,10 @@ import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @Configuration
+@RequiredArgsConstructor
 public class SecurityConfig {
+
+    private final OAuth2UserCustomService oAuth2UserCustomService;
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
@@ -54,6 +59,15 @@ public class SecurityConfig {
             });
         });
 
+//        // OAuth2 로그인
+//        http.oauth2Login()
+//                .loginPage("/login")
+//                .authorizationEndpoint()
+//                .and()
+//                // 인증 성공 시 실행할 핸들러
+//                .userInfoEndpoint()
+//                .userService(oAuth2UserCustomService);
+//
         return http.build(); // SecurityFilterChain 반환
 
     }
