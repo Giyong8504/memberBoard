@@ -6,6 +6,8 @@ import me.Giyong8504.MemberBoard.dto.AddBoardDataRequest;
 import me.Giyong8504.MemberBoard.dto.UpdateBoardDataRequest;
 import me.Giyong8504.MemberBoard.entities.BoardData;
 import me.Giyong8504.MemberBoard.repositories.BoardDataRepository;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -33,8 +35,22 @@ public class BoardService {
     }
 
     // 삭제기능 : id 값으로 삭제한다.
+
     public void delete(Long id) {
-        boardDataRepository.deleteById(id);
+        BoardData boardData = boardDataRepository.findById(id).orElse(null);
+        if (boardData != null && deleteBoardList(boardData)) {
+            boardDataRepository.deleteById(id);
+        } else {
+            throw new IllegalArgumentException("Unauthorized deletion");
+        }
+
+    }
+    // Spring Security를 사용하여 현재 로그인한 사용자의 정보를 얻고, 해당 정보를 기반으로 삭제 권한을 확인
+    private boolean deleteBoardList(BoardData boardData) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String username = authentication.getName();
+
+        return username.equals(boardData.getAuthor());
     }
 
 
