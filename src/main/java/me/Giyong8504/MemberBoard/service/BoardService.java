@@ -17,8 +17,8 @@ public class BoardService {
     private final BoardDataRepository boardDataRepository;
 
     // 저장 기능
-    public BoardData save(AddBoardDataRequest request) {
-        return boardDataRepository.save(request.toEntity());
+    public BoardData save(AddBoardDataRequest request, String userName) {
+        return boardDataRepository.save(request.toEntity(userName));
     }
 
     // BoardData 테이블에 저장되어있는 모든 값 조회

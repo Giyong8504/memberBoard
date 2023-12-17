@@ -14,7 +14,7 @@
             <!-- id 값을 숨겨서 id를 함께 요청 -->
             <input type="hidden" id="board-id" th:value="${board.id}">
             <div>
-                <input type="text" placeholder="작성자" id="author" th:value="${board.author}">
+                <input type="hidden" id="author" th:value="${board.author}">
             </div>
             <div><!-- th:value로 title 값 요청 -->
                 <input type="text" placeholder="제목 입력" id="title" th:value="${board.title}">

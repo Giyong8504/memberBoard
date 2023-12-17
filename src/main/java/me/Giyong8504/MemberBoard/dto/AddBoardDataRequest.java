@@ -12,9 +12,8 @@ public class AddBoardDataRequest {
 
     private String title;
     private String content;
-    private String author;
 
-    public BoardData toEntity() {
+    public BoardData toEntity(String author) {
         return BoardData.builder()
                 .title(title)
                 .content(content)

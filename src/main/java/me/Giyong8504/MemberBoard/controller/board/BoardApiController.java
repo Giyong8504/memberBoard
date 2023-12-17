@@ -1,15 +1,18 @@
 package me.Giyong8504.MemberBoard.controller.board;
 
+import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import me.Giyong8504.MemberBoard.dto.AddBoardDataRequest;
 import me.Giyong8504.MemberBoard.dto.BoardDataResponse;
 import me.Giyong8504.MemberBoard.dto.UpdateBoardDataRequest;
 import me.Giyong8504.MemberBoard.entities.BoardData;
+import me.Giyong8504.MemberBoard.models.user.UserInfo;
 import me.Giyong8504.MemberBoard.service.BoardService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
 import java.util.List;
 
 @RestController //HTTP Response Body에 객체 데이터를 JSON 형식으로 반환
@@ -20,8 +23,8 @@ public class BoardApiController {
 
     // HTTP 메서드가 POST 일 때 전달받은 URL과 동일하면 메서드로 매핑.
     @PostMapping("/api/board")
-    public ResponseEntity<BoardData> addBoardData(@RequestBody AddBoardDataRequest request) {
-        BoardData saveBoardData = boardService.save(request);
+    public ResponseEntity<BoardData> addBoardData(@RequestBody AddBoardDataRequest request, Principal principal) {
+        BoardData saveBoardData = boardService.save(request, principal.getName());
 
         return ResponseEntity.status(HttpStatus.CREATED).body(saveBoardData);
     }
