@@ -56,8 +56,8 @@ if (modifyButton) {
                     alert('수정되었습니다.');
                     location.replace(`/board/${id}`);
                 } else {
-                    // 403 Forbidden: 수정 권한이 없는 경우
                     alert('수정 권한이 없습니다.');
+                    location.replace('/board');
                 }
             })
         }

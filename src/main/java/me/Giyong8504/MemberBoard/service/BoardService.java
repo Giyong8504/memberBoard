@@ -38,34 +38,40 @@ public class BoardService {
 
     public void delete(Long id) {
         BoardData boardData = boardDataRepository.findById(id).orElse(null);
-        if (boardData != null && deleteBoardList(boardData)) {
+        if (boardData != null && commonAuthentication(boardData)) {
             boardDataRepository.deleteById(id);
         } else {
             throw new IllegalArgumentException("Unauthorized deletion");
         }
 
     }
-    // Spring Security를 사용하여 현재 로그인한 사용자의 정보를 얻고, 해당 정보를 기반으로 삭제 권한을 확인
-    private boolean deleteBoardList(BoardData boardData) {
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        String username = authentication.getName();
-
-        return username.equals(boardData.getAuthor());
-    }
-
 
     /**
      * 수정기능 :  findById()로 id 값을 받아 조회 후 없으면 예외 발생.
      * boardData.update()에 수정 값을 받은 정보로 값 수정.
      * @Transactional 을 사용하여 하나의 작업 단위로 묶음.
+     * 글 작성자만 수정할 수 있도록 추가
      */
     @Transactional
     public BoardData update(Long id, UpdateBoardDataRequest request) {
         BoardData boardData = boardDataRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("not found" +id));
 
-        boardData.update(request.getTitle(), request.getContent());
+        // 글작성자만 수정할 수 있음.
+        if (boardData != null && commonAuthentication(boardData)) {
+            boardData.update(request.getTitle(), request.getContent());
+        } else {
+            throw new IllegalArgumentException("Unauthorized update");
+        }
 
         return boardData;
+    }
+
+    // Spring Security를 사용하여 현재 로그인한 사용자의 정보를 얻고, 해당 정보를 기반으로 삭제 권한을 확인, 수정도 함께 사용
+    private boolean commonAuthentication(BoardData boardData) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String username = authentication.getName();
+
+        return username.equals(boardData.getAuthor());
     }
 }
