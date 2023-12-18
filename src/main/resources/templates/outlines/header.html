@@ -27,6 +27,8 @@
 
         <!-- 로그인 했을 경우 노출되는 버튼 / 로그아웃 후 사라짐 -->
         <div sec:authorize="isAuthenticated()">
+            <!-- 로그인 중 로그인 아이디, 이름 표시 -->
+            <th:block th:text="${#messages.msg('login.msg', session.userInfo.userNm, session.userInfo.userId)}"></th:block>
             <button type="button" class="" onclick="location.href='/logout'">로그아웃</button>
         </div>
     </div>
