@@ -8,7 +8,6 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequiredArgsConstructor
@@ -16,7 +15,7 @@ public class UserController {
 
     private final UserJoinService userJoinService;
 
-    @GetMapping("/join") // 모델에서 사용할 속성 이름을 갑으로 설정
+    @GetMapping("/join") // 모델에서 사용할 속성 이름을 값으로 설정
     public String join(@ModelAttribute JoinForm joinForm) {
 
         return "user/join";
