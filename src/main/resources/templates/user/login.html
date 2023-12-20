@@ -11,11 +11,11 @@
             <div th:if="${session.globalError != null}" th:text="${session.globalError}"></div>
             <div>
                 <input type="text" name="email" placeholder="이메일">
-                <div th:if="${session.requiredUserId != null}" th:text="${session.requiredUserId}"></div>
+                <div th:if="${session.requiredEmail != null}" th:text="${session.requiredEmail}"></div>
             </div>
             <div>
                 <input type="password" name="password" placeholder="비밀번호">
-                <div th:if="${session.requiredUserPw != null}" th:text="${session.requiredUserPw}"></div>
+                <div th:if="${session.requiredPassword != null}" th:text="${session.requiredPassword}"></div>
             </div>
             <button type="submit">로그인</button>
             <div>

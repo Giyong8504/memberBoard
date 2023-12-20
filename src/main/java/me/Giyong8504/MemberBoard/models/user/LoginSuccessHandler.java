@@ -14,10 +14,10 @@
 //    public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
 //        HttpSession session = request.getSession();
 //        // 기존 세션의 기록을 제거한다.
-//        session.removeAttribute("requiredUserId");
-//        session.removeAttribute("requiredUserPw");
+//        session.removeAttribute("requiredEmail");
+//        session.removeAttribute("requiredPassword");
 //        session.removeAttribute("globalError");
-//        session.removeAttribute("userId");
+//        session.removeAttribute("email");
 //
 //        // 회원 정보를 세션에 기록
 //        UserInfo userInfo = (UserInfo)authentication.getPrincipal();

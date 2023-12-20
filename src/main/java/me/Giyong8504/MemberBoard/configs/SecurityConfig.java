@@ -3,6 +3,8 @@ package me.Giyong8504.MemberBoard.configs;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import me.Giyong8504.MemberBoard.configs.oauth.OAuth2UserCustomService;
+//import me.Giyong8504.MemberBoard.models.user.LoginFailureHandler;
+//import me.Giyong8504.MemberBoard.models.user.LoginSuccessHandler;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -25,7 +27,7 @@ public class SecurityConfig {
         http.formLogin(f -> {
             f.loginPage("/login") // 로그인 페이지 설정
                     .usernameParameter("email") // 사용자 아이디 파라미터 설정
-                    .passwordParameter("userPw"); // 사용자 비밀번호 파라미터 설정
+                    .passwordParameter("password"); // 사용자 비밀번호 파라미터 설정
 //                    .successHandler(new LoginSuccessHandler()) //로그인 성공시 핸들러 설정.
 //                    .failureHandler(new LoginFailureHandler()); //로그인 실패시 핸들러 설정.
         });

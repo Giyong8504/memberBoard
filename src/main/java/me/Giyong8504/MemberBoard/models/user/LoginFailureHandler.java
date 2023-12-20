@@ -19,25 +19,25 @@
 //        ResourceBundle bundle = ResourceBundle.getBundle("messages.validations");
 //
 //        // 기존 세션의 기록을 제거한다.
-//        session.removeAttribute("requiredUserId");
-//        session.removeAttribute("requiredUserPw");
+//        session.removeAttribute("requiredEmail");
+//        session.removeAttribute("requiredPassword");
 //        session.removeAttribute("globalError");
-//        session.removeAttribute("userId");
+//        session.removeAttribute("email");
 //
-//        String userId = request.getParameter("userId");
-//        String userPw = request.getParameter("userPw");
+//        String email = request.getParameter("email");
+//        String userPw = request.getParameter("password");
 //
-//        session.setAttribute("userId", userId);
+//        session.setAttribute("email", email);
 //
-//        if (userId == null || userId.isBlank()) { // id가 null이거나 빈값일 때
-//            session.setAttribute("requiredUserId", bundle.getString("NotBlank.userId"));
+//        if (email == null || email.isBlank()) { // id가 null이거나 빈값일 때
+//            session.setAttribute("requiredEmail", bundle.getString("NotBlank.email"));
 //        }
 //
 //        if (userPw == null || userPw.isBlank()) { // pw가 null이거나 빈값일 때
-//            session.setAttribute("requiredUserPw", bundle.getString("NotBlank.userPw"));
+//            session.setAttribute("requiredPassword", bundle.getString("NotBlank.password"));
 //        }
 //
-//        if (userId != null && !userId.isBlank() && userPw != null & !userPw.isBlank()) {
+//        if (email != null && !email.isBlank() && userPw != null & !userPw.isBlank()) {
 //            session.setAttribute("globalError", bundle.getString("login.fail"));
 //        }
 //
