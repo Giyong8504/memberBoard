@@ -1,17 +1,20 @@
 spring:
+  # JPA 설정
   jpa:
-    defer-datasource-initialization: 'true'
-    show-sql: 'true'
+    properties:
+      hibernate:
+        # 실행되는 쿼리 콘솔 출력
+        show_sql: true
+        # 콘솔 창에 출력되는 쿼리를 가독성 좋게 포매팅
+        format_sql: true
+        use_sql_comments: true
+        dialect: org.hibernate.dialect.MySQLDialect
     hibernate:
       ddl-auto: update
 
-    properties:
-      hibernate:
-        format_sql: 'true'
-        show_sql: 'true'
-
     database-platform: org.hibernate.dialect.MySQLDialect
 
+  # 데이터베이스 연결 설정
   datasource:
     password: aA!123456
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -20,7 +23,7 @@ spring:
 
   h2:
     console:
-      enabled: 'true'
+      enabled: true
 
   security:
     oauth2:
@@ -38,6 +41,8 @@ logging:
           descriptor:
             sql: trace
 
+# JSON WebToken 설정
 jwt:
   secret_key: blog-springboot
   issuer: kky5163@naver.com
+  accessTokenValidityInSeconds: 3600 # 60분
