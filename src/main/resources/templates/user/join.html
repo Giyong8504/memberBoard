@@ -18,7 +18,7 @@
             <div>
                 <div>
                     <input type="password" name="password" th:field="*{password}" placeholder="비밀번호">
-                    <div th:each="err : ${#fields.errors('userPw')}" th:text="${err}"></div>
+                    <div th:each="err : ${#fields.errors('password')}" th:text="${err}"></div>
                 </div>
             </div>
             <div>
