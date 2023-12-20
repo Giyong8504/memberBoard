@@ -24,6 +24,8 @@ public class UserInfoService implements UserDetailsService { // 정보를 조회
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+
+        // Optional 형태로 예외를 던지면 쉽게 가능하다.
         User user = userRepository.findByEmail(email).orElseThrow(() -> new UsernameNotFoundException(email));
 
         // 사용자에게 부여된 권한을 나타내는 SimpleGrantedAuthority 를 사용
