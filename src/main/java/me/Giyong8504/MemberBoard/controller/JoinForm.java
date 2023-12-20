@@ -10,22 +10,18 @@ import lombok.Data;
 public class JoinForm {
 
     @NotBlank
-    @Size(min = 6)
-    private String userId;
+    @Email
+    private String email;
 
     @NotBlank
     @Size(min = 8)
-    private String userPw;
+    private String password;
 
     @NotBlank
     private String userPwRe;
 
     @NotBlank
     private String userNm;
-
-    @Email
-    @NotBlank
-    private String email;
 
     private String mobile;
 

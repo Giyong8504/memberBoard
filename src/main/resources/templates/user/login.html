@@ -10,11 +10,11 @@
         <form method="POST" th:action="@{/login}" th:object="${joinForm}">
             <div th:if="${session.globalError != null}" th:text="${session.globalError}"></div>
             <div>
-                <input type="text" name="userId" placeholder="아이디">
+                <input type="text" name="email" placeholder="이메일">
                 <div th:if="${session.requiredUserId != null}" th:text="${session.requiredUserId}"></div>
             </div>
             <div>
-                <input type="password" name="userPw" placeholder="비밀번호">
+                <input type="password" name="password" placeholder="비밀번호">
                 <div th:if="${session.requiredUserPw != null}" th:text="${session.requiredUserPw}"></div>
             </div>
             <button type="submit">로그인</button>

@@ -11,13 +11,13 @@
             <div th:each="err : ${#fields.globalErrors()}" th:text="${err}"></div>
             <div>
                 <div>
-                    <input type="text" name="userId" th:field="*{userId}" placeholder="아이디">
-                    <div th:each="err : ${#fields.errors('userId')}" th:text="${err}"></div>
+                    <input type="text" name="email" th:field="*{email}" placeholder="이메일">
+                    <div th:each="err : ${#fields.errors('email')}" th:text="${err}"></div>
                 </div>
             </div>
             <div>
                 <div>
-                    <input type="password" name="userPw" th:field="*{userPw}" placeholder="비밀번호">
+                    <input type="password" name="password" th:field="*{password}" placeholder="비밀번호">
                     <div th:each="err : ${#fields.errors('userPw')}" th:text="${err}"></div>
                 </div>
             </div>
@@ -31,12 +31,6 @@
                 <div>
                     <input type="text" name="userNm" th:field="*{userNm}" placeholder="회원명">
                     <div th:each="err : ${#fields.errors('userNm')}" th:text="${err}"></div>
-                </div>
-            </div>
-            <div>
-                <div>
-                    <input type="email" name="email" th:field="*{email}" placeholder="이메일">
-                    <div th:each="err : ${#fields.errors('email')}" th:text="${err}"></div>
                 </div>
             </div>
             <div>

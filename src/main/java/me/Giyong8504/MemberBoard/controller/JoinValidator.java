@@ -35,7 +35,7 @@ public class JoinValidator implements Validator {
         }
 
         // 2. 비밀번호, 비밀번호 확인 일치 여부
-        String userPw = form.getUserPw();
+        String userPw = form.getPassword();
         String userPwRe = form.getUserPwRe();
         if (!userPw.equals(userPwRe) && userPw != null && !userPw.isBlank()
                 && userPwRe != null && !userPwRe.isBlank()) {

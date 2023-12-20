@@ -27,7 +27,7 @@ public class UserJoinService {
 
         User user = User.builder()
                 .email(form.getEmail())
-                .password(passwordEncoder.encode(form.getUserPw()))
+                .password(passwordEncoder.encode(form.getPassword()))
                 .userNm(form.getUserNm())
                 .mobile(form.getMobile())
                 .role(Role.USER) // 회원가입시 기본 USER로 일반회원.
