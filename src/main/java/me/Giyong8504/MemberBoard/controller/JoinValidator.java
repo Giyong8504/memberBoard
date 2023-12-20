@@ -28,9 +28,9 @@ public class JoinValidator implements Validator {
          * 3. 휴대전화번호 형식 체크
          */
 
-        //1 아이디 중복체크 - 중복 X
-        String userId = form.getUserId();
-        if (userId != null && !userId.isBlank() && userRepository.exists(userId)) {
+        // 1 email 중복체크 - 중복 X
+        String email = form.getEmail();
+        if (email != null && !email.isBlank() && userRepository.exists(email)) {
             errors.rejectValue("userId", "duplicate");
         }
 

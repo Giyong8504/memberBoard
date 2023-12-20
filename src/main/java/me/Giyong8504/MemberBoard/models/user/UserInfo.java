@@ -16,13 +16,13 @@ import java.util.Collection;
 public class UserInfo implements UserDetails {
 
     private Long userNo;
-    private String userId;
-    private String userNm;
-    private String userPw;
     private String email;
+    private String userNm;
+    private String password;
     private String mobile;
     private Role role;
-    private Collection<GrantedAuthority> authorities; // 권한에 대한 내용
+
+    private Collection<? extends GrantedAuthority> authorities;// 권한에 대한 내용
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() { // 인가에 대한 권한
@@ -31,12 +31,12 @@ public class UserInfo implements UserDetails {
 
     @Override
     public String getPassword() { // 사용자 패스워드 반환
-        return userPw;
+        return password;
     }
 
     @Override
     public String getUsername() { // 사용자 이름 반환.
-        return userId;
+        return email;
     }
 
     @Override

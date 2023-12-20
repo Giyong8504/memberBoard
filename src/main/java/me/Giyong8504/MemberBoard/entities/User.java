@@ -12,19 +12,17 @@ public class User extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(updatable = false)
     private Long userNo;
 
-    @Column(length = 40, unique = true)
-    private String userId;
-
-    @Column(length = 40, unique = true)
-    private String userNm;
-
-    @Column(length = 60)
-    private String userPw;
-
-    @Column(unique = true)
+    @Column(unique = true, nullable = false)
     private String email;
+
+    @Column(length = 60, nullable = false)
+    private String password;
+
+    @Column(length = 40, nullable = false)
+    private String userNm;
 
     @Column(length = 11)
     private String mobile;
@@ -33,11 +31,10 @@ public class User extends BaseEntity {
     private Role role = Role.USER;
 
     @Builder
-    public User(Long userNo, String userId, String email, String userPw, String userNm, String mobile, Role role) {
+    public User(Long userNo, String email, String password, String userNm, String mobile, Role role) {
         this.userNo = userNo;
-        this.userId = userId;
         this.email = email;
-        this.userPw = userPw;
+        this.password = password;
         this.userNm = userNm;
         this.mobile = mobile;
         this.role = role;
