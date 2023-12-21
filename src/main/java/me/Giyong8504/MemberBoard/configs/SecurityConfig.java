@@ -26,6 +26,7 @@ public class SecurityConfig {
         //회원 인증 설정 - 로그인
         http.formLogin(f -> {
             f.loginPage("/login") // 로그인 페이지 설정
+                    .defaultSuccessUrl("/board")
                     .usernameParameter("email") // 사용자 아이디 파라미터 설정
                     .passwordParameter("password"); // 사용자 비밀번호 파라미터 설정
 //                    .successHandler(new LoginSuccessHandler()) //로그인 성공시 핸들러 설정.
