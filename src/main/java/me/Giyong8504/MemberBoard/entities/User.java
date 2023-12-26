@@ -40,6 +40,8 @@ public class User extends BaseEntity {
         this.role = role;
     }
 
+
+    // 사용자 이름 변경
     public User update(String userNm) {
         this.userNm = userNm;
 
