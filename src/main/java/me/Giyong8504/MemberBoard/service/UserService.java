@@ -1,8 +1,10 @@
 package me.Giyong8504.MemberBoard.service;
 
 import lombok.RequiredArgsConstructor;
+import me.Giyong8504.MemberBoard.dto.AddUserRequest;
 import me.Giyong8504.MemberBoard.entities.User;
 import me.Giyong8504.MemberBoard.repositories.UserRepository;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -10,6 +12,15 @@ import org.springframework.stereotype.Service;
 public class UserService {
 
     private final UserRepository userRepository;
+
+    public Long save(AddUserRequest dto) {
+        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+
+        return userRepository.save(User.builder()
+                .email(dto.getEmail())
+                .password(encoder.encode(dto.getPassword()))
+                .build()).getUserNo();
+    }
 
     public User findById(Long userId) {
         return userRepository.findById(userId)
