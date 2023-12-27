@@ -15,7 +15,7 @@ import java.util.Map;
 @RequiredArgsConstructor
 public class OAuth2UserCustomService extends DefaultOAuth2UserService {
 
-    private UserRepository userRepository;
+    private final UserRepository userRepository;
 
     @Override
     public OAuth2User loadUser(OAuth2UserRequest userRequest) throws OAuth2AuthenticationException {

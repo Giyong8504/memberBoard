@@ -35,13 +35,12 @@ public class BoardService {
     }
 
     // 삭제기능 : id 값으로 삭제한다.
-
     public void delete(Long id) {
         BoardData boardData = boardDataRepository.findById(id).orElse(null);
         if (boardData != null && commonAuthentication(boardData)) {
             boardDataRepository.deleteById(id);
         } else {
-            throw new IllegalArgumentException("Unauthorized deletion");
+            throw new IllegalArgumentException("Unauthorized delete");
         }
 
     }
