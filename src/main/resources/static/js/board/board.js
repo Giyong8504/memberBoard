@@ -8,19 +8,18 @@ if (deleteButton) {
         if (isConfirmed) {
             let id = document.getElementById('board-id').value;
 
-            fetch(`/api/board/${id}`, {
-                method: 'DELETE'
-            })
-            .then(response => {
-                if (response.ok) {
-                    // 서버에서 삭제가 성공적으로 이루어진 경우
-                    alert('삭제 되었습니다.');
-                    location.replace('/board');
-                } else {
-                    // 서버에서 삭제가 실패한 경우 또는 권한이 없는 경우
-                    alert('삭제 권한이 없습니다.');
-                }
-            })
+            function success() {
+                alert('삭제 되었습니다.');
+                location.replace('/board');
+            }
+
+            function fail() {
+                alert('삭제 권한이 없습니다.');
+                location.replace('/board');
+            }
+
+            // 요청을 보낼 때 headers의 요청 형식을 지정
+            httpRequest('DELETE',`/api/board/${id}`, null, success, fail);
         }
     });
 }
@@ -38,28 +37,25 @@ if (modifyButton) {
             let params = new URLSearchParams(location.search);
             let id = params.get('id');
 
-            // 요청을 보낼 때 headers의 요청 형식을 지정
-            fetch(`/api/board/${id}`, {
-                method: 'PUT', // 수정 요청 메소드
-                headers: {
-                    "Content-Type": "application/json",
-                },
+            // body에 HTML에 입력한 데이터를 JSON 형식으로 바꿔 보낸다.
+            body = JSON.stringify({
+                title: document.getElementById('title').value,
+                content: document.getElementById('content').value
+            })
 
-                // body에 HTML에 입력한 데이터를 JSON 형식으로 바꿔 보낸다.
-                body: JSON.stringify({
-                    title: document.getElementById('title').value,
-                    content: document.getElementById('content').value
-                })
-            })
-            .then(response => {
-                if (response.ok) {
-                    alert('수정되었습니다.');
-                    location.replace(`/board/${id}`);
-                } else {
-                    alert('수정 권한이 없습니다.');
-                    location.replace('/board');
-                }
-            })
+            function success() {
+                alert('수정 되었습니다.');
+                location.replace(`/articles/${id}`);
+            }
+
+            function fail() {
+                alert('수정 권한이 없습니다.');
+                location.replace(`/articles/${id}`);
+            }
+
+            // 요청을 보낼 때 headers의 요청 형식을 지정
+            httpRequest('PUT',`/api/articles/${id}`, body, success, fail);
+
         }
     });
 }
@@ -81,12 +77,12 @@ if (createButton) {
                 author: document.getElementById('author').value
             });
             function success() {
-                alert('등록 되었습니다');
+                alert('등록 되었습니다.');
                 location.replace('/board');
             };
 
             function fail() {
-                alert('등록 실패했습니다');
+                alert('등록 실패했습니다.');
                 location.replace('/board');
             };
 
