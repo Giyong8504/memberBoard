@@ -50,7 +50,7 @@ if (modifyButton) {
 
             function fail() {
                 alert('수정 권한이 없습니다.');
-                location.replace(`/articles/${id}`);
+                location.replace('/board');
             }
 
             // 요청을 보낼 때 headers의 요청 형식을 지정
