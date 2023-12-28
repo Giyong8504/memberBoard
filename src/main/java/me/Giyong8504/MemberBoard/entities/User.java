@@ -18,10 +18,10 @@ public class User extends BaseEntity {
     @Column(unique = true, nullable = false)
     private String email;
 
-    @Column(length = 60, nullable = false)
+    @Column
     private String password;
 
-    @Column(length = 40, nullable = false)
+    @Column(nullable = false)
     private String userNm;
 
     @Column(length = 11)
