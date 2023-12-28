@@ -1,6 +1,7 @@
 package me.Giyong8504.MemberBoard.configs.oauth;
 
 import lombok.RequiredArgsConstructor;
+import me.Giyong8504.MemberBoard.commons.Role;
 import me.Giyong8504.MemberBoard.entities.User;
 import me.Giyong8504.MemberBoard.repositories.UserRepository;
 import org.springframework.security.oauth2.client.userinfo.DefaultOAuth2UserService;
@@ -9,7 +10,7 @@ import org.springframework.security.oauth2.core.OAuth2AuthenticationException;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Service;
 
-import java.util.Map;
+import java.util.*;
 
 @Service
 @RequiredArgsConstructor
@@ -36,6 +37,7 @@ public class OAuth2UserCustomService extends DefaultOAuth2UserService {
                 .orElse(User.builder()
                         .email(email)
                         .userNm(name)
+                        .role(Role.USER)
                         .build());
         return userRepository.save(user);
     }
