@@ -7,6 +7,8 @@ import me.Giyong8504.MemberBoard.configs.jwt.TokenProvider;
 import me.Giyong8504.MemberBoard.configs.oauth.OAuth2AuthorizationRequestBasedOnCookieRepository;
 import me.Giyong8504.MemberBoard.configs.oauth.OAuth2SuccessHandler;
 import me.Giyong8504.MemberBoard.configs.oauth.OAuth2UserCustomService;
+import me.Giyong8504.MemberBoard.models.user.LoginFailureHandler;
+import me.Giyong8504.MemberBoard.models.user.LoginSuccessHandler;
 import me.Giyong8504.MemberBoard.repositories.RefreshTokenRepository;
 import me.Giyong8504.MemberBoard.service.UserService;
 import org.springframework.context.annotation.Bean;
@@ -38,8 +40,18 @@ public class WebSecurityConfig {
                 //.formLogin().disable() // formLogin 비활성화 (토큰만 사용할 경우)
                 .logout().disable();
 
-        http.sessionManagement() // 세션을 사용하지 않기 때문에 비활성화
-                .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+        //회원 인증 설정 - 로그인
+        http.formLogin(f -> {
+            f.loginPage("/login") // 로그인 페이지 설정
+                    .defaultSuccessUrl("/board")
+                    .usernameParameter("email") // 사용자 아이디 파라미터 설정
+                    .passwordParameter("password") // 사용자 비밀번호 파라미터 설정
+                    .successHandler(new LoginSuccessHandler()) //로그인 성공시 핸들러 설정.
+                    .failureHandler(new LoginFailureHandler()); //로그인 실패시 핸들러 설정.
+        });
+
+//        http.sessionManagement() // 세션을 사용하지 않기 때문에 비활성화
+//                .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 
         // 헤더를 확인할 커스텀 필터 추가
         http.addFilterBefore(tokenAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
@@ -52,6 +64,7 @@ public class WebSecurityConfig {
                     .anyRequest().permitAll(); // 그 외 모든 요청은 누구나 접근 가능
         });
 
+        // OAuth2 로그인
         http.oauth2Login()
                 .loginPage("/login")
                 .authorizationEndpoint()
