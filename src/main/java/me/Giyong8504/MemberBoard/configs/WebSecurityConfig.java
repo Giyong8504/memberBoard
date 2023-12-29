@@ -81,7 +81,6 @@ public class WebSecurityConfig {
                     .logoutSuccessUrl("/board"); // 로그아웃 성공 후 이동할 페이지
         });
 
-        // /api로 시작하는 url인 경우 401 상태코드를 반환하도록 예외처리
         // 관리자, 회원 페이지 접근할 때 오류코드, 리다이렉트
         http.exceptionHandling(c -> {
             c.authenticationEntryPoint((req, res, e) -> {
