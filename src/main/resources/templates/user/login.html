@@ -8,14 +8,14 @@
     <div>
         <h1>로그인페이지</h1>
         <form method="POST" th:action="@{/login}" th:object="${joinForm}">
-<!--            <div th:if="${session.globalError != null}" th:text="${session.globalError}"></div>-->
+            <div th:if="${session.globalError != null}" th:text="${session.globalError}"></div>
             <div>
                 <input type="text" name="email" placeholder="이메일">
-<!--                <div th:if="${session.requiredEmail != null}" th:text="${session.requiredEmail}"></div>-->
+                <div th:if="${session.requiredEmail != null}" th:text="${session.requiredEmail}"></div>
             </div>
             <div>
                 <input type="password" name="password" placeholder="비밀번호">
-<!--                <div th:if="${session.requiredPassword != null}" th:text="${session.requiredPassword}"></div>-->
+                <div th:if="${session.requiredPassword != null}" th:text="${session.requiredPassword}"></div>
             </div>
             <button type="submit">로그인</button>
             <div>
