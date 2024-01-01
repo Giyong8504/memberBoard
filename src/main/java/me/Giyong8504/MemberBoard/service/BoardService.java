@@ -26,7 +26,7 @@ public class BoardService {
 
     // BoardData 테이블에 저장되어있는 모든 값 조회
     public List<BoardData> findAll() {
-        return boardDataRepository.findAll();
+        return boardDataRepository.findAllByOrderByRegDtDesc();
     }
 
     // JPA에서 제공하는 findById()로 id를 받아 조회 후 없으면 예외 반환.
