@@ -1,5 +1,6 @@
 package me.Giyong8504.MemberBoard.controller;
 
+import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import me.Giyong8504.MemberBoard.dto.CreateAccessTokenRequest;
 import me.Giyong8504.MemberBoard.dto.CreateAccessTokenResponse;
@@ -24,5 +25,12 @@ public class TokenApiController {
 
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body(new CreateAccessTokenResponse(newAccessToken));
+    }
+
+    // 로그아웃 성공 시
+    @PostMapping("/api/logout")
+    public ResponseEntity<String> logout(HttpServletRequest request) {
+
+        return ResponseEntity.ok("Logout success");
     }
 }

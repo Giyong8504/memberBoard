@@ -156,3 +156,31 @@ function httpRequest(method, url, body, success, fail) {
 }
 
 
+// 클라이언트에서 로그아웃 버튼 클릭 시 호출되는 함수
+const logoutButton = document.getElementById('logout-btn');
+
+if (logoutButton) {
+    logoutButton.addEventListener('click', event => {
+        fetch('/api/logout', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + localStorage.getItem('access_token')
+            }
+        })
+        .then(response => {
+            if (response.ok) {
+                // 서버에서 로그아웃 성공 시
+                localStorage.removeItem('access_token'); // 로컬 스토리지에서 토큰 제거
+                alert('로그아웃 되었습니다.');
+            } else {
+                alert('로그아웃에 실패 했습니다.');
+            }
+        });
+    });
+}
+
+
+
+
+
