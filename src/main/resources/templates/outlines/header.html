@@ -9,10 +9,13 @@
             <li><a href="/board" class="">Board</a></li>
             <li><a href="#">about</a></li>
         </ul>
+        <div> <!-- 제목 검색 -->
+            <form class="" role="search" method="get" th:action="@{/api/board/search}" >
+                <input type="search" name="keyword" placeholder="Search..." aria-label="Search">
+                <button type="submit">검색</button>
+            </form>
+        </div>
 
-        <form class="" role="search">
-            <input type="search" class="" placeholder="Search..." aria-label="Search">
-        </form>
 
         <!-- 로그인하지 않았을 경우 노출 / 로그인 후 사라짐-->
         <div class="" sec:authorize="isAnonymous()">
