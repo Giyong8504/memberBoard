@@ -78,7 +78,11 @@ public class WebSecurityConfig {
 
         http.logout(f -> {
             f.logoutRequestMatcher(new AntPathRequestMatcher("/logout")) //로그아웃 URL 설정
-                    .logoutSuccessUrl("/board"); // 로그아웃 성공 후 이동할 페이지
+                    .logoutSuccessUrl("/board") // 로그아웃 성공 후 이동할 페이지
+                    .invalidateHttpSession(true) // HTTP 세션 무효화
+                    .clearAuthentication(true) // 사용자 인증정보 제거
+                    .deleteCookies("JSESSIONID", "refresh_token"); // 쿠키에 담긴 세션, 리프레시 토큰 제거
+
         });
 
         // 관리자, 회원 페이지 접근할 때 오류코드, 리다이렉트
