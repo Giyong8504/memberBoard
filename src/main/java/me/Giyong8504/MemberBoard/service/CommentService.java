@@ -13,6 +13,8 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.oauth2.core.OAuth2AuthenticatedPrincipal;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class CommentService {
@@ -20,6 +22,13 @@ public class CommentService {
     private final CommentRepository commentRepository;
     private final BoardDataRepository boardDataRepository;
 
+    // 게시글의 모든 댓글을 조회
+    public List<Comment> getCommentsByBoardId(Long boardId) {
+        BoardData boardData = boardDataRepository.findById(boardId)
+                .orElseThrow(() -> new IllegalArgumentException("해당 게시글이 존재하지 않습니다."));
+
+        return commentRepository.findByBoardData(boardData);
+    }
 
     // 게시글에 댓글 추가
     @Transactional
@@ -36,7 +45,7 @@ public class CommentService {
         return commentRepository.save(comment);
     }
 
-    // 삭제 기능
+    // 삭제 기능 댓글 id값으로 삭제
     public void deleteComment(Long commentId) {
         Comment comment = commentRepository.findById(commentId).orElse(null);
 
