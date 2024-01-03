@@ -5,6 +5,7 @@ import me.Giyong8504.MemberBoard.dto.view.BoardListViewResponse;
 import me.Giyong8504.MemberBoard.dto.view.BoardViewResponse;
 import me.Giyong8504.MemberBoard.entities.BoardData;
 import me.Giyong8504.MemberBoard.service.BoardService;
+import me.Giyong8504.MemberBoard.service.CommentService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,6 +19,7 @@ import java.util.List;
 public class BoardViewController {
 
     private final BoardService boardService;
+    private final CommentService commentService;
 
     // 게시글 목록
     @GetMapping("/board")
@@ -34,6 +36,9 @@ public class BoardViewController {
     public String getBoard(@PathVariable Long id, Model model) {
         BoardData boardData = boardService.findById(id);
         model.addAttribute("board", new BoardViewResponse(boardData));
+
+        // 게시글에 대한 댓글 리스트 추가
+        model.addAttribute("comments", commentService.getCommentsByBoardId(id));
 
         return "board/boardContent";
     }
