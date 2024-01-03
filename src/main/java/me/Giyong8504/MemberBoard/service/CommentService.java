@@ -47,6 +47,22 @@ public class CommentService {
         }
     }
 
+    // 수정 기능
+    @Transactional
+    public Comment updateComment(Long commentId, UpdateCommentRequest request) {
+        Comment comment = commentRepository.findById(commentId)
+                .orElseThrow(() -> new IllegalArgumentException("not found" + commentId));
+
+        // 글작성자만 수정할 수 있음.
+        if (comment != null && commonAuthentication(comment) || isOAuth2UserWithEmail(comment)){
+            comment.update(request.getContent());
+        } else {
+            throw new IllegalArgumentException("Unauthorized update");
+        }
+
+        return comment;
+    }
+
     // Spring Security를 사용하여 현재 로그인한 사용자의 정보를 얻고, 해당 정보를 기반으로 삭제 권한을 확인, 수정도 함께 사용
     private boolean commonAuthentication(Comment comment) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
