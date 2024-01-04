@@ -1,4 +1,4 @@
-package me.Giyong8504.MemberBoard.dto.view;
+package me.Giyong8504.MemberBoard.dto.boards;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;

@@ -1,6 +1,5 @@
-package me.Giyong8504.MemberBoard.dto;
+package me.Giyong8504.MemberBoard.dto.comments;
 
-import lombok.Builder;
 import lombok.Getter;
 import me.Giyong8504.MemberBoard.entities.Comment;
 

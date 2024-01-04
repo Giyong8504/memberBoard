@@ -1,4 +1,4 @@
-package me.Giyong8504.MemberBoard.dto;
+package me.Giyong8504.MemberBoard.dto.comments;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
