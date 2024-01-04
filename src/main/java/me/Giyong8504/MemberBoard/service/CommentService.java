@@ -32,15 +32,11 @@ public class CommentService {
 
     // 게시글에 댓글 추가
     @Transactional
-    public Comment addComment(Long boardId, AddCommentRequest request) {
+    public Comment addComment(Long boardId, AddCommentRequest request, String author) {
         BoardData boardData = boardDataRepository.findById(boardId)
-                .orElseThrow(() -> new IllegalArgumentException("해당 게시글이 존재하지 않습니다."));
+                .orElseThrow(() -> new IllegalArgumentException("게시물이 존재하지 않습니다."));
 
-        Comment comment = Comment.builder()
-                .content(request.getContent())
-                .author(request.getAuthor())
-                .boardData(boardData)
-                .build();
+        Comment comment = request.toEntity(boardData, author);
 
         return commentRepository.save(comment);
     }

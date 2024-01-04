@@ -3,6 +3,7 @@ package me.Giyong8504.MemberBoard.dto;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import me.Giyong8504.MemberBoard.entities.BoardData;
 import me.Giyong8504.MemberBoard.entities.Comment;
 
 @Getter
@@ -13,7 +14,7 @@ public class AddCommentRequest {
     private String content;
     private String author;
 
-    public Comment toEntity() {
+    public Comment toEntity(BoardData boardData, String author) {
         return Comment.builder()
                 .content(content)
                 .author(author)

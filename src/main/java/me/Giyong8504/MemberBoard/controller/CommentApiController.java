@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
 import java.util.List;
 
 @Controller
@@ -19,8 +20,8 @@ public class CommentApiController {
     private final CommentService commentService;
 
     @PostMapping("/api/comments")
-    public ResponseEntity<Comment> addComment(@RequestBody @Valid Long boardId, AddCommentRequest request) {
-        Comment addedComment = commentService.addComment(boardId, request);
+    public ResponseEntity<Comment> addComment(@RequestBody @Valid Long boardId, AddCommentRequest request, Principal principal) {
+        Comment addedComment = commentService.addComment(boardId, request, principal.getName());
         return ResponseEntity.status(HttpStatus.CREATED).body(addedComment);
     }
 
