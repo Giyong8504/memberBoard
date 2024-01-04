@@ -3,7 +3,7 @@ package me.Giyong8504.MemberBoard.service;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import me.Giyong8504.MemberBoard.dto.AddCommentRequest;
+import me.Giyong8504.MemberBoard.dto.comments.AddCommentRequest;
 import me.Giyong8504.MemberBoard.entities.BoardData;
 import me.Giyong8504.MemberBoard.entities.Comment;
 import me.Giyong8504.MemberBoard.repositories.BoardDataRepository;
@@ -21,6 +21,12 @@ public class CommentService {
 
     private final CommentRepository commentRepository;
     private final BoardDataRepository boardDataRepository;
+
+    // id 값으로 조회
+    public Comment findById(Long id) {
+        return commentRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("not found" + id));
+    }
 
     // 게시글의 모든 댓글을 조회
     public List<Comment> getCommentsByBoardId(Long boardId) {

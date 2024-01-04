@@ -1,9 +1,11 @@
 package me.Giyong8504.MemberBoard.controller.board;
 
 import lombok.RequiredArgsConstructor;
-import me.Giyong8504.MemberBoard.dto.view.BoardListViewResponse;
-import me.Giyong8504.MemberBoard.dto.view.BoardViewResponse;
+import me.Giyong8504.MemberBoard.dto.boards.BoardListViewResponse;
+import me.Giyong8504.MemberBoard.dto.boards.BoardViewResponse;
+import me.Giyong8504.MemberBoard.dto.comments.CommentViewResponse;
 import me.Giyong8504.MemberBoard.entities.BoardData;
+import me.Giyong8504.MemberBoard.entities.Comment;
 import me.Giyong8504.MemberBoard.service.BoardService;
 import me.Giyong8504.MemberBoard.service.CommentService;
 import org.springframework.stereotype.Controller;
@@ -33,12 +35,19 @@ public class BoardViewController {
 
     // 게시글 내용
     @GetMapping("/board/{id}")
-    public String getBoard(@PathVariable Long id, Model model) {
+    public String getBoard(@PathVariable Long id, @RequestParam(required = false) Long commentId, Model model) {
         BoardData boardData = boardService.findById(id);
         model.addAttribute("board", new BoardViewResponse(boardData));
 
         // 게시글에 대한 댓글 리스트 추가
         model.addAttribute("comments", commentService.getCommentsByBoardId(id));
+
+        if (commentId == null) {
+            model.addAttribute("commentAdd", new CommentViewResponse());
+        } else {
+            Comment comment = commentService.findById(commentId);
+            model.addAttribute("commentAdd", new CommentViewResponse(comment));
+        }
 
         return "board/boardContent";
     }
