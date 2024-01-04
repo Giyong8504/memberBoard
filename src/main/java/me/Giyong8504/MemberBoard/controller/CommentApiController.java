@@ -2,7 +2,7 @@ package me.Giyong8504.MemberBoard.controller;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import me.Giyong8504.MemberBoard.dto.AddCommentRequest;
+import me.Giyong8504.MemberBoard.dto.comments.AddCommentRequest;
 import me.Giyong8504.MemberBoard.entities.Comment;
 import me.Giyong8504.MemberBoard.service.CommentService;
 import org.springframework.http.HttpStatus;

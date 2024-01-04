@@ -2,8 +2,8 @@ package me.Giyong8504.MemberBoard.service;
 
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
-import me.Giyong8504.MemberBoard.dto.AddBoardDataRequest;
-import me.Giyong8504.MemberBoard.dto.UpdateBoardDataRequest;
+import me.Giyong8504.MemberBoard.dto.boards.AddBoardDataRequest;
+import me.Giyong8504.MemberBoard.dto.boards.UpdateBoardDataRequest;
 import me.Giyong8504.MemberBoard.entities.BoardData;
 import me.Giyong8504.MemberBoard.repositories.BoardDataRepository;
 import org.springframework.security.core.Authentication;

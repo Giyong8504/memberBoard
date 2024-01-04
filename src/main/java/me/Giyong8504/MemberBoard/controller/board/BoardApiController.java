@@ -1,12 +1,10 @@
 package me.Giyong8504.MemberBoard.controller.board;
 
-import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
-import me.Giyong8504.MemberBoard.dto.AddBoardDataRequest;
-import me.Giyong8504.MemberBoard.dto.BoardDataResponse;
-import me.Giyong8504.MemberBoard.dto.UpdateBoardDataRequest;
+import me.Giyong8504.MemberBoard.dto.boards.AddBoardDataRequest;
+import me.Giyong8504.MemberBoard.dto.boards.BoardDataResponse;
+import me.Giyong8504.MemberBoard.dto.boards.UpdateBoardDataRequest;
 import me.Giyong8504.MemberBoard.entities.BoardData;
-import me.Giyong8504.MemberBoard.models.user.UserInfo;
 import me.Giyong8504.MemberBoard.service.BoardService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
