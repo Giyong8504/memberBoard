@@ -25,13 +25,13 @@ public class CommentApiController {
         return ResponseEntity.status(HttpStatus.CREATED).body(addedComment);
     }
 
-    @PutMapping("/api/comments/{commentId}")
+    @PutMapping("/api/comments/{Id}")
     public ResponseEntity<Void> updateComment(@PathVariable Long commentId, @RequestBody @Valid AddCommentRequest request) {
         commentService.updateComment(commentId, request);
         return ResponseEntity.ok().build();
     }
 
-    @DeleteMapping("/api/comments/{commentId}")
+    @DeleteMapping("/api/comments/{Id}")
     public ResponseEntity<Void> deleteComment(@PathVariable Long commentId) {
         commentService.deleteComment(commentId);
         return ResponseEntity.ok().build();
