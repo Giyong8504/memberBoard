@@ -9,23 +9,23 @@
             <li><a href="/board" class="">Board</a></li>
             <li><a href="#">about</a></li>
         </ul>
-        <div> <!-- 제목 검색 -->
-            <form class="" role="search" method="get" th:action="@{/api/board/search}" >
-                <input type="search" name="keyword" placeholder="Search..." aria-label="Search">
+        <div> <!-- 게시글 검색 -->
+            <form class="" method="GET" th:action="@{/board/search}" >
+                <label for="keyword"></label>
+                <input type="text" id="keyword" name="keyword" placeholder="검색입력.." required>
                 <button type="submit">검색</button>
             </form>
         </div>
-
 
         <!-- 로그인하지 않았을 경우 노출 / 로그인 후 사라짐-->
         <div class="" sec:authorize="isAnonymous()">
             <button type="button" class="" onclick="location.href='/login'">로그인</button>
             <button type="button" class="" onclick="location.href='/join'">회원가입</button>
-            <div>
-                <a href="/oauth2/authorization/google">
-                    <img src="/img/google.png">
-                </a>
-            </div>
+<!--            <div>-->
+<!--                <a href="/oauth2/authorization/google">-->
+<!--                    <img src="/img/google.png">-->
+<!--                </a>-->
+<!--            </div>-->
         </div>
 
         <!-- 로그인 했을 경우 노출되는 버튼 / 로그아웃 후 사라짐 -->
@@ -35,5 +35,6 @@
             <button type="button" id="logout-btn" class="" onclick="location.href='/logout'">로그아웃</button>
         </div>
     </div>
+    <hr/>
 </header>
 </html>
