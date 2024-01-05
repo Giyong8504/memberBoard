@@ -43,7 +43,11 @@ public class BoardService {
         } else {
             throw new IllegalArgumentException("Unauthorized delete");
         }
+    }
 
+    // 글 검색 기능
+    public List<BoardData> searchBoard(String keyword) {
+        return boardDataRepository.findByTitleContainingOrContentContaining(keyword, keyword);
     }
 
     /**
