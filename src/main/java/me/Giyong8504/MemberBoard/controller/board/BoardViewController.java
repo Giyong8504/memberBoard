@@ -63,4 +63,14 @@ public class BoardViewController {
         }
         return "board/newBoard";
     }
+
+    // 게시글 검색 결과
+    @GetMapping("/board/search")
+    public String searchBoards(@RequestParam String keyword, Model model) {
+        List<BoardListViewResponse> searchResult = boardService.searchBoard(keyword)
+                .stream().map(BoardListViewResponse::new).toList();
+        model.addAttribute("searchResult", searchResult);
+
+        return "board/boardSearchList";
+    }
 }
