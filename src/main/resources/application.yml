@@ -30,8 +30,8 @@ spring:
       client:
         registration:
           google:
-            client-secret: '....'
-            client-id: '....'
+            client-id: ...
+            client-secret: ...
             scope: email, profile
 logging:
   level:
