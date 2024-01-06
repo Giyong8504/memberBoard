@@ -42,9 +42,13 @@ public class CommentService {
         BoardData boardData = boardDataRepository.findById(boardId)
                 .orElseThrow(() -> new IllegalArgumentException("게시물이 존재하지 않습니다."));
 
-        Comment comment = request.toEntity(boardData, userName);
+        Comment comment = Comment.builder()
+                        .boardData(boardData)
+                        .author(userName)
+                        .content(request.getContent())
+                        .build();
 
-        return commentRepository.save(comment);
+        return commentRepository.saveAndFlush(comment);
     }
 
     // 삭제 기능 댓글 id값으로 삭제
