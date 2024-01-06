@@ -20,22 +20,23 @@ public class CommentApiController {
     private final CommentService commentService;
 
     @PostMapping("/api/comments")
-    public ResponseEntity<Comment> addComment(@RequestBody @Valid Long boardId, AddCommentRequest request, Principal principal) {
-        Comment addedComment = commentService.addComment(boardId, request, principal.getName());
+    public ResponseEntity<Comment> addComment(@RequestBody AddCommentRequest request, Principal principal) {
+        Comment addedComment = commentService.addComment(request.getBoardDataId(), request, principal.getName());
         return ResponseEntity.status(HttpStatus.CREATED).body(addedComment);
     }
 
-    @PutMapping("/api/comments/{Id}")
-    public ResponseEntity<Void> updateComment(@PathVariable Long commentId, @RequestBody @Valid AddCommentRequest request) {
-        commentService.updateComment(commentId, request);
+    @PutMapping("/api/comments/{id}")
+    public ResponseEntity<Void> updateComment(@PathVariable Long id, @RequestBody AddCommentRequest request) {
+        commentService.updateComment(id, request);
         return ResponseEntity.ok().build();
     }
 
-    @DeleteMapping("/api/comments/{Id}")
-    public ResponseEntity<Void> deleteComment(@PathVariable Long commentId) {
-        commentService.deleteComment(commentId);
+    @DeleteMapping("/api/comments/{id}")
+    public ResponseEntity<Void> deleteComment(@PathVariable Long id) {
+        commentService.deleteComment(id);
         return ResponseEntity.ok().build();
     }
+
 
     @GetMapping("/api/comments/board/{boardId}")
     public ResponseEntity<List<Comment>> getCommentsByBoardId(@PathVariable Long boardId) {
