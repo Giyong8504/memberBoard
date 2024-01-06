@@ -42,9 +42,9 @@
             <input type="hidden" id="commentAdd-id" th:value="${commentAdd.id}">
 
             <!-- commentAdd-author 숨겨서 함께 요청  -->
-            <input type="hidden" id="commentAdd-author" th:value="${commentAdd.author}">
+            <input type="hidden" id="commentAdd-author" th:value="${board.author}">
 
-            <input type="hidden" id="commentAdd-boardId" th:value="${commentAdd.boardDataId}">
+            <input type="hidden" id="commentAdd-boardId" th:value="${board.id}">
 
             <div>
                 <label for="commentAdd-content">내용:</label>
