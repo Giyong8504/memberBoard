@@ -102,7 +102,7 @@ const commentAddButton = document.getElementById('commentAdd-btn');
 
 if (commentAddButton) {
     commentAddButton.addEventListener('click', event => {
-
+    const boardId = document.getElementById('commentAdd-boardId').value;
     const isConfirmed = confirm('댓글을 등록하시겠습니까?')
         if(isConfirmed) {
             // 등록 API로 POST 요청을 보낸다.
@@ -110,19 +110,21 @@ if (commentAddButton) {
                 method: 'POST',
                 headers: { // 요청을 보낼 때 headers의 요청 형식을 지정한다.
                     "Content-Type": "application/json",
+                    Authorization: 'Bearer ' + localStorage.getItem('access_token'),
                 },
 
                 // body에 HTML에서 입력한 데이터를 JSON 형식으로 바꿔 보낸다.
                 body: JSON.stringify({
                     content: document.getElementById('commentAdd-content').value,
                     author: document.getElementById('commentAdd-author').value,
-                    boardDataId: document.getElementById('commentAdd-boardId').value
+                    boardDataId: boardId
                 })
             })
             .then(response => {
+                console.log(response);
                 if (response.ok) {
                     alert('댓글이 등록되었습니다.');
-                    location.replace(`/board/{id}`);
+                    location.replace(`/board/${boardId}`);
                 } else {
                     alert('댓글 권한이 없습니다.');
                 }
