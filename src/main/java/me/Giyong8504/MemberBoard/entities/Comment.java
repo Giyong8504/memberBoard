@@ -1,5 +1,6 @@
 package me.Giyong8504.MemberBoard.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -20,6 +21,7 @@ public class Comment extends BaseEntity{
     private String author;
 
     @ManyToOne
+    @JsonIgnore
     @JoinColumn(name = "board_data_id")
     private BoardData boardData;
 
