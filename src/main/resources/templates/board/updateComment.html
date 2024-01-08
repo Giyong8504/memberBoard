@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns="http://www.w3.org/1999/html"
+      layout:decorate="~{layouts/boardMain}">
+
+<!-- layout:fragment로 content를 지정하여 내용만 작성 -->
+<main layout:fragment="content">
+    <div>
+        <h1>댓글 수정</h1>
+    </div>
+    <div>
+        <board>
+            <!-- id 값을 숨겨서 id를 함께 요청 -->
+            <input type="hidden" id="commentModify-id" th:value="${commentModify.id}">
+            <!-- author 값을 숨겨서 함께 요청 -->
+            <input type="hidden" id="commentModify-author" th:value="${commentModify.author}">
+            <!-- board.id 값은 쿼리파라미터 경로로 필요하여 숨겨서 함께 요청 -->
+            <input type="hidden" id="commentModify-boardId" th:value="${board.id}">
+
+            <div><!-- th:text로 content 값 응답받은 내용 출력 -->
+                <textarea rows="10" placeholder="내용" id="commentModify-content" th:text="${commentModify.content}"></textarea>
+            </div>
+            <div>
+                <button type="button" id="commentModify-btn">수정</button>
+            </div>
+        </board>
+    </div>
+    <script src="/js/board/board.js"></script>
+</main>
+</html>
