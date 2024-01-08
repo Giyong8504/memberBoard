@@ -1,8 +1,8 @@
-package me.Giyong8504.MemberBoard.controller;
+package me.Giyong8504.MemberBoard.controller.comment;
 
-import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import me.Giyong8504.MemberBoard.dto.comments.AddCommentRequest;
+import me.Giyong8504.MemberBoard.dto.comments.UpdateCommentRequest;
 import me.Giyong8504.MemberBoard.entities.Comment;
 import me.Giyong8504.MemberBoard.service.CommentService;
 import org.springframework.http.HttpStatus;
@@ -19,16 +19,18 @@ public class CommentApiController {
 
     private final CommentService commentService;
 
+    // 댓글 등록
     @PostMapping("/api/comments")
     public ResponseEntity<Comment> addComment(@RequestBody AddCommentRequest request, Principal principal) {
         Comment addedComment = commentService.addComment(request.getBoardDataId(), request, principal.getName());
         return ResponseEntity.status(HttpStatus.CREATED).body(addedComment);
     }
 
-    @PutMapping("/api/comments/{id}")
-    public ResponseEntity<Void> updateComment(@PathVariable Long id, @RequestBody AddCommentRequest request) {
-        commentService.updateComment(id, request);
-        return ResponseEntity.ok().build();
+    // 댓글 수정
+    @PutMapping("/api/comments/{boardId}/{id}")
+    public ResponseEntity<Comment> updateComment(@PathVariable Long id, @RequestBody UpdateCommentRequest request) {
+        Comment updateComment = commentService.updateComment(id, request);
+        return ResponseEntity.ok().body(updateComment);
     }
 
     @DeleteMapping("/api/comments/{id}")
