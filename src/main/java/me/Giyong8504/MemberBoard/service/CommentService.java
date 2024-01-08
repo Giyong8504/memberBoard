@@ -1,9 +1,9 @@
 package me.Giyong8504.MemberBoard.service;
 
 import jakarta.transaction.Transactional;
-import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import me.Giyong8504.MemberBoard.dto.comments.AddCommentRequest;
+import me.Giyong8504.MemberBoard.dto.comments.UpdateCommentRequest;
 import me.Giyong8504.MemberBoard.entities.BoardData;
 import me.Giyong8504.MemberBoard.entities.Comment;
 import me.Giyong8504.MemberBoard.repositories.BoardDataRepository;
@@ -64,9 +64,9 @@ public class CommentService {
 
     // 수정 기능
     @Transactional
-    public Comment updateComment(Long commentId, @Valid AddCommentRequest request) {
-        Comment comment = commentRepository.findById(commentId)
-                .orElseThrow(() -> new IllegalArgumentException("not found" + commentId));
+    public Comment updateComment(Long id, UpdateCommentRequest request) {
+        Comment comment = commentRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("not found" + id));
 
         // 글작성자만 수정할 수 있음.
         if (comment != null && commonAuthentication(comment) || isOAuth2UserWithEmail(comment)){
