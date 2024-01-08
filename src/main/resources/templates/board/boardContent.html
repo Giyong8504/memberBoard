@@ -31,9 +31,8 @@
         <h2>댓글 목록</h2>
         <ul>
             <li th:each="item : ${comments}">
-                <input type="hidden" id="comment-id" th:value="${item.id}">
                 <span th:text="|${item.author} : ${item.content}|"></span>
-                <!-- 댓글 수정 -->
+                <!-- 댓글 수정 버튼-->
                 <button type="button"
                         th:onclick="|location.href='/updateComment?boardId=${board.id}&id=${item.id}'|">수정</button>
             </li>
@@ -47,9 +46,9 @@
 
             <!-- commentAdd-author 숨겨서 함께 요청  -->
             <input type="hidden" id="commentAdd-author" th:value="${board.author}">
+
             <!-- board.id 값을 숨겨서 함께 요청 -->
             <input type="hidden" id="commentAdd-boardId" th:value="${board.id}">
-
             <div>
                 <label for="commentAdd-content">내용:</label>
                 <textarea id="commentAdd-content" name="content" th:text="${commentAdd.content}"></textarea>
