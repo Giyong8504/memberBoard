@@ -5,7 +5,6 @@ import me.Giyong8504.MemberBoard.dto.boards.BoardListViewResponse;
 import me.Giyong8504.MemberBoard.dto.boards.BoardViewResponse;
 import me.Giyong8504.MemberBoard.dto.comments.CommentViewResponse;
 import me.Giyong8504.MemberBoard.entities.BoardData;
-import me.Giyong8504.MemberBoard.entities.Comment;
 import me.Giyong8504.MemberBoard.service.BoardService;
 import me.Giyong8504.MemberBoard.service.CommentService;
 import org.springframework.stereotype.Controller;
@@ -42,18 +41,16 @@ public class BoardViewController {
         // 게시글에 대한 댓글 리스트 추가
         model.addAttribute("comments", commentService.getCommentsByBoardId(id));
 
+        // 댓글 작성
         if (commentId == null) {
             model.addAttribute("commentAdd", new CommentViewResponse());
-        } else {
-            Comment comment = commentService.findById(commentId);
-            model.addAttribute("commentAdd", new CommentViewResponse(comment));
         }
 
         return "board/boardContent";
     }
 
     // 게시글 수정, 생성
-    @GetMapping("new-board")
+    @GetMapping("/new-board")
     public String newBoard(@RequestParam(required = false) Long id, Model model) {
         if (id == null) { // id가 없을 경우 새로 생성
             model.addAttribute("board", new BoardViewResponse());
