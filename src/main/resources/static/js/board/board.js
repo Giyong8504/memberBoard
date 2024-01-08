@@ -134,6 +134,47 @@ if (commentAddButton) {
 }
 
 
+// 댓글 수정 기능
+// id가 commentModify-btn인 엘리먼트를 조회
+const commentModify = document.getElementById('commentModify-btn');
+
+if (commentModify) {
+    // 클릭 이벤트 발생시 수정 API 요청
+    commentModify.addEventListener('click', event => {
+    const isConfirmed = confirm('수정 하시겠습니까?');
+        if (isConfirmed) {
+            let params = new URLSearchParams(location.search);
+            let id = params.get('id');
+            let boardId = params.get('boardId');
+
+            // 요청을 보낼 때 headers의 요청 형식을 지정
+            fetch(`/api/comments/${boardId}/${id}`, {
+                method: 'PUT', // 수정 요청 메소드
+                headers: {
+                    "Content-Type": "application/json",
+                },
+
+                // body에 HTML에 입력한 데이터를 JSON 형식으로 바꿔 보낸다.
+                body: JSON.stringify({
+                    content: document.getElementById('commentModify-content').value
+                })
+            })
+            .then(response => {
+                if (response.ok) {
+                    alert('수정되었습니다.');
+                    location.replace(`/board/${boardId}`);
+                } else {
+                    // 403 Forbidden: 수정 권한이 없는 경우
+                    alert('수정 권한이 없습니다.');
+                }
+            })
+        }
+    });
+}
+
+
+
+
 // 쿠키를 가져오는 함수
 function getCookie(key) {
     var result = null;
