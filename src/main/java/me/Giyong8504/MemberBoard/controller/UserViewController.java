@@ -37,6 +37,12 @@ public class UserViewController {
         return "user/login";
     }
 
+    @GetMapping("/findId")
+    public String findId() {
+
+        return "user/findId";
+    }
+
     @GetMapping("/mypage")
     public String myPage() {
 
