@@ -143,6 +143,7 @@ if (commentModify) {
     commentModify.addEventListener('click', event => {
     const isConfirmed = confirm('수정 하시겠습니까?');
         if (isConfirmed) {
+            let params = new URLSearchParams(location.search);
             let id = params.get('id');
             let boardId = params.get('boardId');
 
