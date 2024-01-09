@@ -143,7 +143,6 @@ if (commentModify) {
     commentModify.addEventListener('click', event => {
     const isConfirmed = confirm('수정 하시겠습니까?');
         if (isConfirmed) {
-            let params = new URLSearchParams(location.search);
             let id = params.get('id');
             let boardId = params.get('boardId');
 
@@ -172,6 +171,38 @@ if (commentModify) {
     });
 }
 
+
+
+// 댓글 삭제 기능
+const deleteCommentButtons = document.querySelectorAll('.deleteComment-btn');
+
+if (deleteCommentButtons) {
+    deleteCommentButtons.forEach(button => {
+        button.addEventListener('click', event => {
+            // 사용자에게 확인을 받기 위한 경고창 표시
+            const isConfirmed = confirm('댓글을 삭제 하시겠습니까?');
+            if (isConfirmed) {
+                let params = new URLSearchParams(location.search);
+                let boardId = button.getAttribute('data-board-id');
+                let id = button.getAttribute('data-comment-id');
+
+                fetch(`/api/comments/${boardId}/${id}`, {
+                    method: 'DELETE'
+                })
+                .then(response => {
+                    if (response.ok) {
+                        // 서버에서 삭제가 성공적으로 이루어진 경우
+                        alert('댓글이 삭제 되었습니다.');
+                        location.replace(`/board/${boardId}`);
+                    } else {
+                        // 서버에서 삭제가 실패한 경우 또는 권한이 없는 경우
+                        alert('삭제 권한이 없습니다.');
+                    }
+                })
+            }
+        });
+    });
+}
 
 
 
