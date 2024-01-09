@@ -23,6 +23,7 @@ public class CommentApiController {
     @PostMapping("/api/comments")
     public ResponseEntity<Comment> addComment(@RequestBody AddCommentRequest request, Principal principal) {
         Comment addedComment = commentService.addComment(request.getBoardDataId(), request, principal.getName());
+
         return ResponseEntity.status(HttpStatus.CREATED).body(addedComment);
     }
 
@@ -30,12 +31,15 @@ public class CommentApiController {
     @PutMapping("/api/comments/{boardId}/{id}")
     public ResponseEntity<Comment> updateComment(@PathVariable Long id, @RequestBody UpdateCommentRequest request) {
         Comment updateComment = commentService.updateComment(id, request);
+
         return ResponseEntity.ok().body(updateComment);
     }
 
-    @DeleteMapping("/api/comments/{id}")
+    // 댓글 삭제
+    @DeleteMapping("/api/comments/{boardId}/{id}")
     public ResponseEntity<Void> deleteComment(@PathVariable Long id) {
         commentService.deleteComment(id);
+
         return ResponseEntity.ok().build();
     }
 
