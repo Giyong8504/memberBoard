@@ -14,6 +14,9 @@ public class EmailSendTest {
     @Autowired
     private EmailSendService emailSendService;
 
+    @Autowired
+    private EmailVerifyService emailVerifyService;
+
     @Test
     void sendTest() {
         EmailMessage message = new EmailMessage("kky5163@naver.com", "제목...", "내용...");
@@ -33,6 +36,12 @@ public class EmailSendTest {
         assertTrue(success);
     }
 
+    @Test
+    @DisplayName("이메일 인증 번호 전송 테스트")
+    void emailVerifyTest() {
+        boolean result = emailVerifyService.sendCode("kky5163@naver.com");
+        assertTrue(result);
+    }
     private void assertTrue(boolean success) {
     }
 }
