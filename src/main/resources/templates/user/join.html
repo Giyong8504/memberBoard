@@ -7,11 +7,23 @@
 <main layout:fragment="userContent">
     <div>
         <h1>회원가입</h1>
-        <form method="POST" th:action="@{/join}" th:object="${joinForm}">
+        <form name="frmJoin" method="POST" th:action="@{/join}" th:object="${joinForm}">
             <div th:each="err : ${#fields.globalErrors()}" th:text="${err}"></div>
             <div>
                 <div>
-                    <input type="text" name="email" th:field="*{email}" placeholder="이메일">
+                    <input type="text" name="email" th:field="*{email}" placeholder="이메일" th:readonly="${session.EmailAuthVerified != null && session.EmailAuthVerified}">
+                    <button type="button" id="email_verify" th:if="${session.EmailAuthVerified == null || !session.EmailAuthVerified}">인증코드전송</button>
+                    <div>
+                        <th:block th:if="${session.EmailAuthVerified == null || !session.EmailAuthVerified}">
+                            <input type="text" id="auth_num" placeholder="인증코드 입력">
+                            <span id="auth_count">03:00</span>
+                            <button type="button" id="email_confirm" disabled>확인</button>
+                            <button type="button" id="email_re_verify" disabled>재전송</button>
+                        </th:block>
+                        <th:block th:unless="${session.EmailAuthVerified == null || !session.EmailAuthVerified}">
+                            <span>확인된 이메일 입니다.</span>
+                        </th:block>
+                    </div>
                     <div th:each="err : ${#fields.errors('email')}" th:text="${err}"></div>
                 </div>
             </div>
@@ -49,5 +61,7 @@
             <button type="submit">가입하기</button>
         </form>
     </div>
+    <script src="/js/email/common.js"></script>
+    <script src="/js/email/join.js"></script>
 </main>
 </html>
