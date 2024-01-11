@@ -1,5 +1,8 @@
 package me.Giyong8504.MemberBoard.email;
 
+import me.Giyong8504.MemberBoard.email.service.EmailMessage;
+import me.Giyong8504.MemberBoard.email.service.EmailSendService;
+import me.Giyong8504.MemberBoard.email.service.EmailVerifyService;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
