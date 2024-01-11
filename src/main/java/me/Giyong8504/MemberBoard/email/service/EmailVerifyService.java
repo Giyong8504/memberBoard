@@ -1,4 +1,4 @@
-package me.Giyong8504.MemberBoard.email;
+package me.Giyong8504.MemberBoard.email.service;
 
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;

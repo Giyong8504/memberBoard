@@ -1,4 +1,4 @@
-package me.Giyong8504.MemberBoard.email;
+package me.Giyong8504.MemberBoard.email.service;
 
 /**
  * 이메일 메시지 데이터 클래스
