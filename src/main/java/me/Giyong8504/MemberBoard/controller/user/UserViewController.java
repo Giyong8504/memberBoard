@@ -1,9 +1,13 @@
 package me.Giyong8504.MemberBoard.controller.user;
 
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import me.Giyong8504.MemberBoard.controller.JoinForm;
 import me.Giyong8504.MemberBoard.models.user.UserJoinService;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
@@ -65,5 +69,13 @@ public class UserViewController {
     public String adIndex() {
 
         return "admin/index";
+    }
+
+    @GetMapping("/logout")
+    public String logout(HttpServletRequest request, HttpServletResponse response) {
+        new SecurityContextLogoutHandler().logout(request, response, SecurityContextHolder
+                .getContext().getAuthentication());
+
+        return "redirect:/login";
     }
 }
