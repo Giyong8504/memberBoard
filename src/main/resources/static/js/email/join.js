@@ -17,7 +17,7 @@ window.addEventListener("DOMContentLoaded", function() {
             /* 이메일 확인 전 이미 가입된 이메일인지 여부 체크 S */
             ajaxLoad("GET", `/api/user/email_dup_check?email=${email}`, null, "json")
                 .then(data => {
-                    if (data === "Duplicate email") { // 중복이메일인 경우
+                    if (data.success) { // 중복이메일인 경우
                         alert("이미 가입된 이메일입니다.");
                         frmJoin.email.focus();
                     } else { // 중복이메일이 아닌 경우
