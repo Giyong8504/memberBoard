@@ -35,9 +35,9 @@ public class WebSecurityConfig {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-//        http.csrf().disable() // 토큰 방식으로 csrf 보안 비활성화
-        http.httpBasic().disable() // 기본적인 http 비활성화
-                //.formLogin().disable() // formLogin 비활성화 (토큰만 사용할 경우)
+        http.csrf().disable() // 토큰 방식으로 csrf 보안 비활성화
+        .httpBasic().disable() // 기본적인 http 비활성화
+//        http.formLogin().disable() // formLogin 비활성화 (토큰만 사용할 경우)
                 .logout().disable();
 
         //회원 인증 설정 - 로그인
