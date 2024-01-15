@@ -11,6 +11,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import java.util.HashMap;
 import java.util.Map;
 
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 @SpringBootTest
 public class EmailSendTest {
 
@@ -44,7 +46,5 @@ public class EmailSendTest {
     void emailVerifyTest() {
         boolean result = emailVerifyService.sendCode("kky5163@naver.com");
         assertTrue(result);
-    }
-    private void assertTrue(boolean success) {
     }
 }
