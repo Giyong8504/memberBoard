@@ -4,8 +4,11 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import me.Giyong8504.MemberBoard.commons.Utils;
 import me.Giyong8504.MemberBoard.controller.JoinForm;
+import me.Giyong8504.MemberBoard.dto.FindPwRequest;
 import me.Giyong8504.MemberBoard.models.user.UserJoinService;
+import me.Giyong8504.MemberBoard.service.FindPwService;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
@@ -23,6 +26,8 @@ import org.springframework.web.bind.support.SessionStatus;
 public class UserViewController {
 
     private final UserJoinService userJoinService;
+    private final FindPwService findPwService;
+
 
     @GetMapping("/join") // 모델에서 사용할 속성 이름을 값으로 설정
     public String join(@ModelAttribute JoinForm joinForm, Model model) {
@@ -47,6 +52,7 @@ public class UserViewController {
         return "redirect:/login";
     }
 
+    // 로그인
     @GetMapping("/login")
     public String login() {
 
@@ -58,6 +64,34 @@ public class UserViewController {
 
         return "user/findId";
     }
+
+    // 비밀번호 찾기 양식
+    @GetMapping("/findPw")
+    public String findPw(@ModelAttribute FindPwRequest form) {
+
+        return "user/findPw";
+    }
+
+    // 비밀번호 찾기 처리
+    @PostMapping("/findPw")
+    public String findPwPs(@Valid FindPwRequest form, Errors errors) {
+        findPwService.process(form, errors); // 비밀번호 찾기 처리
+
+        if (errors.hasErrors()) {
+            return "user/findPw";
+        }
+
+        // 비밀번호 찾기에 이상이 없으면 완료 페이지로 이동
+        return "redirect:/findPwDone";
+    }
+
+    // 비밀번호 찾기 완료 페이지
+    @GetMapping("/findPwDone")
+    public String findPwDone() {
+
+        return "user/findPwDone";
+    }
+
 
     @GetMapping("/mypage")
     public String myPage() {
