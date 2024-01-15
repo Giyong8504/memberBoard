@@ -26,4 +26,13 @@ public interface UserRepository extends JpaRepository<User, Long>, QuerydslPredi
 
         return exists(builder);
     }
+
+    // 구글 로그인은 password null 값임을 활용하여 구글 회원인지 체크
+    default boolean isPasswordNull(String email) {
+        QUser user = QUser.user;
+        BooleanBuilder builder = new BooleanBuilder();
+        builder.and(user.email.eq(email))
+                .and(user.password.isNull());
+        return exists(builder);
+    }
 }

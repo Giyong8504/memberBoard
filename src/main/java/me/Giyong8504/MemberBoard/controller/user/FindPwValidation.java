@@ -31,5 +31,10 @@ public class FindPwValidation implements Validator {
                 && !userRepository.existsByEmailAndName(email, name)) {
             errors.reject("NotFound.user");
         }
+
+        // 이메일과 비밀번호가 null 값인 조합으로 조회되는지 체크
+        if (userRepository.isPasswordNull(email)) {
+            errors.reject("Google.user");
+        }
     }
 }
