@@ -4,7 +4,7 @@
       layout:decorate="~{layouts/userMain}">
 <main layout:fragment="userContent">
     <h1 th:text="#{비밀번호_찾기}"></h1>
-    <form name="frmFindPw" method="post" th:action="@{/findPw}" th:object="${findPwRequest}">
+    <form name="frmFindPw" method="POST" th:action="@{/findPw}" th:object="${findPwRequest}">
         <div>
             <div>
                 <input type="text" name="email" th:field="*{email}" th:placeholder="#{이메일}">

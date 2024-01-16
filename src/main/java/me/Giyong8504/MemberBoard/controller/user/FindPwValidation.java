@@ -27,6 +27,7 @@ public class FindPwValidation implements Validator {
         String email = form.email();
         String name = form.name();
 
+        // 문자열 유효성 검증
         if (StringUtils.hasText(email) && StringUtils.hasText(name)
                 && !userRepository.existsByEmailAndName(email, name)) {
             errors.reject("NotFound.user");
