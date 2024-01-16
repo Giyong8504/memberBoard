@@ -31,7 +31,7 @@ public class JoinValidator implements Validator {
         // 1 email 중복체크 - 중복 X
         String email = form.getEmail();
         if (email != null && !email.isBlank() && userRepository.exists(email)) {
-            errors.rejectValue("userId", "duplicate");
+            errors.rejectValue("email", "duplicate");
         }
 
         // 2. 비밀번호, 비밀번호 확인 일치 여부
