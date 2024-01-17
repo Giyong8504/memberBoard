@@ -37,4 +37,12 @@ public interface UserRepository extends JpaRepository<User, Long>, QuerydslPredi
                 .and(user.password.isNull());
         return exists(builder);
     }
+
+    // 기존 비밀번호와 입력한 비밀번호가 같은지 확인(원하는 방향으로 작동이 안됨. 수정할 예정)
+    default boolean existsByPassword(String oldPassword) {
+        QUser user = QUser.user;
+        BooleanBuilder builder = new BooleanBuilder();
+        builder.and(user.password.eq(oldPassword));
+        return exists(builder);
+    }
 }

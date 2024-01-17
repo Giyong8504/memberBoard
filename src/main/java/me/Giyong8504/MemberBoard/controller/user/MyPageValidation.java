@@ -21,13 +21,12 @@ public class MyPageValidation implements Validator {
     public void validate(Object target, Errors errors) {
         MyPageForm form = (MyPageForm) target;
 
-        String email = form.getEmail();
         String oldPassword = form.getOldPassword();
         String newPassword = form.getNewPassword();
         String passwordRe = form.getPasswordRe();
 
         // 기존비밀 번호와 일치하는지 확인
-        if (!userRepository.findPasswordByEmail(email).equals(oldPassword)
+        if (!userRepository.existsByPassword(oldPassword)
                 && oldPassword == null && oldPassword.isBlank()) {
             errors.rejectValue("oldPassword", "mismatch");
         }
