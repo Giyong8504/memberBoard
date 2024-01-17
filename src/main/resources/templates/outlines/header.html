@@ -21,17 +21,13 @@
         <div class="" sec:authorize="isAnonymous()">
             <button type="button" class="" onclick="location.href='/login'">로그인</button>
             <button type="button" class="" onclick="location.href='/join'">회원가입</button>
-<!--            <div>-->
-<!--                <a href="/oauth2/authorization/google">-->
-<!--                    <img src="/img/google.png">-->
-<!--                </a>-->
-<!--            </div>-->
         </div>
 
         <!-- 로그인 했을 경우 노출되는 버튼 / 로그아웃 후 사라짐 -->
         <div sec:authorize="isAuthenticated()">
             <!-- 로그인 중 로그인 아이디, 이름 표시 -->
 <!--            <th:block th:text="${#messages.msg('login.msg', board.userInfo.userNm, session.userInfo.email)}"></th:block>-->
+            <a th:href="@{/myPage}">마이페이지</a>
             <button type="button" id="logout-btn" class="" onclick="location.href='/logout'">로그아웃</button>
         </div>
     </div>
