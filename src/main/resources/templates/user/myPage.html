@@ -13,7 +13,7 @@
     </div>
 
     <!-- 비밀번호 변경 폼 -->
-    <form method="POST" action="@{/myPage}" th:object="${myPageForm}">
+    <form method="POST" th:action="@{/myPage}" th:object="${myPageForm}">
         <div th:each="err : ${#fields.globalErrors()}" th:text="${err}"></div>
         <div>
             <input type="password" id="oldPassword" name="oldPassword" th:field="*{oldPassword}" placeholder="기존 비밀번호">
