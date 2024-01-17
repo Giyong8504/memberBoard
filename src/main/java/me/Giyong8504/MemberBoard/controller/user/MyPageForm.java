@@ -17,6 +17,5 @@ public class MyPageForm {
     private String newPassword;
 
     @NotBlank
-    @Size(min=8)
     private String passwordRe;
 }
