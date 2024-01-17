@@ -4,20 +4,18 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import me.Giyong8504.MemberBoard.commons.Utils;
 import me.Giyong8504.MemberBoard.controller.JoinForm;
 import me.Giyong8504.MemberBoard.dto.FindPwRequest;
 import me.Giyong8504.MemberBoard.models.user.UserJoinService;
 import me.Giyong8504.MemberBoard.service.FindPwService;
+import me.Giyong8504.MemberBoard.service.MyPageService;
+import me.Giyong8504.MemberBoard.service.UserService;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.support.SessionStatus;
 
 @Controller
@@ -27,6 +25,8 @@ public class UserViewController {
 
     private final UserJoinService userJoinService;
     private final FindPwService findPwService;
+    private final MyPageService myPageService;
+    private final UserService userService;
 
 
     @GetMapping("/join") // 모델에서 사용할 속성 이름을 값으로 설정
@@ -93,10 +93,23 @@ public class UserViewController {
     }
 
 
-    @GetMapping("/mypage")
-    public String myPage() {
+    // 마이페이지 양식
+    @GetMapping("/myPage")
+    public String myPage(@ModelAttribute MyPageForm myPageForm, Model model) {
 
-        return "user/mypage";
+        return "user/myPage";
+    }
+
+    // 마이페이지 비밀번호 변경 처리
+    @PostMapping("/myPage")
+    public String myPagePs(@Valid MyPageForm myPageForm, Errors errors) {
+        myPageService.myPage(myPageForm, errors);
+
+        if (errors.hasErrors()) {
+            return "user/myPage";
+        }
+
+        return "redirect:/myPage";
     }
 
     @GetMapping("/admin/index")
