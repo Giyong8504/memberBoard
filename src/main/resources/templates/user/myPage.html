@@ -13,18 +13,18 @@
     </div>
 
     <!-- 비밀번호 변경 폼 -->
-    <form method="POST" action="@{/myPage/change-password}" th:object="${myPageForm}">
+    <form method="POST" action="@{/myPage}" th:object="${myPageForm}">
         <div th:each="err : ${#fields.globalErrors()}" th:text="${err}"></div>
         <div>
-            <input type="password" id="oldPassword" name="oldPassword" th:field="*{oldPassword}" placeholder="기존 비밀번호" required>
+            <input type="password" id="oldPassword" name="oldPassword" th:field="*{oldPassword}" placeholder="기존 비밀번호">
             <div th:each="err : ${#fields.errors('oldPassword')}" th:text="${err}"></div>
         </div>
         <div>
-            <input type="password" id="newPassword" name="newPassword" th:field="*{newPassword}" placeholder="새로운 비밀번호" required>
+            <input type="password" id="newPassword" name="newPassword" th:field="*{newPassword}" placeholder="새로운 비밀번호">
             <div th:each="err : ${#fields.errors('newPassword')}" th:text="${err}"></div>
         </div>
         <div>
-            <input type="password" id="passwordRe" name="passwordRe" th:field="*{passwordRe}" placeholder="비밀번호 확인" required>
+            <input type="password" id="passwordRe" name="passwordRe" th:field="*{passwordRe}" placeholder="비밀번호 확인">
             <div th:each="err : ${#fields.errors('passwordRe')}" th:text="${err}"></div>
         </div>
         <button type="submit">비밀번호 변경</button>
