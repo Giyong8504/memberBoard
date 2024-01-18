@@ -59,7 +59,7 @@ public class WebSecurityConfig {
         // 토큰 재발급 URL은 인증없이 접근 가능하도록 설정. 나머지 API URL은 인증 필요
         http.authorizeHttpRequests(c -> {
             c.requestMatchers("/admin/**").hasAuthority("ADMIN") // "/admin/" 경로 요청은 'ADMIN' 권한을 가진 사용자만 접근 가능
-                    .requestMatchers("/mypage/**", "/new-board").authenticated() // "/mypage/**","/new-board" 경로 요청은 인증된 사용자만 접근 가능
+                    .requestMatchers("/myPage/**", "/new-board").authenticated() // "/myPage/**","/new-board" 경로 요청은 인증된 사용자만 접근 가능
                     .requestMatchers("/api/token", "/api/email/**").permitAll()
                     .anyRequest().permitAll(); // 그 외 모든 요청은 누구나 접근 가능
         });
