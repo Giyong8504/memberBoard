@@ -99,12 +99,10 @@ public class UserViewController {
 
     // 마이페이지 양식
     @GetMapping("/myPage")
-    public String myPage(@ModelAttribute MyPageForm myPageForm, Model model) {
+    public String myPage(@ModelAttribute MyPageForm myPageForm, Model model, Principal principal) {
 
-        // SecurityContextHolder로 조회 시
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        String userEmail = authentication.getName();
-        User currentUser = userService.findByEmail(userEmail);
+        String userEmail = principal.getName(); // 현재 로그인한 사용자의 이메일을 구한다.
+        User currentUser = userService.findByEmail(userEmail); // 가져온 이메일을 사용해 정보를 구한다.
 
         model.addAttribute("currentUser", currentUser);
 
