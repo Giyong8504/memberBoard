@@ -101,7 +101,7 @@ public class UserViewController {
     @GetMapping("/myPage")
     public String myPage(@ModelAttribute MyPageForm myPageForm, Model model) {
 
-        //
+        // SecurityContextHolder로 조회 시
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String userEmail = authentication.getName();
         User currentUser = userService.findByEmail(userEmail);
