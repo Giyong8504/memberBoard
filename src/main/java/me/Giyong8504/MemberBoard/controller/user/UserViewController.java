@@ -6,10 +6,12 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import me.Giyong8504.MemberBoard.controller.JoinForm;
 import me.Giyong8504.MemberBoard.dto.FindPwRequest;
+import me.Giyong8504.MemberBoard.entities.User;
 import me.Giyong8504.MemberBoard.models.user.UserJoinService;
 import me.Giyong8504.MemberBoard.service.FindPwService;
 import me.Giyong8504.MemberBoard.service.MyPageService;
 import me.Giyong8504.MemberBoard.service.UserService;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
@@ -17,6 +19,8 @@ import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.support.SessionStatus;
+
+import java.security.Principal;
 
 @Controller
 @RequiredArgsConstructor
@@ -96,6 +100,13 @@ public class UserViewController {
     // 마이페이지 양식
     @GetMapping("/myPage")
     public String myPage(@ModelAttribute MyPageForm myPageForm, Model model) {
+
+        //
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String userEmail = authentication.getName();
+        User currentUser = userService.findByEmail(userEmail);
+
+        model.addAttribute("currentUser", currentUser);
 
         return "user/myPage";
     }
