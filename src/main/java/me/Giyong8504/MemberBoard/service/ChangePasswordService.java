@@ -14,11 +14,11 @@ import org.springframework.validation.Errors;
 public class ChangePasswordService {
 
     private final UserRepository userRepository;
-    private final ChangePasswordValidation myPageValidation;
+    private final ChangePasswordValidation changePasswordValidation;
     private final PasswordEncoder passwordEncoder;
 
     public void changePassword(ChangePasswordForm form, Errors errors) {
-        myPageValidation.validate(form, errors);
+        changePasswordValidation.validate(form, errors);
 
         if (errors.hasErrors()) {
             return;
