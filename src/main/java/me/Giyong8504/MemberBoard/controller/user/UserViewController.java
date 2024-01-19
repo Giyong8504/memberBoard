@@ -9,9 +9,8 @@ import me.Giyong8504.MemberBoard.dto.FindPwRequest;
 import me.Giyong8504.MemberBoard.entities.User;
 import me.Giyong8504.MemberBoard.models.user.UserJoinService;
 import me.Giyong8504.MemberBoard.service.FindPwService;
-import me.Giyong8504.MemberBoard.service.MyPageService;
+import me.Giyong8504.MemberBoard.service.ChangePasswordService;
 import me.Giyong8504.MemberBoard.service.UserService;
-import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
@@ -29,7 +28,7 @@ public class UserViewController {
 
     private final UserJoinService userJoinService;
     private final FindPwService findPwService;
-    private final MyPageService myPageService;
+    private final ChangePasswordService changePasswordService;
     private final UserService userService;
 
 
@@ -97,9 +96,9 @@ public class UserViewController {
     }
 
 
-    // 마이페이지 양식
+    // 마이페이지
     @GetMapping("/myPage")
-    public String myPage(@ModelAttribute MyPageForm myPageForm, Model model, Principal principal) {
+    public String myPage(Model model, Principal principal) {
 
         String userEmail = principal.getName(); // 현재 로그인한 사용자의 이메일을 구한다.
         User currentUser = userService.findByEmail(userEmail); // 가져온 이메일을 사용해 정보를 구한다.
@@ -109,16 +108,26 @@ public class UserViewController {
         return "user/myPage";
     }
 
-    // 마이페이지 비밀번호 변경 처리
-    @PostMapping("/myPage")
-    public String myPagePs(@Valid MyPageForm myPageForm, Errors errors) {
-        myPageService.myPage(myPageForm, errors);
+    // 비밀번호 변경 페이지
+    @GetMapping("/changePassword")
+    public String changePassword(@ModelAttribute ChangePasswordForm form, @RequestParam(required = false) Long userNo, Model model) {
+
+        User user = userService.findByUserNo(userNo);
+        model.addAttribute("userNo", user);
+
+        return "user/changePassword";
+    }
+
+    // 비밀번호 유효성 검사
+    @PostMapping("/changePassword")
+    public String changePasswordPs(@Valid ChangePasswordForm form, Errors errors) {
+        changePasswordService.changePassword(form, errors);
 
         if (errors.hasErrors()) {
-            return "user/myPage";
+            return "user/changePassword";
         }
 
-        return "redirect:/myPage";
+        return "redirect:/changePassword";
     }
 
     @GetMapping("/admin/index")
