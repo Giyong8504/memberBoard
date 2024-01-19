@@ -13,7 +13,7 @@ public interface UserRepository extends JpaRepository<User, Long>, QuerydslPredi
 
     Optional<User> findByEmail(String email); // 소셜 로그인 후 반환되는 값중 email을 확인.
 
-    Optional<User> findPasswordByEmail(String email);
+    Optional<User> findByUserNo(Long userNo);
 
     default boolean exists(String email) { // 이메일이 존재하는지 확인.
         return exists(QUser.user.email.eq(email));

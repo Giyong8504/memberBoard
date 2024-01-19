@@ -20,4 +20,9 @@ public class UserService {
         return userRepository.findByEmail(email)
                 .orElseThrow(()  -> new IllegalArgumentException("Unexpected user"));
     }
+
+    public User findByUserNo(Long userNo) {
+        return userRepository.findByUserNo(userNo)
+                .orElseThrow(() -> new IllegalArgumentException("not found"));
+    }
 }
