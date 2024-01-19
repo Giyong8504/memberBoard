@@ -5,9 +5,7 @@ import jakarta.validation.constraints.Size;
 import lombok.Data;
 
 @Data
-public class MyPageForm {
-
-    private String email;
+public class ChangePasswordForm {
 
     @NotBlank
     private String oldPassword;

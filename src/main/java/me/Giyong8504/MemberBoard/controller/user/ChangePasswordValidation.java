@@ -8,18 +8,18 @@ import org.springframework.validation.Validator;
 
 @Component
 @RequiredArgsConstructor
-public class MyPageValidation implements Validator {
+public class ChangePasswordValidation implements Validator {
 
     private final UserRepository userRepository;
 
     @Override
     public boolean supports(Class<?> clazz) {
-        return clazz.isAssignableFrom(MyPageForm.class);
+        return clazz.isAssignableFrom(ChangePasswordForm.class);
     }
 
     @Override
     public void validate(Object target, Errors errors) {
-        MyPageForm form = (MyPageForm) target;
+        ChangePasswordForm form = (ChangePasswordForm) target;
 
         String oldPassword = form.getOldPassword();
         String newPassword = form.getNewPassword();
