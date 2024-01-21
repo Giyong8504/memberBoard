@@ -39,6 +39,7 @@ public class UserInfoService implements UserDetailsService { // 정보를 조회
                 .email(user.getEmail())
                 .mobile(user.getMobile())
                 .authorities(authorities)
+                .user(user)
                 .build();
     }
 }

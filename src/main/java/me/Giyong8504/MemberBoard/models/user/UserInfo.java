@@ -1,11 +1,8 @@
 package me.Giyong8504.MemberBoard.models.user;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
 import lombok.*;
 import me.Giyong8504.MemberBoard.commons.Role;
+import me.Giyong8504.MemberBoard.entities.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -21,6 +18,7 @@ public class UserInfo implements UserDetails {
     private String password;
     private String mobile;
     private Role role;
+    private User user;
 
     private Collection<? extends GrantedAuthority> authorities;// 권한에 대한 내용
 
