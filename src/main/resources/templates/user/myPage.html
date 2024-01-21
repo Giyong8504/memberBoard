@@ -14,7 +14,7 @@
     </div>
 
     <button type="button"
-        th:onclick="|location.href='@{/changePassword?userNo={userNo}(userNo=${currentUser.userNo})}'|" >비밀번호 변경</button>
+        th:onclick="|location.href='@{/changePassword}'|" >비밀번호 변경</button>
 
     <!-- 회원 탈퇴 폼 -->
     <form method="POST" action="/myPage/cancel-user">
