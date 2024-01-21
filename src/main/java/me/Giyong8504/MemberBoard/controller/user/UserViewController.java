@@ -4,6 +4,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import me.Giyong8504.MemberBoard.commons.UserUtil;
 import me.Giyong8504.MemberBoard.controller.JoinForm;
 import me.Giyong8504.MemberBoard.dto.FindPwRequest;
 import me.Giyong8504.MemberBoard.entities.User;
@@ -11,6 +12,7 @@ import me.Giyong8504.MemberBoard.models.user.UserJoinService;
 import me.Giyong8504.MemberBoard.service.FindPwService;
 import me.Giyong8504.MemberBoard.service.ChangePasswordService;
 import me.Giyong8504.MemberBoard.service.UserService;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
@@ -98,10 +100,17 @@ public class UserViewController {
 
     // 마이페이지
     @GetMapping("/myPage")
-    public String myPage(Model model, Principal principal) {
+    public String myPage(Model model /*, Principal principal */) {
 
-        String userEmail = principal.getName(); // 현재 로그인한 사용자의 이메일을 구한다.
-        User currentUser = userService.findByEmail(userEmail); // 가져온 이메일을 사용해 정보를 구한다.
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String userEmail = authentication.getName();
+        User currentUser = userService.findByEmail(userEmail);
+
+        // Principal을 사용할 때 - 매개변수로 Principal을 가져온 상태여야 함.
+        //String userEmail = principal.getName(); // 현재 로그인한 사용자의 이메일을 구한다.
+        //User currentUser = userService.findByEmail(userEmail); // 가져온 이메일을 사용해 정보를 구한다.
+
+        // Session을 사용할 때는 userUtil.getUser() 로 가져온다.
 
         model.addAttribute("currentUser", currentUser);
 
@@ -110,10 +119,7 @@ public class UserViewController {
 
     // 비밀번호 변경 페이지
     @GetMapping("/changePassword")
-    public String changePassword(@ModelAttribute ChangePasswordForm form, @RequestParam(required = false) Long userNo, Model model) {
-
-        User user = userService.findByUserNo(userNo);
-        model.addAttribute("userNo", user);
+    public String changePassword(@ModelAttribute ChangePasswordForm form) {
 
         return "user/changePassword";
     }
