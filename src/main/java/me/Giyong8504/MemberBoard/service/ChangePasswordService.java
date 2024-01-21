@@ -1,6 +1,7 @@
 package me.Giyong8504.MemberBoard.service;
 
 import lombok.RequiredArgsConstructor;
+import me.Giyong8504.MemberBoard.commons.UserUtil;
 import me.Giyong8504.MemberBoard.controller.user.ChangePasswordForm;
 import me.Giyong8504.MemberBoard.controller.user.ChangePasswordValidation;
 import me.Giyong8504.MemberBoard.entities.User;
@@ -16,6 +17,7 @@ public class ChangePasswordService {
     private final UserRepository userRepository;
     private final ChangePasswordValidation changePasswordValidation;
     private final PasswordEncoder passwordEncoder;
+    private final UserUtil userUtil;
 
     public void changePassword(ChangePasswordForm form, Errors errors) {
         changePasswordValidation.validate(form, errors);
@@ -23,9 +25,10 @@ public class ChangePasswordService {
         if (errors.hasErrors()) {
             return;
         }
-        User user = User.builder()
-                .password(passwordEncoder.encode(form.getNewPassword()))
-                .build();
+
+        // password 변경 시 암호화 후 저장
+        User user = userUtil.getUser();
+        user.setPassword(passwordEncoder.encode(form.getNewPassword()));
 
         userRepository.saveAndFlush(user);
     }
