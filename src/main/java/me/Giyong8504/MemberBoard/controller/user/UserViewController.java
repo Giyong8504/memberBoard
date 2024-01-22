@@ -14,13 +14,16 @@ import me.Giyong8504.MemberBoard.service.ChangePasswordService;
 import me.Giyong8504.MemberBoard.service.UserService;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.support.SessionStatus;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.swing.*;
 import java.security.Principal;
 
 @Controller
@@ -102,24 +105,51 @@ public class UserViewController {
     @GetMapping("/myPage")
     public String myPage(Model model /*, Principal principal */) {
 
+        // Spring Security의 Authentication을 얻는다.
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        String userEmail = authentication.getName();
-        User currentUser = userService.findByEmail(userEmail);
 
-        // Principal을 사용할 때 - 매개변수로 Principal을 가져온 상태여야 함.
-        //String userEmail = principal.getName(); // 현재 로그인한 사용자의 이메일을 구한다.
-        //User currentUser = userService.findByEmail(userEmail); // 가져온 이메일을 사용해 정보를 구한다.
+        // Spring Security의 방식으로 일반 회원가입 사용자 정보를 가져온다.
+        if (authentication != null && authentication.isAuthenticated() && !(authentication.getPrincipal() instanceof String)) {
+            String userEmail = authentication.getName();
+            User currentUser = userService.findByEmail(userEmail);
 
-        // Session을 사용할 때는 userUtil.getUser() 로 가져온다.
+            model.addAttribute("currentUser", currentUser);
+        }
 
-        model.addAttribute("currentUser", currentUser);
+        // OAuth2로 로그인한 경우, OAuth2User 정보 얻는다.
+        if (authentication != null && authentication.getPrincipal() instanceof OAuth2User) {
+            OAuth2User oauthUser = (OAuth2User) authentication.getPrincipal();
+
+            // 필요한 사용자 정보를 추출
+            String userEmail = oauthUser.getAttribute("email");
+
+            // email을 사용하여 사용자 정보를 가져오는 메서드
+            User currentUser = userService.findByEmail(userEmail);
+
+            /**
+             // Principal을 사용할 때 - 매개변수로 Principal을 가져온 상태여야 함.
+            String userEmail = principal.getName(); // 현재 로그인한 사용자의 이메일을 구한다.
+            User currentUser = userService.findByEmail(userEmail); // 가져온 이메일을 사용해 정보를 구한다.
+
+            // Session을 사용할 때는 userUtil.getUser() 로 가져온다.
+
+             */
+
+            model.addAttribute("currentUser", currentUser);
+        }
 
         return "user/myPage";
     }
 
     // 비밀번호 변경 페이지
     @GetMapping("/changePassword")
-    public String changePassword(@ModelAttribute ChangePasswordForm form) {
+    public String changePassword(@ModelAttribute ChangePasswordForm form, Authentication authentication) {
+
+        // OAuth2 사용자인 경우 myPage로 리다이렉트
+        if (authentication != null && authentication.getPrincipal() instanceof OAuth2User) {
+
+            return "redirect:/myPage";
+        }
 
         return "user/changePassword";
     }
@@ -142,6 +172,7 @@ public class UserViewController {
         return "admin/index";
     }
 
+    // 로그아웃
     @GetMapping("/logout")
     public String logout(HttpServletRequest request, HttpServletResponse response) {
         new SecurityContextLogoutHandler().logout(request, response, SecurityContextHolder
