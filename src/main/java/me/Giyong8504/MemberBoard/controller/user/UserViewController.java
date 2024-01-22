@@ -133,7 +133,7 @@ public class UserViewController {
             return "user/changePassword";
         }
 
-        return "redirect:/changePassword";
+        return "redirect:/myPage";
     }
 
     @GetMapping("/admin/index")
