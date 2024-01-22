@@ -7,14 +7,14 @@
 <main layout:fragment="content">
     <div>
         <h1>내 정보</h1>
-        <input type="hidden" id="user-userNo" th:value="${currentUser.userNo}">
         <p>이메일: <span th:text="${currentUser.email}"></span></p>
         <p>이름: <span th:text="${currentUser.userNm}"></span></p>
         <p>전화번호: <span th:text="${currentUser.mobile}"></span></p>
     </div>
 
+    <!-- OAuth2 사용자는 password 값이 null, 비밀번호 변경 표시 숨김 -->
     <button type="button"
-        th:onclick="|location.href='@{/changePassword}'|" >비밀번호 변경</button>
+        th:if="${currentUser.password} != null" th:onclick="|location.href='@{/changePassword}'|" >비밀번호 변경</button>
 
     <!-- 회원 탈퇴 폼 -->
     <form method="POST" action="/myPage/cancel-user">
