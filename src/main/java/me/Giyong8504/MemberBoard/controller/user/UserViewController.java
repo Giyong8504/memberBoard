@@ -12,6 +12,7 @@ import me.Giyong8504.MemberBoard.models.user.UserJoinService;
 import me.Giyong8504.MemberBoard.service.FindPwService;
 import me.Giyong8504.MemberBoard.service.ChangePasswordService;
 import me.Giyong8504.MemberBoard.service.UserService;
+import me.Giyong8504.MemberBoard.service.DeleteIdPasswordService;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.oauth2.core.user.OAuth2User;
@@ -35,6 +36,7 @@ public class UserViewController {
     private final FindPwService findPwService;
     private final ChangePasswordService changePasswordService;
     private final UserService userService;
+    private final DeleteIdPasswordService deleteIdPasswordService;
 
 
     @GetMapping("/join") // 모델에서 사용할 속성 이름을 값으로 설정
@@ -177,6 +179,25 @@ public class UserViewController {
     public String logout(HttpServletRequest request, HttpServletResponse response) {
         new SecurityContextLogoutHandler().logout(request, response, SecurityContextHolder
                 .getContext().getAuthentication());
+
+        return "redirect:/login";
+    }
+
+    // 회원탈퇴
+    @GetMapping("/deleteId")
+    public String deleteId(@ModelAttribute DeleteIdPasswordForm form) {
+
+        return "user/deleteId";
+    }
+
+    // 회원 탈퇴 유효성 검증 후 실행
+    @PostMapping("/deleteId")
+    public String deleteIdPs(@Valid DeleteIdPasswordForm form, Errors errors) {
+        deleteIdPasswordService.deleteIdPassword(form, errors);
+
+        if (errors.hasErrors()) {
+            return "user/deleteId";
+        }
 
         return "redirect:/login";
     }
