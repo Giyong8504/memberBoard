@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns="http://www.w3.org/1999/html"
+      layout:decorate="~{layouts/boardMain}">
+
+<!-- layout:fragment로 content를 지정하여 내용만 작성 -->
+<main layout:fragment="content">
+  <h1>회원탈퇴</h1>
+
+  <!-- 회원탈퇴 비밀번호 폼 -->
+  <form method="POST" th:action="@{/deleteId}" th:object="${deleteIdPasswordForm}">
+    <div th:each="err : ${#fields.globalErrors()}" th:text="${err}"></div>
+    <div>
+      <input type="password" id="oldPassword" name="oldPassword" th:field="*{oldPassword}" placeholder="기존 비밀번호">
+      <div th:each="err : ${#fields.errors('oldPassword')}" th:text="${err}"></div>
+    </div>
+    <button type="submit">회원탈퇴</button>
+  </form>
+</main>
+</html>

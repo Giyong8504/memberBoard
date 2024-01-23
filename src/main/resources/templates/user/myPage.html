@@ -16,9 +16,6 @@
     <button type="button"
         th:if="${currentUser.password} != null" th:onclick="|location.href='@{/changePassword}'|" >비밀번호 변경</button>
 
-    <!-- 회원 탈퇴 폼 -->
-    <form method="POST" action="/myPage/cancel-user">
-        <button type="submit">회원 탈퇴</button>
-    </form>
+    <button type="submit" th:onclick="|location.href='@{/deleteId}'|">회원탈퇴</button>
 </main>
 </html>
