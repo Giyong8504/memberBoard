@@ -21,6 +21,10 @@ public class QUser extends EntityPathBase<User> {
 
     public final QBaseEntity _super = new QBaseEntity(this);
 
+    public final StringPath deleteEmail = createString("deleteEmail");
+
+    public final StringPath deleteId = createString("deleteId");
+
     public final StringPath email = createString("email");
 
     public final StringPath mobile = createString("mobile");
