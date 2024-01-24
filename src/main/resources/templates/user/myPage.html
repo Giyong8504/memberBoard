@@ -12,10 +12,10 @@
         <p>전화번호: <span th:text="${currentUser.mobile}"></span></p>
     </div>
 
-    <!-- OAuth2 사용자는 password 값이 null, 비밀번호 변경 표시 숨김 -->
+    <!-- OAuth2 사용자는 role 값으로 GOOGLE, 비밀번호 변경 표시 숨김 -->
     <button type="button"
-        th:if="${currentUser.password} != null" th:onclick="|location.href='@{/changePassword}'|" >비밀번호 변경</button>
+        th:if="${currentUser.role} == GOOGLE" th:onclick="|location.href='@{/changePassword}'|" >비밀번호 변경</button>
 
-    <button type="submit" th:onclick="|location.href='@{/deleteId}'|">회원탈퇴</button>
+    <button type="submit" th:if="${currentUser.role} == GOOGLE" th:onclick="|location.href='@{/deleteId}'|">회원탈퇴</button>
 </main>
 </html>
