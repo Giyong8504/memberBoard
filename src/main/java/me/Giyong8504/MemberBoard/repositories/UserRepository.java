@@ -1,6 +1,7 @@
 package me.Giyong8504.MemberBoard.repositories;
 
 import com.querydsl.core.BooleanBuilder;
+import me.Giyong8504.MemberBoard.commons.Role;
 import me.Giyong8504.MemberBoard.entities.QUser;
 import me.Giyong8504.MemberBoard.entities.User;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -29,12 +30,12 @@ public interface UserRepository extends JpaRepository<User, Long>, QuerydslPredi
         return exists(builder);
     }
 
-    // 구글 로그인은 password null 값임을 활용하여 구글 회원인지 체크
-    default boolean isPasswordNull(String email) {
+    // 구글 로그인은 Role 권한이 GOOGLE 이므로 이 값을 활용하여 구글 회원인지 체크
+    default boolean oauthUser(String email) {
         QUser user = QUser.user;
         BooleanBuilder builder = new BooleanBuilder();
         builder.and(user.email.eq(email))
-                .and(user.password.isNull());
+                .and(user.role.eq(Role.GOOGLE));
         return exists(builder);
     }
 }

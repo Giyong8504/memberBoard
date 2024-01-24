@@ -34,7 +34,7 @@ public class FindPwValidation implements Validator {
         }
 
         // 이메일과 비밀번호가 null 값인 조합으로 조회되는지 체크
-        if (userRepository.isPasswordNull(email)) {
+        if (userRepository.oauthUser(email)) {
             errors.reject("Google.user");
         }
     }
