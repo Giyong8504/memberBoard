@@ -8,7 +8,7 @@
   <h1>회원탈퇴</h1>
 
   <!-- 회원탈퇴 비밀번호 폼 -->
-  <form method="POST" th:action="@{/deleteId}" th:object="${deleteIdPasswordForm}">
+  <form method="POST" th:action="@{/deleteId}" th:object="${deleteIdPasswordForm}" onsubmit="return showConfirmation()">
     <div th:each="err : ${#fields.globalErrors()}" th:text="${err}"></div>
     <div>
       <input type="password" id="oldPassword" name="oldPassword" th:field="*{oldPassword}" placeholder="기존 비밀번호">
@@ -16,5 +16,6 @@
     </div>
     <button type="submit">회원탈퇴</button>
   </form>
+  <script src="/js/changePw.js"></script>
 </main>
 </html>
