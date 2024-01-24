@@ -37,7 +37,7 @@ public class OAuth2UserCustomService extends DefaultOAuth2UserService {
                 .orElse(User.builder()
                         .email(email)
                         .userNm(name)
-                        .role(Role.USER)
+                        .role(Role.GOOGLE)
                         .build());
         return userRepository.save(user);
     }

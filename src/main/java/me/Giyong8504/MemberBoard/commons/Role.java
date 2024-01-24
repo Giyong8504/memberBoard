@@ -3,5 +3,5 @@ package me.Giyong8504.MemberBoard.commons;
 public enum Role {
     USER,  // 일반회원
     ADMIN,  // 관리자
-    DISABLE // 비활성화 회원
+    GOOGLE // 구글 회원
 }
