@@ -32,12 +32,6 @@ public class User extends BaseEntity {
     @Enumerated(EnumType.STRING) // 이름 그대로로 저장하기 위해 STRING 사용
     private Role role = Role.USER;
 
-    @Column
-    private String deleteId;
-
-    @Column
-    private String deleteEmail;
-
     @Builder
     public User(Long userNo, String email, String password, String userNm, String mobile, Role role) {
         this.userNo = userNo;
