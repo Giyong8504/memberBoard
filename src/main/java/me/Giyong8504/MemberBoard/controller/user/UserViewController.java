@@ -185,7 +185,13 @@ public class UserViewController {
 
     // 회원탈퇴
     @GetMapping("/deleteId")
-    public String deleteId(@ModelAttribute DeleteIdPasswordForm form) {
+    public String deleteId(@ModelAttribute DeleteIdPasswordForm form, Authentication authentication) {
+
+        // OAuth2 사용자인 경우 myPage로 리다이렉트
+        if (authentication != null && authentication.getPrincipal() instanceof OAuth2User) {
+
+            return "redirect:/myPage";
+        }
 
         return "user/deleteId";
     }
