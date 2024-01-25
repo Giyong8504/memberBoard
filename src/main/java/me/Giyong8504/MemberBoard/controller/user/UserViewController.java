@@ -168,12 +168,6 @@ public class UserViewController {
         return "redirect:/myPage";
     }
 
-    @GetMapping("/admin/index")
-    public String adIndex() {
-
-        return "admin/index";
-    }
-
     // 로그아웃
     @GetMapping("/logout")
     public String logout(HttpServletRequest request, HttpServletResponse response) {
