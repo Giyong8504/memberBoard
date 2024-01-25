@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<header th:fragment="header">
+    <div class="">
+        <a href="/admin/index" class="btn btn-primary">관리자메인</a>
+        <div sec:authorize="isAuthenticated()">
+            <!-- 로그인 중인 관리자 이름 표시 -->
+            <th:block th:text="${#messages.msg('admin.msg', session.userInfo.userNm, session.userInfo.email)}"></th:block>
+            <button type="button" id="logout-btn" class="" onclick="location.href='/logout'">로그아웃</button>
+        </div>
+    </div>
+    <hr/>
+</header>
+</html>
