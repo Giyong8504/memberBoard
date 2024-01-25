@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns="http://www.w3.org/1999/html"
+      layout:decorate="~{admin/layouts/adminMain}">
+
+<!-- layout:fragment로 content를 지정하여 내용만 작성 -->
+<section layout:fragment="adminContent">
+    <h1>회원게시글 목록</h1>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>NO</th>
+            <th>TITLE</th>
+            <th>NAME</th>
+            <th>DATE</th>
+        </tr>
+        </thead>
+        <tbody> <!-- th:each 를 사용하여 model 객체의 정보를 하나씩 item에 담아 내용 출력. -->
+        <tr th:each="item : ${adminBoard}">
+            <td th:text="${item.id}"></td>
+            <td>
+                <a th:href="@{/board/{id}(id=${item.id})}" th:text="${item.title}" target="_blank"></a>
+            </td>
+            <td th:text="${item.author}"></td>
+            <td th:text="${#temporals.format(item.reg_dt, 'yyyy-MM-dd HH:mm')}"></td>
+        </tr>
+        </tbody>
+    </table>
+</section>
+</html>
