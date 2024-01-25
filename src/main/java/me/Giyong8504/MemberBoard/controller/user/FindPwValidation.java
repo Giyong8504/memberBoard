@@ -33,7 +33,7 @@ public class FindPwValidation implements Validator {
             errors.reject("NotFound.user");
         }
 
-        // 이메일과 비밀번호가 null 값인 조합으로 조회되는지 체크
+        // 해당 사용자 이메일 권한이 GOOGLE 값인 조합으로 조회되는지 체크
         if (userRepository.oauthUser(email)) {
             errors.reject("Google.user");
         }
