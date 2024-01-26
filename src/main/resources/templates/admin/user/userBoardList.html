@@ -13,6 +13,7 @@
             <th>TITLE</th>
             <th>NAME</th>
             <th>DATE</th>
+            <th>Delete</th>
         </tr>
         </thead>
         <tbody> <!-- th:each 를 사용하여 model 객체의 정보를 하나씩 item에 담아 내용 출력. -->
@@ -23,8 +24,14 @@
             </td>
             <td th:text="${item.author}"></td>
             <td th:text="${#temporals.format(item.reg_dt, 'yyyy-MM-dd HH:mm')}"></td>
+            <td>
+                <button type="button" class="adminDelete-btn"
+                        th:attr="data-board-id=${item.id}">삭제</button>
+            </td>
         </tr>
         </tbody>
     </table>
+    <script src="/js/token.js"></script>
+    <script src="/js/admin/board.js"></script>
 </section>
 </html>
