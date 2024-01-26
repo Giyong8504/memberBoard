@@ -25,8 +25,19 @@
 
         <!-- 로그인 했을 경우 노출되는 버튼 / 로그아웃 후 사라짐 -->
         <div sec:authorize="isAuthenticated()">
-            <!-- 로그인 중 로그인 아이디, 이름 표시 -->
-<!--            <th:block th:text="${#messages.msg('login.msg', session.userInfo.userNm, session.userInfo.email)}"></th:block>-->
+
+            <div>
+                <!-- OAuth2로 인증되어 있을 때만 아래 내용이 노출됨 -->
+                <span th:if="${#authentication instanceof T(org.springframework.security.oauth2.client.authentication.OAuth2AuthenticationToken)}"
+                      th:text="|${#authentication.principal.attributes.email}님 환영합니다.|"></span>
+
+                <!-- 일반 회원가입 사용자일 때 -->
+                <span th:unless="${#authentication instanceof T(org.springframework.security.oauth2.client.authentication.OAuth2AuthenticationToken)}"
+                      th:text="|${#authentication.principal.username}님 환영합니다.|"></span>
+            </div>
+
+            <!-- 로그인 중 로그인 아이디, 이름 표시(session만 사용시. OAuth 사용자는 오류 발생) -->
+            <!-- <th:block th:text="${#messages.msg('login.msg', session.userInfo.userNm, session.userInfo.email)}"></th:block> -->
 
             <a th:href="@{/myPage}">마이페이지</a>
             <button type="button" id="logout-btn" class="" onclick="location.href='/logout'">로그아웃</button>
