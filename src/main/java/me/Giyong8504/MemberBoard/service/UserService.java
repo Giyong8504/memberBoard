@@ -5,6 +5,8 @@ import me.Giyong8504.MemberBoard.entities.User;
 import me.Giyong8504.MemberBoard.repositories.UserRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class UserService {
@@ -18,5 +20,9 @@ public class UserService {
 
     public User findByEmail(String email) {
         return userRepository.findByEmail(email).orElse(null);
+    }
+
+    public List<User> findAll() {
+        return userRepository.findAllByOrderByRegDtDesc();
     }
 }
