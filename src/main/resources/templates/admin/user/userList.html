@@ -14,7 +14,9 @@
             <th>이름</th>
             <th>전화번호</th>
             <th>가입일</th>
-            <th>정보 수정일</th>
+            <th>정보수정일</th>
+            <th>현재권한</th>
+            <th>회원권한 변경</th>
             <th>강제탈퇴</th>
         </tr>
         </thead>
@@ -26,6 +28,17 @@
             <td th:text="${item.mobile}"></td>
             <td th:text="${#temporals.format(item.reg_dt, 'yyyy-MM-dd HH:mm')}"></td>
             <td th:text="${#temporals.format(item.mod_dt, 'yyyy-MM-dd HH:mm')}"></td>
+            <td th:text="${item.role}"></td>
+            <td>
+                <form method="POST" th:action="@{/admin/changeUserRole}">
+                    <input type="hidden" th:name="userId" th:value="${item.id}" />
+                    <select th:name="newRole">
+                        <option value="USER">USER</option>
+                        <option value="DISABLE">DISABLE</option>
+                    </select>
+                    <button type="submit">변경</button>
+                </form>
+            </td>
             <td>
                 <button type="button" class="adminDeleteUser-btn"
                         th:attr="data-board-id=${item.id}">탈퇴</button>
