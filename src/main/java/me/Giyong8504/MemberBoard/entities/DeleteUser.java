@@ -14,7 +14,7 @@ public class DeleteUser extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column
-    private String id;
+    private Long id;
 
     @Column
     private String Email;
