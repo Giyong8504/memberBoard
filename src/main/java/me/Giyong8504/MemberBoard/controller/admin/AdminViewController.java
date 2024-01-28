@@ -2,6 +2,7 @@ package me.Giyong8504.MemberBoard.controller.admin;
 
 import lombok.RequiredArgsConstructor;
 import me.Giyong8504.MemberBoard.commons.Role;
+import me.Giyong8504.MemberBoard.commons.UserUtil;
 import me.Giyong8504.MemberBoard.dto.user.UserListResponse;
 import me.Giyong8504.MemberBoard.dto.boards.BoardListViewResponse;
 import me.Giyong8504.MemberBoard.entities.User;
@@ -25,6 +26,7 @@ public class AdminViewController {
     private final BoardService boardService;
     private final UserService userService;
     private final UserRepository userRepository;
+    private final UserUtil userUtil;
 
     @GetMapping("/index")
     public String adIndex() {
@@ -57,7 +59,7 @@ public class AdminViewController {
     @PostMapping("/changeUserRole")
     public String changeUserRole(@RequestParam Long userId, @RequestParam Role newRole) {
         User user = userRepository.findById(userId).orElse(null);
-        if (user != null) {
+        if (user != null && userUtil.isAdmin()) {
             user.setRole(newRole);
             userRepository.save(user);
         }
