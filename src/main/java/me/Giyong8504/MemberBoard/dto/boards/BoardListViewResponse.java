@@ -13,6 +13,7 @@ public class BoardListViewResponse {
     private String content;
     private String author;
     private LocalDateTime reg_dt;
+    private LocalDateTime mod_dt;
 
     public BoardListViewResponse(BoardData boardData) {
         this.id = boardData.getId();
@@ -20,5 +21,6 @@ public class BoardListViewResponse {
         this.content = boardData.getContent();
         this.author = boardData.getAuthor();
         this.reg_dt = boardData.getRegDt();
+        this.mod_dt = boardData.getModDt();
     }
 }
