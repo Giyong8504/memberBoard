@@ -27,10 +27,9 @@ public class DeleteIdPasswordService {
             return;
         }
 
-        // 탈퇴시 회원 비활성화로 권한 변경, 탈퇴 정보 저장
         User user = userUtil.getUser();
 
-        // 탈퇴 사용자 정보를 DeleteUser에 저장
+        //탈퇴 사용자 정보를 DeleteUser에 저장
         DeleteUser deleteUser = new DeleteUser();
 
         deleteUser.setEmail(user.getEmail());
