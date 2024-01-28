@@ -5,7 +5,35 @@
 
 <!-- layout:fragment로 content를 지정하여 내용만 작성 -->
 <section layout:fragment="adminContent">
-    <h1>회원목록</h1>
-
+    <h1>회원 리스트</h1>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>번호</th>
+            <th>이메일</th>
+            <th>이름</th>
+            <th>전화번호</th>
+            <th>가입일</th>
+            <th>정보 수정일</th>
+            <th>강제탈퇴</th>
+        </tr>
+        </thead>
+        <tbody> <!-- th:each 를 사용하여 model 객체의 정보를 하나씩 item에 담아 내용 출력. -->
+        <tr th:each="item : ${adminUserList}">
+            <td th:text="${item.id}"></td>
+            <td th:text="${item.email}"></td>
+            <td th:text="${item.userNm}"></td>
+            <td th:text="${item.mobile}"></td>
+            <td th:text="${#temporals.format(item.reg_dt, 'yyyy-MM-dd HH:mm')}"></td>
+            <td th:text="${#temporals.format(item.mod_dt, 'yyyy-MM-dd HH:mm')}"></td>
+            <td>
+                <button type="button" class="adminDeleteUser-btn"
+                        th:attr="data-board-id=${item.id}">탈퇴</button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <script src="/js/token.js"></script>
+    <script src="/js/admin/board.js"></script>
 </section>
 </html>
