@@ -56,10 +56,11 @@ public class WebSecurityConfig {
         // 헤더를 확인할 커스텀 필터 추가
         http.addFilterBefore(tokenAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
 
-        // 토큰 재발급 URL은 인증없이 접근 가능하도록 설정. 나머지 API URL은 인증 필요
+        // 토큰 재발급, 이메일 URL은 인증없이 접근 가능하도록 설정. 나머지 API URL은 인증 필요
         http.authorizeHttpRequests(c -> {
             c.requestMatchers("/admin/**").hasAuthority("ADMIN") // "/admin/" 경로 요청은 'ADMIN' 권한을 가진 사용자만 접근 가능
-                    .requestMatchers("/myPage/**", "/new-board", "/changePassword/**").hasAnyAuthority("USER","GOOGLE","ADMIN") // "/myPage/**","/new-board" 경로 요청은 인증된 사용자만 접근 가능
+                    .requestMatchers("/changePassword/**", "/deleteId/**").hasAuthority("USER")
+                    .requestMatchers("/myPage/**", "/new-board").authenticated() // "/myPage/**","/new-board" 경로 요청은 인증된 사용자만 접근 가능
                     .requestMatchers("/api/token", "/api/email/**").permitAll()
                     .anyRequest().permitAll(); // 그 외 모든 요청은 누구나 접근 가능
         });

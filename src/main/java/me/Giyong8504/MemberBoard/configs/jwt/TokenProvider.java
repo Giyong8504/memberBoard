@@ -73,7 +73,7 @@ public class TokenProvider {
     // 토큰 기반으로 인증 정보를 가져오는 메서드
     public Authentication getAuthentication(String token) {
         Claims claims = getClaims(token);
-        Set<SimpleGrantedAuthority> authorities = Collections.singleton(new SimpleGrantedAuthority("USER"));
+        Set<SimpleGrantedAuthority> authorities = Collections.singleton(new SimpleGrantedAuthority("GOOGLE"));
 
         return new UsernamePasswordAuthenticationToken(new org.springframework
                 .security.core.userdetails.User(claims.getSubject(), "", authorities), token, authorities);
