@@ -1,8 +1,13 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <footer th:fragment="userFooter">
-  <div style="background-color: blue">
-    사이트하단
+  <div class="footer-imgText">
+    <a th:href="@{/}" target="_blank">
+          <img src="/img/logo.png" width="50" height="20" alt="로고">
+    </a>
+    <span>Copyright</span>
+    <span>© MemberShipBoard Corp.</span>
+    <span>All Rights Reserved.</span>
   </div>
 </footer>
 </html>
