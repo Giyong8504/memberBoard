@@ -18,11 +18,11 @@
             <div>
                 <div sec:authorize="isAuthenticated()">
                 <!-- 수정 -->
-                <button type="button"
+                <button type="button" class="btn btn-primary"
                         th:onclick="|location.href='@{/new-board?id={boardId}(boardId=${board.id})}'|">수정</button>
 
                 <!-- id 값인 delete-btn을 js가 조회하여 삭제 기능을 실행함. -->
-                <button type="button" id="delete-btn">삭제</button>
+                <button type="button" class="btn btn-primary" id="delete-btn">삭제</button>
                </div>
             </div>
         </div>
@@ -58,10 +58,10 @@
             <!-- board.id 값을 숨겨서 함께 요청 -->
             <input type="hidden" id="commentAdd-boardId" th:value="${board.id}">
             <div>
-                <label for="commentAdd-content">내용:</label>
-                <textarea id="commentAdd-content" name="content" th:text="${commentAdd.content}"></textarea>
+                <label for="commentAdd-content"></label>
+                <textarea id="commentAdd-content" name="content" th:text="${commentAdd.content}" placeholder="내용"></textarea>
             </div>
-            <button type="button" id="commentAdd-btn">댓글 작성</button>
+            <button type="button" id="commentAdd-btn" class="btn btn-primary" >댓글 작성</button>
         </form>
     </div>
     <script src="/js/token.js"></script>

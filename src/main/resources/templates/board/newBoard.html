@@ -23,9 +23,9 @@
             <div><!-- th:text로 content 값 응답받은 내용 출력 -->
                 <textarea rows="10" placeholder="내용" id="content" th:text="${board.content}"></textarea>
             </div>
-            <div><!-- th:if로 id가 있을 경우 수정, 없을 경우 등록 -->
-                <button type="button" th:if="${board.id} != null" id="modify-btn">수정</button>
-                <button type="button" th:if="${board.id} == null" id="create-btn">등록</button>
+            <div class="btns2"><!-- th:if로 id가 있을 경우 수정, 없을 경우 등록 -->
+                <button type="button" class="btn btn-primary" th:if="${board.id} != null" id="modify-btn">수정</button>
+                <button type="button" class="btn btn-primary" th:if="${board.id} == null" id="create-btn">등록</button>
             </div>
         </board>
     </div>

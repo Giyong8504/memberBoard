@@ -4,16 +4,16 @@
 <head>
     <meta charset="UTF-8">
     <title th:if="${pageTitle != null}" th:text="${pageTitle}"></title>
-
+    <link rel="stylesheet" th:href="@{/board/css/style.css}">
     <!-- 부트스트랩 사용 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 </head>
 <body>
-    <!-- 공통되는 header, footer.html을 th:replace 로 가져와 사용-->
-    <header th:replace="outlines/header::header"></header>
+<!-- 공통되는 header, footer.html을 th:replace 로 가져와 사용-->
+<header th:replace="outlines/header::header"></header>
 
-    <main layout:fragment="content"></main>
+<main layout:fragment="content"></main>
 
-    <footer th:replace="outlines/footer::footer"></footer>
+<footer th:replace="outlines/footer::footer"></footer>
 </body>
 </html>
