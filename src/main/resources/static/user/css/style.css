@@ -93,3 +93,8 @@ select { border: 1px solid #d5d5d5; height: 45px; }
     color: #000;
     font-size: 13px;
 }
+
+.error-message {
+    color: red;
+    font-size: 13px;
+}

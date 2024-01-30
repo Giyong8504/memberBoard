@@ -102,3 +102,9 @@ td{
     font-size: 14px;
     color: #000
 }
+
+
+.error-message {
+    color: red;
+    font-size: 13px;
+}
