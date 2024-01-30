@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <header th:fragment="userHeader">
-  <div>
-    <a href="/" class="btn btn-primary">로고부분</a>
+  <div class="login-logo">
+    <a th:href="@{/}">
+      <img src="/img/logo.png" width="200" height="82" alt="로고">
+    </a>
   </div>
 </header>
 </html>
