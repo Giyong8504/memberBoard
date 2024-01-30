@@ -1,0 +1,76 @@
+html { font-size: 16px; }
+main{
+    margin:0;
+    color:#6a6f8c;
+}
+/* 로그인 페이지 폼 */
+.login-wrap{
+    width:100%;
+    margin:auto;
+    max-width:525px;
+    min-height:600px;
+    position:relative;
+    box-shadow:0 12px 15px 0 rgba(0,0,0,.24),0 17px 50px 0 rgba(0,0,0,.19);
+}
+
+.login-html{
+    width:100%;
+    height:100%;
+    position:absolute;
+    padding:90px 70px 50px 70px;
+}
+
+/* 로고 */
+.login-logo {
+    text-align: center;
+    padding: 50px;
+}
+
+/* 비밀번호 찾기 */
+.find-text {
+    text-decoration: none;
+    color: #888;
+    padding: 5px;
+}
+
+.joinPw-wrap {
+    margin-top: 70px;
+    text-align: center;
+}
+
+/* 구글 로그인 */
+.google-wrap{
+    margin-top: 30px;
+    text-align: center;
+}
+
+/** 기본 스타일 - 입력 */
+input[type='text'],
+input[type='number'],
+input[type='password'],
+input[type='email'],
+input[type='date'] { border: 1px solid #d5d5d5; width: 100%; height: 45px; padding: 0 10px; border-radius: 3px; }
+textarea { border: 1px solid #d5d5d5; width: 100%; min-height: 150px; padding: 10px; resize: none; }
+select { border: 1px solid #d5d5d5; height: 45px; }
+.input_grp { display: flex; align-items:center; }
+.input_grp > * { margin-right: 5px; }
+
+/** 기본 버튼 스타일 */
+.sbtn { cursor: pointer; display: inline-block; border: 1px solid #596b99; color: #596b99; min-width: 90px; padding: 0 20px; height: 28px; line-height: 26px; text-align: center; border-radius: 5px; background: #fff; }
+.sbtn.blue { color: #fff; background:#596b99; }
+
+.btns { display: flex; width: 385px; margin-top: 10px;}
+.btns > button { width: 0; flex-grow: 1; height: 50px; font-size: 18px; background: #fff; cursor: pointer; }
+.btns > button:last-of-type { background: #0d6efd; color: #fff; }
+
+.search_btn, .submit_btn { text-align: center; margin: 20px 0 35px; }
+.search_btn button, .submit_btn button { text-align: center; height: 45px; line-height: 45px; background: #36466d; color: #fff; padding: 0 30px; border: 0; font-size: 16px; cursor: pointer; }
+.search_btn button:hover, .submit_btn button:hover {background: #34536d; }
+
+/* userFooter */
+.footer-imgText {
+    text-align: center;
+    padding: 30px;
+    color: #888;
+    font-size: 12px;
+}
