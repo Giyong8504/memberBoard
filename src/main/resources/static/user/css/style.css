@@ -26,13 +26,15 @@ main{
     padding: 50px;
 }
 
-/* 비밀번호 찾기 */
+/* 비밀번호 찾기, 회원가입 */
 .find-text {
     text-decoration: none;
     color: #888;
     padding: 5px;
+    font-size: 14px;
 }
 
+/* 비밀번호 찾기, 회원가입 */
 .joinPw-wrap {
     margin-top: 70px;
     text-align: center;
@@ -42,6 +44,16 @@ main{
 .google-wrap{
     margin-top: 30px;
     text-align: center;
+}
+
+/* 회원가입 폼 */
+.join-wrap{
+    width:100%;
+    margin:auto;
+    max-width:525px;
+    min-height:800px;
+    position:relative;
+    box-shadow:0 12px 15px 0 rgba(0,0,0,.24),0 17px 50px 0 rgba(0,0,0,.19);
 }
 
 /** 기본 스타일 - 입력 */

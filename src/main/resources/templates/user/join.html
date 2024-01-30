@@ -5,61 +5,67 @@
 
 <!-- layout:fragment로 userContent를 지정하여 내용만 작성 -->
 <main layout:fragment="userContent">
-    <div>
+    <div class="join-wrap">
+        <div class="login-html">
         <h1>회원가입</h1>
-        <form name="frmJoin" method="POST" th:action="@{/join}" th:object="${joinForm}">
-            <div th:each="err : ${#fields.globalErrors()}" th:text="${err}"></div>
-            <div>
+            <form name="frmJoin" method="POST" th:action="@{/join}" th:object="${joinForm}">
+                <div th:each="err : ${#fields.globalErrors()}" th:text="${err}"></div>
                 <div>
-                    <input type="text" name="email" th:field="*{email}" placeholder="이메일" th:readonly="${session.EmailAuthVerified != null && session.EmailAuthVerified}">
-                    <button type="button" id="email_verify" th:if="${session.EmailAuthVerified == null || !session.EmailAuthVerified}" th:text="#{인증코드전송}"></button>
-                    <div class="auth_box">
-                        <th:block th:if="${session.EmailAuthVerified == null || !session.EmailAuthVerified}">
-                            <input type="text" id="auth_num" th:placeholder="#{인증코드_입력}">
-                            <span id="auth_count">03:00</span>
-                            <button type="button" id="email_confirm" th:text="#{확인}" disabled></button>
-                            <button type="button" id="email_re_verify" th:text="#{재전송}" disabled></button>
-                        </th:block>
-                        <th:block th:unless="${session.EmailAuthVerified == null || !session.EmailAuthVerified}">
-                            <span class='confirmed' th:text="#{확인된_이메일_입니다.}"></span>
-                        </th:block>
+                    <div>
+                        <div>
+                            <input type="text" name="email" th:field="*{email}" placeholder="이메일" th:readonly="${session.EmailAuthVerified != null && session.EmailAuthVerified}">
+                            <button type="button" id="email_verify" class="btn btn-primary" th:if="${session.EmailAuthVerified == null || !session.EmailAuthVerified}" th:text="#{인증코드전송}"></button>
+                        </div>
+                        <div class="auth_box">
+                            <th:block th:if="${session.EmailAuthVerified == null || !session.EmailAuthVerified}">
+                                <input type="text" id="auth_num" th:placeholder="#{인증코드_입력}">
+                                <span id="auth_count">03:00</span>
+                                <button type="button" id="email_confirm" class="btn btn-primary" th:text="#{확인}" disabled></button>
+                                <button type="button" id="email_re_verify" class="btn btn-primary" th:text="#{재전송}" disabled></button>
+                            </th:block>
+                            <th:block th:unless="${session.EmailAuthVerified == null || !session.EmailAuthVerified}">
+                                <span class='confirmed' th:text="#{확인된_이메일_입니다.}"></span>
+                            </th:block>
+                        </div>
+                        <div th:each="err : ${#fields.errors('email')}" th:text="${err}"></div>
                     </div>
-                    <div th:each="err : ${#fields.errors('email')}" th:text="${err}"></div>
                 </div>
-            </div>
-            <div>
                 <div>
-                    <input type="password" name="password" th:field="*{password}" placeholder="비밀번호">
-                    <div th:each="err : ${#fields.errors('password')}" th:text="${err}"></div>
+                    <div>
+                        <input type="password" name="password" th:field="*{password}" placeholder="비밀번호">
+                        <div th:each="err : ${#fields.errors('password')}" th:text="${err}"></div>
+                    </div>
                 </div>
-            </div>
-            <div>
                 <div>
-                    <input type="password" name="userPwRe" th:field="*{userPwRe}" placeholder="비밀번호 확인">
-                    <div th:each="err : ${#fields.errors('userPwRe')}" th:text="${err}"></div>
+                    <div>
+                        <input type="password" name="userPwRe" th:field="*{userPwRe}" placeholder="비밀번호 확인">
+                        <div th:each="err : ${#fields.errors('userPwRe')}" th:text="${err}"></div>
+                    </div>
                 </div>
-            </div>
-            <div>
                 <div>
-                    <input type="text" name="userNm" th:field="*{userNm}" placeholder="회원명">
-                    <div th:each="err : ${#fields.errors('userNm')}" th:text="${err}"></div>
+                    <div>
+                        <input type="text" name="userNm" th:field="*{userNm}" placeholder="회원명">
+                        <div th:each="err : ${#fields.errors('userNm')}" th:text="${err}"></div>
+                    </div>
                 </div>
-            </div>
-            <div>
                 <div>
-                    <input type="text" name="mobile" th:field="*{mobile}" placeholder="전화번호">
-                    <div th:each="err : ${#fields.errors('mobile')}" th:text="${err}"></div>
+                    <div>
+                        <input type="text" name="mobile" th:field="*{mobile}" placeholder="전화번호">
+                        <div th:each="err : ${#fields.errors('mobile')}" th:text="${err}"></div>
+                    </div>
                 </div>
-            </div>
-            <div>
                 <div>
-                    <input type="checkbox" name="agree" value="true" th:field="*{agree}" id="agree"> 약관동의
-                    <label for="agree"></label>
-                    <div th:each="err : ${#fields.errors('agree')}" th:text="${err}"></div>
+                    <div>
+                        <input type="checkbox" name="agree" value="true" th:field="*{agree}" id="agree"> 약관동의
+                        <label for="agree"></label>
+                        <div th:each="err : ${#fields.errors('agree')}" th:text="${err}"></div>
+                    </div>
                 </div>
-            </div>
-            <button type="submit">가입하기</button>
-        </form>
+                <div class="btns">
+                    <button type="submit" class="btn btn-primary">가입하기</button>
+                </div>
+            </form>
+        </div>
     </div>
     <script src="/js/email/common.js"></script>
     <script src="/js/email/join.js"></script>

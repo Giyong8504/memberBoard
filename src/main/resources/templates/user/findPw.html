@@ -3,22 +3,28 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{layouts/userMain}">
 <main layout:fragment="userContent">
-    <h1 th:text="#{비밀번호_찾기}"></h1>
-    <form name="frmFindPw" method="POST" th:action="@{/findPw}" th:object="${findPwRequest}">
-        <div>
-            <div>
-                <input type="text" name="email" th:field="*{email}" th:placeholder="#{이메일}">
-                <div class="error" th:each="err : ${#fields.errors('email')}" th:text="${err}"></div>
-            </div>
+    <div class="login-wrap">
+        <div class="login-html">
+            <h1 th:text="#{비밀번호_찾기}"></h1>
+            <form name="frmFindPw" method="POST" th:action="@{/findPw}" th:object="${findPwRequest}">
+                <div>
+                    <div>
+                        <input type="text" name="email" th:field="*{email}" th:placeholder="#{이메일}">
+                        <div class="error" th:each="err : ${#fields.errors('email')}" th:text="${err}"></div>
+                    </div>
+                </div>
+                <div>
+                    <div>
+                        <input type="text" name="userNm" th:field="*{name}" th:placeholder="#{회원명}">
+                        <div class="error" th:each="err : ${#fields.errors('name')}" th:text="${err}"></div>
+                    </div>
+                </div>
+                <div class="btns">
+                    <button type="submit" class="btn btn-primary" th:text="#{비밀번호_찾기}"></button>
+                    <div class="error global" th:each="err : ${#fields.globalErrors()}" th:text="${err}"></div>
+                </div>
+            </form>
         </div>
-        <div>
-            <div>
-                <input type="text" name="userNm" th:field="*{name}" th:placeholder="#{회원명}">
-                <div class="error" th:each="err : ${#fields.errors('name')}" th:text="${err}"></div>
-            </div>
-        </div>
-        <button type="submit" th:text="#{비밀번호_찾기}"></button>
-        <div class="error global" th:each="err : ${#fields.globalErrors()}" th:text="${err}"></div>
-    </form>
+    </div>
 </main>
 </html>
