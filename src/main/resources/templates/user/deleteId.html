@@ -8,14 +8,14 @@
   <h1>회원탈퇴</h1>
 
   <!-- 회원탈퇴 비밀번호 폼 -->
-  <form method="POST" th:action="@{/deleteId}" th:object="${deleteIdPasswordForm}" onsubmit="return showConfirmation()">
-    <div th:each="err : ${#fields.globalErrors()}" th:text="${err}"></div>
+  <form method="POST" th:action="@{/deleteId}" th:object="${deleteIdPasswordForm}" onsubmit="return deleteShowConfirmation()">
+    <div class="error-message" th:each="err : ${#fields.globalErrors()}" th:text="${err}"></div>
     <div>
       <input type="password" id="oldPassword" name="oldPassword" th:field="*{oldPassword}" placeholder="기존 비밀번호">
-      <div th:each="err : ${#fields.errors('oldPassword')}" th:text="${err}"></div>
+      <div class="error-message" th:each="err : ${#fields.errors('oldPassword')}" th:text="${err}"></div>
     </div>
     <button type="submit">회원탈퇴</button>
   </form>
-  <script src="/js/changePw.js"></script>
+  <script src="/js/deleteAlert.js"></script>
 </main>
 </html>
