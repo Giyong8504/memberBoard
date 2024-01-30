@@ -86,3 +86,10 @@ select { border: 1px solid #d5d5d5; height: 45px; }
     color: #888;
     font-size: 12px;
 }
+
+.footer-imgText2 {
+    text-align: center;
+    padding: 3px;
+    color: #000;
+    font-size: 13px;
+}
