@@ -5,29 +5,33 @@
 
 <!-- layout:fragment로 userContent를 지정하여 내용만 작성 -->
 <main layout:fragment="userContent">
-    <div>
-        <h1>로그인페이지</h1>
-        <form method="POST" th:action="@{/login}" th:object="${joinForm}">
-            <div th:if="${session.globalError != null}" th:text="${session.globalError}"></div>
-            <div>
-                <input type="text" name="email" placeholder="이메일">
-                <div th:if="${session.requiredEmail != null}" th:text="${session.requiredEmail}"></div>
-            </div>
-            <div>
-                <input type="password" name="password" placeholder="비밀번호">
-                <div th:if="${session.requiredPassword != null}" th:text="${session.requiredPassword}"></div>
-            </div>
-            <button type="submit">로그인</button>
-            <div>
-                <a href="/oauth2/authorization/google">
-                    <img src="/img/google.png">
-                </a>
-            </div>
-            <div>
-                <a th:href="@{/findPw}" th:text="#{비밀번호_찾기}"></a>
-                <a href="/join">회원가입</a>
-            </div>
-        </form>
+    <div class="login-wrap">
+        <div class="login-html">
+            <h1>로그인</h1>
+            <form method="POST" th:action="@{/login}" th:object="${joinForm}">
+                <div th:if="${session.globalError != null}" th:text="${session.globalError}"></div>
+                <div>
+                    <input type="text" name="email" placeholder="이메일">
+                    <div th:if="${session.requiredEmail != null}" th:text="${session.requiredEmail}"></div>
+                </div>
+                <div>
+                    <input type="password" name="password" placeholder="비밀번호">
+                    <div th:if="${session.requiredPassword != null}" th:text="${session.requiredPassword}"></div>
+                    <div class="btns">
+                        <button type="submit" class="btn btn-primary" >로그인</button>
+                    </div>
+                    <div class="google-wrap">
+                        <a href="/oauth2/authorization/google">
+                            <img src="/img/google.png">
+                        </a>
+                    </div>
+                </div>
+                <div class="joinPw-wrap">
+                    <a th:href="@{/findPw}" th:text="#{비밀번호_찾기}" class="find-text"></a> |
+                    <a href="/join" class="find-text">회원가입</a>
+                </div>
+            </form>
+        </div>
     </div>
 </main>
 </html>
