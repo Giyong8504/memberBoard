@@ -94,6 +94,7 @@ select { border: 1px solid #d5d5d5; height: 45px; }
     font-size: 13px;
 }
 
+/* 에러메세지 */
 .error-message {
     color: red;
     font-size: 13px;
