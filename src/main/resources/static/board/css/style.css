@@ -113,11 +113,14 @@ nav .left img {
 
 /* index 페이지 */
 .introduce {
-    width:100%;
-    margin:auto;
-    min-height:600px;
-    position:relative;
+    width: 100%;
+    margin: auto;
+    min-height: 600px;
+    position: relative;
     font-size: 17px;
+    background-image: url('/img/backImg.jpg');
+    background-position : right;
+    background-repeat: no-repeat;
 }
 
 /* 댓글 수정 버튼 */
