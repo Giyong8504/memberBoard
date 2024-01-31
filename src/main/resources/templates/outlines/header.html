@@ -4,50 +4,54 @@
 <header th:fragment="header">
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
-            <ul>
-                <li>
-                    <a th:href="@{/}">
-                        <img src="/img/logo.png" width="110" height="40" alt="로고">
-                    </a>
-                </li>
-                <li>
-                    <a href="/board" class="board-name">
-                        <span>게시글 목록</span>
-                    </a>
-                </li>
-            </ul>
-        </div>
-        <div> <!-- 게시글 검색 -->
-            <form class="d-flex" method="GET" th:action="@{/board/search}" >
-                <label for="keyword"></label>
-                <input class="form-control me-2" type="text" id="keyword" name="keyword" placeholder="검색입력.." required>
-                <button class="btn btn-outline-success" type="submit">검색</button>
-            </form>
-        </div>
-
-        <!-- 로그인하지 않았을 경우 노출 / 로그인 후 사라짐-->
-        <div sec:authorize="isAnonymous()">
-            <button type="button" class="btn btn-outline-secondary btn-sm" onclick="location.href='/login'">로그인</button>
-            <button type="button" class="btn btn-outline-secondary btn-sm" onclick="location.href='/join'">회원가입</button>
-        </div>
-        <!-- 로그인 했을 경우 노출되는 버튼 / 로그아웃 후 사라짐 -->
-        <div sec:authorize="isAuthenticated()">
-            <div>
-                <!-- OAuth2로 인증되어 있을 때만 아래 내용이 노출됨 -->
-                <span th:if="${#authentication instanceof T(org.springframework.security.oauth2.client.authentication.OAuth2AuthenticationToken)}"
-                      th:text="|${#authentication.principal.attributes.email}님 환영합니다.|"></span>
-
-                <!-- 일반 회원가입 사용자일 때 -->
-                <span th:unless="${#authentication instanceof T(org.springframework.security.oauth2.client.authentication.OAuth2AuthenticationToken)}"
-                      th:text="|${#authentication.principal.username}님 환영합니다.|"></span>
+            <div class="left">
+                <a th:href="@{/}">
+                    <img src="/img/logo.png" alt="로고">
+                </a>
             </div>
+            <!-- 게시판 바로가기 링크 -->
+            <div class="box">
+                <a href="/board" class="board-name">
+                    <span>게시글 목록</span>
+                </a>
+            </div>
+            <div class="search" role="search"> <!-- 게시글 검색 -->
+                <div class="box">
+                    <form method="GET" th:action="@{/board/search}" >
+                        <label for="keyword"></label>
+                        <input class="search_text" type="text" id="keyword" name="keyword" placeholder="게시글 검색.." required>
+                        <button class="btn btn-outline-primary" type="submit">검색</button>
+                    </form>
+                </div>
+            </div>
+            <div class="box">
+                <!-- 로그인, 회원가입, 마이페이지 버튼 영역 -->
+                <div class="btns">
+                    <!-- 로그인하지 않았을 경우 노출 / 로그인 후 사라짐-->
+                    <div sec:authorize="isAnonymous()">
+                        <button type="button" class="btn btn-outline-secondary btn-sm" onclick="location.href='/login'">로그인</button>
+                        <button type="button" class="btn btn-outline-secondary btn-sm" onclick="location.href='/join'">회원가입</button>
+                    </div>
+                    <!-- 로그인 했을 경우 노출되는 버튼 / 로그아웃 후 사라짐 -->
+                    <div sec:authorize="isAuthenticated()">
+                        <div>
+                            <!-- OAuth2로 인증되어 있을 때만 아래 내용이 노출됨 -->
+                            <span th:if="${#authentication instanceof T(org.springframework.security.oauth2.client.authentication.OAuth2AuthenticationToken)}"
+                                  th:text="|${#authentication.principal.attributes.email}님 환영합니다.|"></span>
 
-                <!-- 로그인 중 로그인 아이디, 이름 표시(session만 사용시. OAuth 사용자는 오류 발생) -->
-                <!-- <th:block th:text="${#messages.msg('login.msg', session.userInfo.userNm, session.userInfo.email)}"></th:block> -->
-                <a th:href="@{/myPage}">마이페이지</a>
-                <button type="button" id="logout-btn" class="" onclick="location.href='/logout'">로그아웃</button>
+                            <!-- 일반 회원가입 사용자일 때 -->
+                            <span th:unless="${#authentication instanceof T(org.springframework.security.oauth2.client.authentication.OAuth2AuthenticationToken)}"
+                                  th:text="|${#authentication.principal.username}님 환영합니다.|"></span>
+                        </div>
+
+                        <!-- 로그인 중 로그인 아이디, 이름 표시(session만 사용시. OAuth 사용자는 오류 발생) -->
+                        <!-- <th:block th:text="${#messages.msg('login.msg', session.userInfo.userNm, session.userInfo.email)}"></th:block> -->
+                        <a th:href="@{/myPage}">마이페이지</a>
+                        <button type="button" id="logout-btn" class="btn btn-secondary btn-sm" onclick="location.href='/logout'">로그아웃</button>
+                    </div>
+                </div>
+            </div>
         </div>
     </nav>
-    <hr/>
 </header>
 </html>
