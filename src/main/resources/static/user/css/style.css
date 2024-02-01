@@ -99,3 +99,9 @@ select { border: 1px solid #d5d5d5; height: 45px; }
     color: red;
     font-size: 13px;
 }
+
+/* 세로 막대 */
+.v-line2 {
+    margin: 5px;
+    border-left: thin solid #888;
+}
