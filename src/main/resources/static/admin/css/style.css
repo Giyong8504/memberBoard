@@ -1,3 +1,5 @@
+html { font-size: 17px; }
+ul, ol { list-style: none; margin:0; padding:0; }
 h1{
   font-size: 30px;
   color: #fff;
@@ -31,7 +33,7 @@ main{
 nav {
     margin: 0;
     height: 100%;
-    background-color: #f8f9fa;
+    background-color: #f4f4f4;
 }
 
 /* header flex 부모 */
@@ -80,6 +82,16 @@ nav .adminLogo img {
     color: #000
 }
 
-.userDeleteByAdmin-btn {
-
+/* 유저 강제 탈퇴, 권한 변경, 글삭제 버튼 */
+.userDeleteByAdmin-btn,
+.userUpdateByAdmin-btn,
+.adminDelete-btn {
+    background-color: #198754;
+    border: none;
+    border-radius: 3px;
+    font-size: 15px;
+    color: #fff;
+    font-weight: 300;
+    width: 50px;
+    height: 30px;
 }
