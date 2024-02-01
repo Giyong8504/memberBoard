@@ -99,6 +99,16 @@ td{
     background-repeat: no-repeat;
 }
 
+/* 게시글 내용 영역 */
+.content-content {
+    border: 1px solid;
+    border-color: #c7c8c9;
+    min-height: 100px;
+    margin-bottom: 10px;
+}
+
+
+
 /* 댓글 수정 버튼 */
 .updateComment-btn {
       background-color: #fff;
@@ -116,6 +126,7 @@ td{
       font-size: 13px;
       color: blue;
 }
+
 /* 마이페이지 폼 */
 .myPageCommon-wrap{
     width:100%;
@@ -148,31 +159,36 @@ nav {
     background-color: #f8f9fa;
 }
 
+/* header flex 부모 */
 .headerParent {
     display: flex;
     margin: 1px;
     padding: 10px;
 
 }
-
+/* header 로고부분 */
 .headerChild-left {
     justify: space-between;
     width: 250px;
     height: 100px;
 }
 
+/* header 게시판 목록 메뉴 부분 */
 .headerChild-middle1 {
     justify: space-between;
     width: 180px;
     height: 100px;
 }
 
+/* header 검색 부분 */
 .headerChild-middle2 {
     margin-left: auto;
     justify: space-between;
     width: 300px;
     height: 100px;
 }
+
+/* header 로그인, 회원가입 버튼 부분 */
 .headerChild-right {
     justify: space-between;
     height: 100px;
@@ -221,4 +237,10 @@ nav .search1 form {
     border-left : solid #888;
     height : 15px;
     width: 0.1px;
+}
+
+/* index 페이지 메인소개 글씨 mark */
+mark {
+  background-color: #ff8400;
+  border-radius: 3px
 }

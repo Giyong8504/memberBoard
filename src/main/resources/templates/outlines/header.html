@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <header th:fragment="header">
-    <nav class="">
+    <nav>
         <div class="headerParent">
             <div class="headerChild-left">
                 <div class="logo">
@@ -30,7 +30,6 @@
             <div class="headerChild-right">
                 <!-- 로그인, 회원가입, 마이페이지 버튼 영역 -->
                 <div class="login_join">
-                    <div class=""></div>
                     <!-- 로그인하지 않았을 경우 노출 / 로그인 후 사라짐-->
                     <div sec:authorize="isAnonymous()">
                         <button type="button" class="btn btn-secondary btn-sm" onclick="location.href='/login'">로그인</button>
