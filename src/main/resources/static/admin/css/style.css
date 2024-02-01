@@ -82,11 +82,21 @@ nav .adminLogo img {
     color: #000
 }
 
-/* 유저 강제 탈퇴, 권한 변경, 글삭제 버튼 */
-.userDeleteByAdmin-btn,
-.userUpdateByAdmin-btn,
-.adminDelete-btn {
+/* 유저 권한 변경 */
+.userUpdateByAdmin-btn {
     background-color: #198754;
+    border: none;
+    border-radius: 3px;
+    font-size: 15px;
+    color: #fff;
+    font-weight: 300;
+    width: 50px;
+    height: 30px;
+}
+/* 유저 강제 탈퇴, 글 삭제 버튼 */
+.userDeleteByAdmin-btn,
+.adminDelete-btn {
+    background-color: #dc3545;
     border: none;
     border-radius: 3px;
     font-size: 15px;
