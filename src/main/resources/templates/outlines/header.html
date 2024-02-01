@@ -2,35 +2,39 @@
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <header th:fragment="header">
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
-        <div class="container-fluid">
-            <div class="left">
-                <a th:href="@{/}">
-                    <img src="/img/logo.png" alt="로고">
-                </a>
+    <nav class="">
+        <div class="headerParent">
+            <div class="headerChild-left">
+                <div class="logo">
+                    <a th:href="@{/}">
+                        <img src="/img/logo.png" alt="로고">
+                    </a>
+                </div>
             </div>
             <!-- 게시판 바로가기 링크 -->
-            <div class="box">
-                <a href="/board" class="board-name">
-                    <span>게시글 목록</span>
-                </a>
+            <div class="headerChild-middle1">
+                <div class="list-link">
+                    <a href="/board" class="list-text">게시판 목록</a>
+                </div>
             </div>
-            <div class="search" role="search"> <!-- 게시글 검색 -->
-                <div class="box">
+            <div class='v-line'></div>
+            <div class="headerChild-middle2"> <!-- 게시글 검색 -->
+                <div class="search1">
                     <form method="GET" th:action="@{/board/search}" >
                         <label for="keyword"></label>
-                        <input class="search_text" type="text" id="keyword" name="keyword" placeholder="게시글 검색.." required>
-                        <button class="btn btn-outline-primary" type="submit">검색</button>
+                        <input type="text" id="keyword" name="keyword" placeholder="게시글 검색.." required>
+                        <button class="btn btn-outline-primary" type="submit"><i class="xi-search"></i></button>
                     </form>
                 </div>
             </div>
-            <div class="box">
+            <div class="headerChild-right">
                 <!-- 로그인, 회원가입, 마이페이지 버튼 영역 -->
-                <div class="btns">
+                <div class="login_join">
+                    <div class=""></div>
                     <!-- 로그인하지 않았을 경우 노출 / 로그인 후 사라짐-->
                     <div sec:authorize="isAnonymous()">
-                        <button type="button" class="btn btn-outline-secondary btn-sm" onclick="location.href='/login'">로그인</button>
-                        <button type="button" class="btn btn-outline-secondary btn-sm" onclick="location.href='/join'">회원가입</button>
+                        <button type="button" class="btn btn-secondary btn-sm" onclick="location.href='/login'">로그인</button>
+                        <button type="button" class="btn btn-secondary btn-sm" onclick="location.href='/join'">회원가입</button>
                     </div>
                     <!-- 로그인 했을 경우 노출되는 버튼 / 로그아웃 후 사라짐 -->
                     <div sec:authorize="isAuthenticated()">
