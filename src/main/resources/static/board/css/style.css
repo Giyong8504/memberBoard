@@ -245,8 +245,20 @@ nav .search1 form {
     width: 0.1px;
 }
 
+.v-line2 {
+    margin: 5px;
+    border-left: thin solid #888;
+}
+
 /* index 페이지 메인소개 글씨 mark */
 mark {
   background-color: #ff8400;
   border-radius: 3px
+}
+
+/* index 페이지 아이콘 이미지 */
+.img-icons img {
+    width: 30px;
+    height: 30px;
+    margin: 5px;
 }
