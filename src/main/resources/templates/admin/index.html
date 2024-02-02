@@ -6,5 +6,20 @@
 <!-- layout:fragment로 content를 지정하여 내용만 작성 -->
 <section layout:fragment="adminContent">
     <h1>관리자 메인 페이지 입니다.</h1>
+    <div class="adminIndex-content">
+        <p>ADMIN - <mark>관리자의 경우 일반 회원가입 사용자만 가능</mark>합니다.</p>
+        <hr>
+        <h5><strong>회원 목록</strong></h5>
+        <p><strong>1. 회원 목록에서 회원 정보 조회가 가능합니다.</strong><br>
+            ㆍ<mark>관리자 권한으로 회원 탈퇴가 가능</mark>합니다. 이때, <u>탈퇴 정보를 다른 엔터티에 저장 후 제거</u>됩니다.</p><br>
+        <p><strong>2. User, DISABLE <mark>권한 변경이 가능</mark>합니다.</strong><br>
+            ㆍSession 기반 사용자일 경우는 접근 경로 제한이 되어 .hasAnyAuthority()가 정상작동합니다.<br>
+            ㆍOAuth 로그인 사용자의 경우 DB에 권한 변경은 이상 없으나 .hasAnyAuthority() 권한 경로가 동작하지 않아 인증된 사용자 접근으로 사용중입니다.<br>
+            <u>(현재는 .authenticated()으로 인증 사용자는 접근 허용으로 사용중)</u></p><br>
+        <h5><strong>회원 게시판 목록</strong></h5>
+        <p><strong>2. 회원 게시판 목록에서 게시글 목록과 게시글 삭제가 가능합니다.</strong><br>
+            ㆍ<mark>관리자 권한일 경우 작성된 게시글 삭제가 가능</mark>합니다.
+        </p>
+    </div>
 </section>
 </html>
