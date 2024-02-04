@@ -1,8 +1,13 @@
 # MemberBoard Service
+![image](https://github.com/Giyong8504/memberBoard/assets/128211712/0f6969f8-b80a-4402-9932-6eee667f9c96)
+
 ## 목차
-[1. 주제 선정](#1-주제-선정)<br>
-[2. 개요](#2-개요)<br>
-[3. 요구사항](#3-요구사항)<br>
+- [1. 주제 선정](#1-주제-선정)
+- [2. 개요](#2-개요)
+- [3. 요구사항](#3-요구사항)
+- [4. EER 다이어그램](#4-EER-다이어그램)
+- [5. 화면 소개](#5-화면-소개)
+- [6. 개발 내용](#6-개발-내용)
 ---
 ## 1. 주제 선정
 - 웹의 기본인 CRUD 게시판을 만들고 회원만 작성 가능하며 권한을 부여해 관리자가 게시글과 회원을 관리하는 게시판 서비스를 선정했다.
@@ -116,3 +121,162 @@
     - 사용자 인증정보 제거
     - 쿠키에 담긴 세션, 리프레시 코튼 제거
     - 액세스 토큰 제거
+   
+---
+## 4.EER 다이어그램
+![image](https://github.com/Giyong8504/memberBoard/assets/128211712/704134be-b6dd-4ad9-8966-8034bc055bca)
+
+## 5. 화면 소개
+<details>
+    <summary>회원가입</summary>
+    1. 유효성 검사<br>
+    2. 이메일 중복 확인<br>
+    3. 이메일 검증<br>
+![회원가입테스트 (1)](https://github.com/Giyong8504/memberBoard/assets/128211712/a3258292-ddf2-436a-a98a-e3d340ce65f5)
+  
+</details>
+
+<details>
+    <summary>로그인</summary>
+    1. 유효성 검사<br>
+![로그인테스트](https://github.com/Giyong8504/memberBoard/assets/128211712/b867bc45-b8f1-456f-b2f2-b18b3e5ecc11)
+
+</details>
+
+<details>
+    <summary>구글 로그인</summary>
+    1. 로그인 후 토큰 발급<br>
+  ![구글로그인테스트](https://github.com/Giyong8504/memberBoard/assets/128211712/4b5473e0-287c-40a4-b539-2b79f3b29ff6)
+
+</details>
+
+<details>
+    <summary>글 작성</summary>
+![글작성테스트](https://github.com/Giyong8504/memberBoard/assets/128211712/6a88f622-622d-45d9-b0e7-a890813d9cca)
+
+</details>
+
+<details>
+    <summary>글 수정</summary>
+    1. 자신의 글만 수정 가능<br>
+![글수정테스트](https://github.com/Giyong8504/memberBoard/assets/128211712/c89c71ab-3a5a-4e4f-8a79-8c1942ccdd16)
+
+</details>
+
+<details>
+    <summary>글 삭제</summary>
+    1. 자신의 글만 삭제 가능<br>
+  ![글삭제테스트](https://github.com/Giyong8504/memberBoard/assets/128211712/676b7326-ae42-43e7-8351-e9127da1bf61)
+
+</details>
+
+<details>
+    <summary>댓글 작성</summary>
+![댓글작성테스트](https://github.com/Giyong8504/memberBoard/assets/128211712/b8dd0f5d-d2f6-4eaa-86ae-6caaad98bbf8)
+
+</details>
+
+<details>
+    <summary>댓글 수정</summary>
+    1. 다른 사용자의 댓글 수정 불가<br>
+![댓글수정권한](https://github.com/Giyong8504/memberBoard/assets/128211712/b1ff4b7c-bd12-45a7-a462-67a36527e581)
+
+</details>
+
+<details>
+    <summary>댓글 삭제</summary>
+    1. 다른 사용자의 댓글 삭제 불가<br>
+![댓글삭제테스트](https://github.com/Giyong8504/memberBoard/assets/128211712/10240195-96fe-41a5-88f0-0f87a334b049)
+
+</details>
+
+<details>
+    <summary>글 제목, 내용 검색</summary>
+    1. 유효성 검사<br>
+    2. 이메일 중복 확인<br>
+    3. 이메일 검증<br>
+  ![글제목내용검색](https://github.com/Giyong8504/memberBoard/assets/128211712/8aba1099-328d-45dd-a8fc-53b8dd86382d)
+
+</details>
+
+<details>
+    <summary>마이페이지 정보 표시, 비밀번호 변경</summary>
+    1. 유효성 검사<br>
+    2. 기존 비밀번호가 일치해야 변경 가능<br>
+    3. 새 비밀번호, 새 비밀번호 확인 시 변경 가능<br>
+  ![마이페이지정보 비밀번호변경](https://github.com/Giyong8504/memberBoard/assets/128211712/b6bc4937-532d-458c-bf2b-22838f3532ab)
+
+</details>
+
+<details>
+    <summary>회원 탈퇴</summary>
+    1. 유효성 검사<br>
+    2. 기존 비밀번호와 일치해야 변경 가능<br>
+![회원탈퇴](https://github.com/Giyong8504/memberBoard/assets/128211712/15f5bc40-7a85-488b-af59-6c29aaf495df)
+
+</details>
+
+<details>
+    <summary>관리자 페이지 접근 권한</summary>
+    1. ADMIN 권한 사용자만 가능<br>
+    2. test01@test.org (ADMIN) , kky5163@naver.com(USER)<br>
+![image](https://github.com/Giyong8504/memberBoard/assets/128211712/89df6eb5-20d1-4974-bbb9-14544ec04f48)<br>
+![관리자페이지접근권한](https://github.com/Giyong8504/memberBoard/assets/128211712/478e9a61-dbef-41b6-b103-946fa86f447d)
+
+</details>
+
+<details>
+    <summary>USER 권한 : 회원 권한 수정, 강제 탈퇴, 회원 게시글 삭제 불가</summary>
+    1. (테스트를 위해 경로 접근 권한을 주석처리 하여 모두 접근 가능한 상태.)<br>
+    2. USER 권한인 kky5163@naver.com 아이디로 테스트<br>
+![image](https://github.com/Giyong8504/memberBoard/assets/128211712/1fc22c14-15cd-493c-b7cb-bf16b66ab78e)<br>
+![유저권한](https://github.com/Giyong8504/memberBoard/assets/128211712/df5cf74c-8942-4f61-b8ca-d7d6091bbcb3)
+
+</details>
+
+<details>
+    <summary>ADMIN 권한 :  권한 수정, 강제 탈퇴, 회원 게시글 삭제 가능</summary>
+![image](https://github.com/Giyong8504/memberBoard/assets/128211712/baf43c06-2423-4ff5-834a-07634891fd59)<br>
+![어드민권한](https://github.com/Giyong8504/memberBoard/assets/128211712/a87d57c6-1e0f-42c3-afbb-2ec4db1da0e4)
+
+
+</details>
+
+## 6. 개발 내용
+- [1. 글 목록 조회를 위한 API 구현](https://blog.naver.com/kky5163/223281343625)<br>
+- [2. 글 조회 API 구현](https://blog.naver.com/kky5163/223281891034)<br>
+- [3. 글 삭제 API 구현](https://blog.naver.com/kky5163/223282366123)<br>
+- [4. 글 수정 API 구현](https://blog.naver.com/kky5163/223282530507)<br>
+- [5. 글 목록 뷰 구현하기](https://blog.naver.com/kky5163/223283957692)<br>
+- [6. 삭제 기능 추가](https://blog.naver.com/kky5163/223284518055)<br>
+- [7. 수정, 생성 기능 추가](https://blog.naver.com/kky5163/223285756397)<br>
+- [8. 스프링 시큐리티를 사용해 인증, 인가 기능을 구현](https://blog.naver.com/kky5163/223288440941)<br>
+- [9. 회원 가입 구현, 유효성 검사, 뷰 구현](https://blog.naver.com/kky5163/223290414355)<br>
+- [10. 비회원, 회원, 관리자 권한 통제, 회원 인가 설정](https://blog.naver.com/kky5163/223291609875)<br>
+- [11. 가입한 아이디를 작성자로 자동 변경, 글 삭제, 수정 권한](https://blog.naver.com/kky5163/223295712206)<br>
+- [12. Session 방식에서 JWT 방식으로 변경(토큰)](https://blog.naver.com/kky5163/223300332829)<br>
+- [13. 리프레시 토큰, 토큰 필터, 토큰 API 구현](https://blog.naver.com/kky5163/223301399892)<br>
+- [14. OAuth2.0 서비스 구현](https://blog.naver.com/kky5163/223305712327)<br>
+- [15. 세션방식과 JWT 방식인 OAuth2를 함께 구현](https://blog.naver.com/kky5163/223309099203)<br>
+- [16. 글 검색 기능 추가](https://blog.naver.com/kky5163/223313370219)<br>
+- [17_1. 댓글 기능 추가하기 (댓글 생성)](https://blog.naver.com/kky5163/223316180498)<br>
+- [17_2. 댓글 기능 추가하기 (수정, 삭제)](https://blog.naver.com/kky5163/223317239322)<br>
+- [18. 이메일 전송 - 회원가입 인증](https://blog.naver.com/kky5163/223322703326)<br>
+- [19. 비밀번호 찾기 (가입한 이메일로 발송), 구글 유저는 유효성 검사로 안내](https://blog.naver.com/kky5163/223323237032)<br>
+- [20. myPage 구현 (유저 정보, 비밀번호 변경, 비밀번호 변경 유효성 검사, 회원탈퇴)](https://blog.naver.com/kky5163/223332429905)<br>
+- [21_1. 관리자 페이지 (회원 게시글 리스트, 관리자 권한 삭제)](https://blog.naver.com/kky5163/223334591018)<br>
+- [21_2. 관리자 페이지 (회원 리스트, 권한 변경, 회원 탈퇴 처리)](https://blog.naver.com/kky5163/223336713641)<br>
+
+
+## 7. 만났던 오류
+- [1. data.sql 생성 후 오류](https://blog.naver.com/kky5163/223281350345)<br>
+- [2. PropertyValueException](https://blog.naver.com/kky5163/223285756762)<br>
+- [3. A bean with that name has already been defined and overriding is disabled.](https://blog.naver.com/kky5163/223289051980)<br>
+- [4. java.lang.NullPointerException](https://blog.naver.com/kky5163/223304709871)<br>
+- [5. org.springframework.dao.DataIntegrityViolationException](https://blog.naver.com/kky5163/223305387115)<br>
+- [6. 경로 요청 권한](https://blog.naver.com/kky5163/223305694711)<br>
+- [7. StackOverflowError 무한 재귀 (Infinite recursion)](https://blog.naver.com/kky5163/223316618704)<br>
+- [8. java.lang.AssertionError: Status expected:<200> but was:<302> (테스트중 에러)](https://blog.naver.com/kky5163/223320041329)<br>
+- [9. java.lang.IllegalArgumentException: Unexpected user](https://blog.naver.com/kky5163/223330218340)<br>
+- [10. org.thymeleaf.exceptions.TemplateInputException: An error happened during template parsing](https://blog.naver.com/kky5163/223330236120)<br>
+[11. org.springframework.dao.DataIntegrityViolationException: could not execute statement; SQL](https://blog.naver.com/kky5163/223332393167)<br>
