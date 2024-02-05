@@ -2,18 +2,27 @@
 ![image](https://github.com/Giyong8504/memberBoard/assets/128211712/0f6969f8-b80a-4402-9932-6eee667f9c96)
 
 ## 목차
-- [1. 주제 선정](#1-주제-선정)
-- [2. 개요](#2-개요)
-- [3. 요구사항](#3-요구사항)
-- [4. EER 다이어그램](#4-EER-다이어그램)
-- [5. 화면 소개](#5-화면-소개)
-- [6. 개발 내용](#6-개발-내용)
+- [1. 주제 선정](#주제-선정)
+
+- [2. 개요](#개요)
+- [3. 요구사항](#요구사항)
+- [4. EER 다이어그램](#eer-다이어그램)
+- [5. 화면 소개](#화면-소개)
+  - [회원가입, 로그인, 구글 로그인](#회원가입-로그인-구글-로그인)
+  - [글 작성, 글 수정](#글-작성-글-수정)
+  - [글 삭제, 댓글 작성](#글-삭제-댓글-작성)
+  - [댓글 수정, 댓글 삭제](#댓글-수정-댓글-삭제)
+  - [글 제목과 내용검색, 마이페이지 정보 표시, 비밀번호 변경](#글-제목과-내용검색-마이페이지-정보-표시-비밀번호-변경)
+  - [회원 탈퇴, 관리자 페이지 접근 권한](#회원-탈퇴-관리자-페이지-접근-권한)
+  - [USER권한, ADMIN권한](#user권한-admin권한)
+- [6. 개발 내용](#개발-내용)
+- [7. 만났던 오류](#만났던-오류)
 ---
-## 1. 주제 선정
+## 주제 선정
 - 웹의 기본인 CRUD 게시판을 만들고 회원만 작성 가능하며 권한을 부여해 관리자가 게시글과 회원을 관리하는 게시판 서비스를 선정했다.
 
 ---
-## 2. 개요
+## 개요
 - 프로젝트명 : MemberBoard Service
 - 개발 인원 : 1명
 - 개발 기간 : 2023.12.01 ~
@@ -32,7 +41,7 @@
 - Collaboration : GitHub
 
 ---
-## 3. 요구사항
+## 요구사항
 - 게시글
     - 글 목록 조회
     - 제목 검색 조회, 내용 조회
@@ -123,126 +132,64 @@
     - 액세스 토큰 제거
    
 ---
-## 4.EER 다이어그램
+## EER 다이어그램
 ![image](https://github.com/Giyong8504/memberBoard/assets/128211712/704134be-b6dd-4ad9-8966-8034bc055bca)
 
-## 5. 화면 소개
-<details>
-    <summary>회원가입</summary>
-    1. 유효성 검사<br>
-    2. 이메일 중복 확인<br>
-    3. 이메일 검증<br>
-![회원가입테스트 (1)](https://github.com/Giyong8504/memberBoard/assets/128211712/a3258292-ddf2-436a-a98a-e3d340ce65f5)
-  
-</details>
 
-<details>
-    <summary>로그인</summary>
-    1. 유효성 검사<br>
-![로그인테스트](https://github.com/Giyong8504/memberBoard/assets/128211712/b867bc45-b8f1-456f-b2f2-b18b3e5ecc11)
+---
 
-</details>
+## 화면 소개
+### 회원가입, 로그인, 구글 로그인
+|회원가입|로그인, 구글로그인|
+|---|---|
+|- 유효성 검사<br> - 이메일 중복 확인<br> - 이메일 검증|- 유효성 검사|
+|![회원가입테스트 (1)](https://github.com/Giyong8504/memberBoard/assets/128211712/a3258292-ddf2-436a-a98a-e3d340ce65f5)| ![로그인테스트](https://github.com/Giyong8504/memberBoard/assets/128211712/b867bc45-b8f1-456f-b2f2-b18b3e5ecc11)|
 
-<details>
-    <summary>구글 로그인</summary>
-    1. 로그인 후 토큰 발급<br>
-  ![구글로그인테스트](https://github.com/Giyong8504/memberBoard/assets/128211712/4b5473e0-287c-40a4-b539-2b79f3b29ff6)
+---
+### 글 작성, 글 수정
+|글 작성|글 수정|
+|---|---|
+| |- 자신의 글만 수정가능|
+|![글작성테스트](https://github.com/Giyong8504/memberBoard/assets/128211712/6a88f622-622d-45d9-b0e7-a890813d9cca)|![글수정테스트](https://github.com/Giyong8504/memberBoard/assets/128211712/c89c71ab-3a5a-4e4f-8a79-8c1942ccdd16)|
 
-</details>
+---
+### 글 삭제, 댓글 작성
+|글 삭제|댓글 작성|
+|---|---|
+|자신의 글만 삭제가능| |
+|![글삭제테스트](https://github.com/Giyong8504/memberBoard/assets/128211712/676b7326-ae42-43e7-8351-e9127da1bf61)|![댓글작성테스트](https://github.com/Giyong8504/memberBoard/assets/128211712/b8dd0f5d-d2f6-4eaa-86ae-6caaad98bbf8)|
 
-<details>
-    <summary>글 작성</summary>
-![글작성테스트](https://github.com/Giyong8504/memberBoard/assets/128211712/6a88f622-622d-45d9-b0e7-a890813d9cca)
+---
+### 댓글 수정, 댓글 삭제
+|댓글 수정|댓글 삭제|
+|---|---|
+|다른 사용자의 댓글 수정 불가|다른 사용자의 댓글 삭제 불가|
+|![댓글수정권한](https://github.com/Giyong8504/memberBoard/assets/128211712/b1ff4b7c-bd12-45a7-a462-67a36527e581)|![댓글삭제테스트](https://github.com/Giyong8504/memberBoard/assets/128211712/10240195-96fe-41a5-88f0-0f87a334b049)|
 
-</details>
+---
+### 글 제목과 내용검색, 마이페이지 정보 표시, 비밀번호 변경
+|글 제목과 내용검색|마이페이지 정보 표시, 비밀번호 변경|
+|---|---|
+|- 제목으로 검색<br>- 내용으로 검색|- 유효성 검사<br>- 기존 비밀번호가 일치해야 변경 가능<br>- 새 비밀번호, 새 비밀번호 확인 시 변경 가능|
+|![글제목내용검색](https://github.com/Giyong8504/memberBoard/assets/128211712/8aba1099-328d-45dd-a8fc-53b8dd86382d)|![마이페이지정보 비밀번호변경](https://github.com/Giyong8504/memberBoard/assets/128211712/b6bc4937-532d-458c-bf2b-22838f3532ab)|
 
-<details>
-    <summary>글 수정</summary>
-    1. 자신의 글만 수정 가능<br>
-![글수정테스트](https://github.com/Giyong8504/memberBoard/assets/128211712/c89c71ab-3a5a-4e4f-8a79-8c1942ccdd16)
+---
+### 회원 탈퇴, 관리자 페이지 접근 권한
+|회원 탈퇴|관리자 페이지 접근 권한|
+|---|---|
+|- 유효성 검사<br>- 기존 비밀번호와 일치해야 변경 가능|- ADMIN 권한 사용자만 가능<br>- test01@test.org (ADMIN) , kky5163@naver.com(USER)<br>![1번](https://github.com/Giyong8504/memberBoard/assets/128211712/092e42ce-826d-4914-bdf4-5166e1cd9207)|
+|![회원탈퇴](https://github.com/Giyong8504/memberBoard/assets/128211712/15f5bc40-7a85-488b-af59-6c29aaf495df)|![관리자페이지접근권한](https://github.com/Giyong8504/memberBoard/assets/128211712/478e9a61-dbef-41b6-b103-946fa86f447d)|
 
-</details>
+---
+### USER권한, ADMIN권한
+|USER 권한 : 회원 권한 수정, 강제 탈퇴, 회원 게시글 삭제 불가|ADMIN 권한 :  권한 수정, 강제 탈퇴, 회원 게시글 삭제 가능|
+|---|---|
+|- (경로 접근 권한을 주석처리 하여 모두 접근 가능한 상태.)<br>- USER 권한인 kky5163@naver.com 아이디로 테스트<br>![2번](https://github.com/Giyong8504/memberBoard/assets/128211712/6546f899-60f9-4a0e-9531-ee5e504cc6b0)| |
+|<br>![유저권한](https://github.com/Giyong8504/memberBoard/assets/128211712/df5cf74c-8942-4f61-b8ca-d7d6091bbcb3)|![3번](https://github.com/Giyong8504/memberBoard/assets/128211712/882fe65e-1ede-45df-bda1-d5504c777dda)<br>![어드민권한](https://github.com/Giyong8504/memberBoard/assets/128211712/a87d57c6-1e0f-42c3-afbb-2ec4db1da0e4)|
 
-<details>
-    <summary>글 삭제</summary>
-    1. 자신의 글만 삭제 가능<br>
-  ![글삭제테스트](https://github.com/Giyong8504/memberBoard/assets/128211712/676b7326-ae42-43e7-8351-e9127da1bf61)
+---
 
-</details>
-
-<details>
-    <summary>댓글 작성</summary>
-![댓글작성테스트](https://github.com/Giyong8504/memberBoard/assets/128211712/b8dd0f5d-d2f6-4eaa-86ae-6caaad98bbf8)
-
-</details>
-
-<details>
-    <summary>댓글 수정</summary>
-    1. 다른 사용자의 댓글 수정 불가<br>
-![댓글수정권한](https://github.com/Giyong8504/memberBoard/assets/128211712/b1ff4b7c-bd12-45a7-a462-67a36527e581)
-
-</details>
-
-<details>
-    <summary>댓글 삭제</summary>
-    1. 다른 사용자의 댓글 삭제 불가<br>
-![댓글삭제테스트](https://github.com/Giyong8504/memberBoard/assets/128211712/10240195-96fe-41a5-88f0-0f87a334b049)
-
-</details>
-
-<details>
-    <summary>글 제목, 내용 검색</summary>
-    1. 유효성 검사<br>
-    2. 이메일 중복 확인<br>
-    3. 이메일 검증<br>
-  ![글제목내용검색](https://github.com/Giyong8504/memberBoard/assets/128211712/8aba1099-328d-45dd-a8fc-53b8dd86382d)
-
-</details>
-
-<details>
-    <summary>마이페이지 정보 표시, 비밀번호 변경</summary>
-    1. 유효성 검사<br>
-    2. 기존 비밀번호가 일치해야 변경 가능<br>
-    3. 새 비밀번호, 새 비밀번호 확인 시 변경 가능<br>
-  ![마이페이지정보 비밀번호변경](https://github.com/Giyong8504/memberBoard/assets/128211712/b6bc4937-532d-458c-bf2b-22838f3532ab)
-
-</details>
-
-<details>
-    <summary>회원 탈퇴</summary>
-    1. 유효성 검사<br>
-    2. 기존 비밀번호와 일치해야 변경 가능<br>
-![회원탈퇴](https://github.com/Giyong8504/memberBoard/assets/128211712/15f5bc40-7a85-488b-af59-6c29aaf495df)
-
-</details>
-
-<details>
-    <summary>관리자 페이지 접근 권한</summary>
-    1. ADMIN 권한 사용자만 가능<br>
-    2. test01@test.org (ADMIN) , kky5163@naver.com(USER)<br>
-![image](https://github.com/Giyong8504/memberBoard/assets/128211712/89df6eb5-20d1-4974-bbb9-14544ec04f48)<br>
-![관리자페이지접근권한](https://github.com/Giyong8504/memberBoard/assets/128211712/478e9a61-dbef-41b6-b103-946fa86f447d)
-
-</details>
-
-<details>
-    <summary>USER 권한 : 회원 권한 수정, 강제 탈퇴, 회원 게시글 삭제 불가</summary>
-    1. (테스트를 위해 경로 접근 권한을 주석처리 하여 모두 접근 가능한 상태.)<br>
-    2. USER 권한인 kky5163@naver.com 아이디로 테스트<br>
-![image](https://github.com/Giyong8504/memberBoard/assets/128211712/1fc22c14-15cd-493c-b7cb-bf16b66ab78e)<br>
-![유저권한](https://github.com/Giyong8504/memberBoard/assets/128211712/df5cf74c-8942-4f61-b8ca-d7d6091bbcb3)
-
-</details>
-
-<details>
-    <summary>ADMIN 권한 :  권한 수정, 강제 탈퇴, 회원 게시글 삭제 가능</summary>
-![image](https://github.com/Giyong8504/memberBoard/assets/128211712/baf43c06-2423-4ff5-834a-07634891fd59)<br>
-![어드민권한](https://github.com/Giyong8504/memberBoard/assets/128211712/a87d57c6-1e0f-42c3-afbb-2ec4db1da0e4)
-
-
-</details>
-
-## 6. 개발 내용
+## 개발 내용
 - [1. 글 목록 조회를 위한 API 구현](https://blog.naver.com/kky5163/223281343625)<br>
 - [2. 글 조회 API 구현](https://blog.naver.com/kky5163/223281891034)<br>
 - [3. 글 삭제 API 구현](https://blog.naver.com/kky5163/223282366123)<br>
@@ -268,7 +215,7 @@
 - [21_2. 관리자 페이지 (회원 리스트, 권한 변경, 회원 탈퇴 처리)](https://blog.naver.com/kky5163/223336713641)<br>
 
 
-## 7. 만났던 오류
+## 만났던 오류
 - [1. data.sql 생성 후 오류](https://blog.naver.com/kky5163/223281350345)<br>
 - [2. PropertyValueException](https://blog.naver.com/kky5163/223285756762)<br>
 - [3. A bean with that name has already been defined and overriding is disabled.](https://blog.naver.com/kky5163/223289051980)<br>
