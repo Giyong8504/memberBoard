@@ -8,13 +8,13 @@
 - [3. 요구사항](#요구사항)
 - [4. EER 다이어그램](#eer-다이어그램)
 - [5. 화면 소개](#화면-소개)
-  - [회원가입, 로그인, 구글 로그인](#회원가입-로그인-구글-로그인)
-  - [글 작성, 글 수정](#글-작성-글-수정)
-  - [글 삭제, 댓글 작성](#글-삭제-댓글-작성)
-  - [댓글 수정, 댓글 삭제](#댓글-수정-댓글-삭제)
-  - [글 제목과 내용검색, 마이페이지 정보 표시, 비밀번호 변경](#글-제목과-내용검색-마이페이지-정보-표시-비밀번호-변경)
-  - [회원 탈퇴, 관리자 페이지 접근 권한](#회원-탈퇴-관리자-페이지-접근-권한)
-  - [USER권한, ADMIN권한](#user권한-admin권한)
+  - [회원가입, 로그인, 구글 로그인](#1-회원가입-로그인-구글-로그인)
+  - [글 작성, 글 수정](#2-글-작성-글-수정)
+  - [글 삭제, 댓글 작성](#3-글-삭제-댓글-작성)
+  - [댓글 수정, 댓글 삭제](#4-댓글-수정-댓글-삭제)
+  - [글 제목과 내용검색, 마이페이지 정보 표시, 비밀번호 변경](#5-글-제목과-내용검색-마이페이지-정보-표시-비밀번호-변경)
+  - [회원 탈퇴, 관리자 페이지 접근 권한](#6-회원-탈퇴-관리자-페이지-접근-권한)
+  - [USER권한, ADMIN권한](#7-user권한-admin권한)
 - [6. 개발 내용](#개발-내용)
 - [7. 만났던 오류](#만났던-오류)
 ---
@@ -26,7 +26,7 @@
 - 프로젝트명 : MemberBoard Service
 - 개발 인원 : 1명
 - 개발 기간 : 2023.12.01 ~
-- 기능
+- 주요 기능
   - 게시판 : CRUD 기능, 댓글, 게시글 검색
   - 일반회원 : Security 회원가입 및 로그인, OAuth2.0 로그인
     - 이메일 검증을 통한 회원가입
@@ -36,9 +36,27 @@
   - 관리자 : 권한을 부여하여 일반 회원과 게시글 조회, 삭제
 <br>
 
-- Stacks : Java, SpringBoot, Thymeleaf, JavaScript, HTML5, CSS
-- Tools : IntelliJ, MySQL, Gradle, Git
-- Collaboration : GitHub
+---
+
+### Stack
+![java-icon](https://github.com/Giyong8504/memberBoard/assets/128211712/a6104f4d-e299-4017-8617-6863fb9abe73)Java(17) 
+![spring-icon](https://github.com/Giyong8504/memberBoard/assets/128211712/fdaaaeb8-b2d9-424b-8b54-fdf2d7f6dcf9)Spring 
+![springboot-icon](https://github.com/Giyong8504/memberBoard/assets/128211712/7bd6f139-e97e-494f-b56a-52ebbfb37893)SpringBoot(3.0.2) + JPA + Lombok + Validation 
+![thymeleaf-icon](https://github.com/Giyong8504/memberBoard/assets/128211712/251992ab-736a-4669-8dc0-f9ccd231e949)Thymeleaf 
+![js-icon](https://github.com/Giyong8504/memberBoard/assets/128211712/ab022ed4-e0b6-4a58-a5a0-f4224aa933b6)Javascript 
+![html-icon](https://github.com/Giyong8504/memberBoard/assets/128211712/45d43c25-78e7-4d87-b499-58ea71136bc4)Html5 
+![css-icon](https://github.com/Giyong8504/memberBoard/assets/128211712/f1341976-4afc-4487-97c6-cc709cd2413a)Css 
+
+### Tools
+![intellij-icon](https://github.com/Giyong8504/memberBoard/assets/128211712/60bb943d-8b2d-4743-bddf-981463b17fc5)IntelliJ
+![mysql-icon](https://github.com/Giyong8504/memberBoard/assets/128211712/7e2d7068-2227-4a7d-a2a3-c47e79154351)MySQL
+![gradle-icon](https://github.com/Giyong8504/memberBoard/assets/128211712/1cc55962-2a6a-427b-b069-febbfef874b6)Gardle
+![git-icon](https://github.com/Giyong8504/memberBoard/assets/128211712/3ddc519c-d58c-4b08-8da0-27ce47ff7e65)Git
+![tomcat-icon](https://github.com/Giyong8504/memberBoard/assets/128211712/e5776633-34da-4d8a-8b0c-404196de1821)Tomcat
+
+### Collaboration
+![github-icon](https://github.com/Giyong8504/memberBoard/assets/128211712/94861ab3-b104-43a7-ad5b-b89a026498e2)Github
+![naverblog](https://github.com/Giyong8504/memberBoard/assets/128211712/a30bea2e-2561-462e-87cf-e5678bb91c26)Blog
 
 ---
 ## 요구사항
@@ -83,6 +101,18 @@
     - 게시글 목록
     - 이 외에 접근 시 로그인 요청 메시지 노출 후 로그인 페이지로 이동
 
+   
+-  Session 로그인 + OAuth2 로그인
+    - 구글 로그인 시
+      - OAuth2 로그인시 로컬에 엑세스 토큰 발급, 쿠키에는 리프레시 토큰을 발급
+
+  
+- 로그아웃 시
+  - HTTP 세션 무효화
+  - 사용자 인증정보 제거
+  - 쿠키에 담긴 세션, 리프레시 코튼 제거
+  - 액세스 토큰 제거
+
 
 - 비밀번호 찾기
   - 가입한 이메일과 회원명 조합으로 조회 검증
@@ -119,17 +149,6 @@
         - 관리자만 USER, DISABLE 권한변경
         - 관리자만 강제 탈퇴 가능
 
-
-- OAuth2 로그인 + Session 로그인
-  - 구글
-  - 로그인 시
-    - OAuth2 로그인시 로컬에 엑세스 토큰 발급, 쿠키에는 리프레시 토큰을 발급
-  
-  - 로그아웃 시
-    - HTTP 세션 무효화
-    - 사용자 인증정보 제거
-    - 쿠키에 담긴 세션, 리프레시 코튼 제거
-    - 액세스 토큰 제거
    
 ---
 ## EER 다이어그램
@@ -139,53 +158,73 @@
 ---
 
 ## 화면 소개
-### 회원가입, 로그인, 구글 로그인
+### 1. 회원가입, 로그인, 구글 로그인
 |회원가입|로그인, 구글로그인|
 |---|---|
-|- 유효성 검사<br> - 이메일 중복 확인<br> - 이메일 검증|- 유효성 검사|
-|![회원가입테스트 (1)](https://github.com/Giyong8504/memberBoard/assets/128211712/a3258292-ddf2-436a-a98a-e3d340ce65f5)| ![로그인테스트](https://github.com/Giyong8504/memberBoard/assets/128211712/b867bc45-b8f1-456f-b2f2-b18b3e5ecc11)|
+|- 유효성 검사<br> - 이메일 중복 확인<br> - 이메일 검증|- 유효성 검사<br>- 로그인 후 토큰 발급 (구글 로그인)|
+|![회원가입테스트 (1)](https://github.com/Giyong8504/memberBoard/assets/128211712/a3258292-ddf2-436a-a98a-e3d340ce65f5)|![로그인구글로그인](https://github.com/Giyong8504/memberBoard/assets/128211712/7c68d20c-5bb8-4008-a6e7-83f13c7763bf)|
 
 ---
-### 글 작성, 글 수정
+
+<br>
+
+### 2. 글 작성, 글 수정
 |글 작성|글 수정|
 |---|---|
 | |- 자신의 글만 수정가능|
 |![글작성테스트](https://github.com/Giyong8504/memberBoard/assets/128211712/6a88f622-622d-45d9-b0e7-a890813d9cca)|![글수정테스트](https://github.com/Giyong8504/memberBoard/assets/128211712/c89c71ab-3a5a-4e4f-8a79-8c1942ccdd16)|
 
 ---
-### 글 삭제, 댓글 작성
+
+<br>
+
+### 3. 글 삭제, 댓글 작성
 |글 삭제|댓글 작성|
 |---|---|
-|자신의 글만 삭제가능| |
+|- 자신의 글만 삭제가능| |
 |![글삭제테스트](https://github.com/Giyong8504/memberBoard/assets/128211712/676b7326-ae42-43e7-8351-e9127da1bf61)|![댓글작성테스트](https://github.com/Giyong8504/memberBoard/assets/128211712/b8dd0f5d-d2f6-4eaa-86ae-6caaad98bbf8)|
 
 ---
-### 댓글 수정, 댓글 삭제
+
+<br>
+
+### 4. 댓글 수정, 댓글 삭제
 |댓글 수정|댓글 삭제|
 |---|---|
-|다른 사용자의 댓글 수정 불가|다른 사용자의 댓글 삭제 불가|
+|- 다른 사용자의 댓글 수정 불가|- 다른 사용자의 댓글 삭제 불가|
 |![댓글수정권한](https://github.com/Giyong8504/memberBoard/assets/128211712/b1ff4b7c-bd12-45a7-a462-67a36527e581)|![댓글삭제테스트](https://github.com/Giyong8504/memberBoard/assets/128211712/10240195-96fe-41a5-88f0-0f87a334b049)|
 
 ---
-### 글 제목과 내용검색, 마이페이지 정보 표시, 비밀번호 변경
+
+<br>
+
+### 5. 글 제목과 내용검색, 마이페이지 정보 표시, 비밀번호 변경
 |글 제목과 내용검색|마이페이지 정보 표시, 비밀번호 변경|
 |---|---|
 |- 제목으로 검색<br>- 내용으로 검색|- 유효성 검사<br>- 기존 비밀번호가 일치해야 변경 가능<br>- 새 비밀번호, 새 비밀번호 확인 시 변경 가능|
 |![글제목내용검색](https://github.com/Giyong8504/memberBoard/assets/128211712/8aba1099-328d-45dd-a8fc-53b8dd86382d)|![마이페이지정보 비밀번호변경](https://github.com/Giyong8504/memberBoard/assets/128211712/b6bc4937-532d-458c-bf2b-22838f3532ab)|
 
 ---
-### 회원 탈퇴, 관리자 페이지 접근 권한
+
+<br>
+
+### 6. 회원 탈퇴, 관리자 페이지 접근 권한
 |회원 탈퇴|관리자 페이지 접근 권한|
 |---|---|
 |- 유효성 검사<br>- 기존 비밀번호와 일치해야 변경 가능|- ADMIN 권한 사용자만 가능<br>- test01@test.org (ADMIN) , kky5163@naver.com(USER)<br>![1번](https://github.com/Giyong8504/memberBoard/assets/128211712/092e42ce-826d-4914-bdf4-5166e1cd9207)|
 |![회원탈퇴](https://github.com/Giyong8504/memberBoard/assets/128211712/15f5bc40-7a85-488b-af59-6c29aaf495df)|![관리자페이지접근권한](https://github.com/Giyong8504/memberBoard/assets/128211712/478e9a61-dbef-41b6-b103-946fa86f447d)|
 
 ---
-### USER권한, ADMIN권한
+
+<br>
+
+### 7. USER권한, ADMIN권한
 |USER 권한 : 회원 권한 수정, 강제 탈퇴, 회원 게시글 삭제 불가|ADMIN 권한 :  권한 수정, 강제 탈퇴, 회원 게시글 삭제 가능|
 |---|---|
-|- (경로 접근 권한을 주석처리 하여 모두 접근 가능한 상태.)<br>- USER 권한인 kky5163@naver.com 아이디로 테스트<br>![2번](https://github.com/Giyong8504/memberBoard/assets/128211712/6546f899-60f9-4a0e-9531-ee5e504cc6b0)| |
-|<br>![유저권한](https://github.com/Giyong8504/memberBoard/assets/128211712/df5cf74c-8942-4f61-b8ca-d7d6091bbcb3)|![3번](https://github.com/Giyong8504/memberBoard/assets/128211712/882fe65e-1ede-45df-bda1-d5504c777dda)<br>![어드민권한](https://github.com/Giyong8504/memberBoard/assets/128211712/a87d57c6-1e0f-42c3-afbb-2ec4db1da0e4)|
+|- (경로 접근 권한을 주석처리 하여 모두 접근 가능한 상태.)<br>- USER 권한인 kky5163@naver.com 아이디로 테스트<br>![2번](https://github.com/Giyong8504/memberBoard/assets/128211712/6546f899-60f9-4a0e-9531-ee5e504cc6b0)|![3번](https://github.com/Giyong8504/memberBoard/assets/128211712/882fe65e-1ede-45df-bda1-d5504c777dda)|
+|<br>![유저권한](https://github.com/Giyong8504/memberBoard/assets/128211712/df5cf74c-8942-4f61-b8ca-d7d6091bbcb3)|![어드민권한](https://github.com/Giyong8504/memberBoard/assets/128211712/a87d57c6-1e0f-42c3-afbb-2ec4db1da0e4)|
+
+<br>
 
 ---
 
