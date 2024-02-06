@@ -276,11 +276,12 @@
 # 마치며
 
 <details>
-  <summary>개선되어야 할 부분</summary>
-  - Session 기반과 OAuth 로그인을 같이 구현하면서 스프링 시큐리티에서 기본적으로 제공하는 csrf 공격 방지 기능은 OAuth 로그인 시 오류로 인해 disable로 해둔 상태입니다.
-  - Role에 ADMIN, USER, DISABLE, GOOGLE의 권한이 있는데, 접근 경로가 OAuth 로그인 사용자는 정상 작동하지 않는 문제점이 있어 .authenticated()으로 인증된 회원은 접근 가능하도록 해둔 상태입니다.
-</details>
+<summary>개선되어야 할 부분</summary>
 
+- Session 기반과 OAuth 로그인을 같이 구현하면서 스프링 시큐리티에서 기본적으로 제공하는 csrf 공격 방지 기능은 OAuth 로그인 시 오류로 인해 disable로 해둔 상태입니다.
+- Role에 ADMIN, USER, DISABLE, GOOGLE의 권한이 있는데, 접근 경로가 OAuth 로그인 사용자는 정상 작동하지 않는 문제점이 있어 .authenticated()으로 인증된 회원은 접근 가능하도록 해둔 상태입니다.
+
+</details>
 
 ## 후기
 현재 재직 중인 회사를 다니며 학원에서 기본적인 학습을 마치고 팀 프로젝트를 진행했었습니다. 완성되지 못한 팀 프로젝트의 기간을 지내보면서 학원 기간 동안 최선을 다해 배우긴 했지만 실제 사용할 수 없던 제 스스로 너무 부족하다는 생각이 들었습니다.<br>
