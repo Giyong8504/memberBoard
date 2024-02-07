@@ -267,7 +267,10 @@
 - [8. java.lang.AssertionError: Status expected:<200> but was:<302> (테스트중 에러)](https://blog.naver.com/kky5163/223320041329)<br>
 - [9. java.lang.IllegalArgumentException: Unexpected user](https://blog.naver.com/kky5163/223330218340)<br>
 - [10. org.thymeleaf.exceptions.TemplateInputException: An error happened during template parsing](https://blog.naver.com/kky5163/223330236120)<br>
-[11. org.springframework.dao.DataIntegrityViolationException: could not execute statement; SQL](https://blog.naver.com/kky5163/223332393167)<br>
+- [11. org.springframework.dao.DataIntegrityViolationException: could not execute statement; SQL](https://blog.naver.com/kky5163/223332393167)<br>
+- [12. 배포 후 발생 오류 - Data truncation: Data too long for column 'password' at row 1](https://blog.naver.com/kky5163/223346954675)<br>
+- [13. 배포 후 발생 오류 - Incorrect string value: '\xEA\xB9\x80\xEA\xB8\xB0...'](https://blog.naver.com/kky5163/223347065843)<br>
+
 
 ---
 
@@ -280,6 +283,7 @@
 
 - Session 기반과 OAuth 로그인을 같이 구현하면서 스프링 시큐리티에서 기본적으로 제공하는 csrf 공격 방지 기능은 OAuth 로그인 시 오류로 인해 disable로 해둔 상태입니다.
 - Role에 ADMIN, USER, DISABLE, GOOGLE의 권한이 있는데, 접근 경로가 OAuth 로그인 사용자는 정상 작동하지 않는 문제점이 있어 .authenticated()으로 인증된 회원은 접근 가능하도록 해둔 상태입니다.
+- local에서는 OAuth 구글 로그인이 되지만 배포 후 https의 접근이 아니라서 승인오류가 나오는 상태입니다.
 
 </details>
 
