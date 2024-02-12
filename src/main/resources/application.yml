@@ -18,8 +18,8 @@ spring:
   datasource:
     password: aA!123456
     driver-class-name: com.mysql.cj.jdbc.Driver
-    username: member123
-    url: jdbc:mysql://localhost:3306/member123
+    username: memberboard
+    url: jdbc:mysql://localhost:3306/memberboard
 
   h2:
     console:
@@ -33,6 +33,7 @@ spring:
           google:
             client-id: ...
             client-secret: ...
+            redirect-uri: http://kky9939.site/login/oauth2/code/google
             scope: email, profile
 
   #메일 smtp 설정
@@ -61,3 +62,11 @@ logging:
 jwt:
   secret_key: blog-springboot
   issuer: kky5163@naver.com
+
+server:
+  port: 443
+  ssl:
+    enabled: true
+    key-store: classpath:keystore.p12
+    key-store-password:
+    key-store-type: PKCS12
