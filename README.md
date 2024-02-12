@@ -1,4 +1,5 @@
 # MemberBoard Service
+- 배포 주소 : https://kky9939.site
 ![image](https://github.com/Giyong8504/memberBoard/assets/128211712/0f6969f8-b80a-4402-9932-6eee667f9c96)
 
 ## 목차
@@ -36,6 +37,7 @@
     - 마이페이지
     - 비밀번호 찾기, 변경, 탈퇴
   - 관리자 : 권한을 부여하여 일반 회원과 게시글 조회, 삭제
+  - 배포 : AWS lightsail, SSL
 <br>
 
 ---
