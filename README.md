@@ -18,6 +18,7 @@
   - [글 제목과 내용검색, 마이페이지 정보 표시, 비밀번호 변경](#5-글-제목과-내용검색-마이페이지-정보-표시-비밀번호-변경)
   - [회원 탈퇴, 관리자 페이지 접근 권한](#6-회원-탈퇴-관리자-페이지-접근-권한)
   - [USER권한, ADMIN권한](#7-user권한-admin권한)
+  - [배포 후 구글 OAuth 로그인](#8-배포-후-구글-oauth-로그인)
 - [6. 개발 내용](#개발-내용)
 - [7. 만났던 오류](#만났던-오류)
 - [8. 마치며](#마치며)
@@ -52,6 +53,8 @@
 ![js-icon](https://github.com/Giyong8504/memberBoard/assets/128211712/ab022ed4-e0b6-4a58-a5a0-f4224aa933b6)Javascript 
 ![html-icon](https://github.com/Giyong8504/memberBoard/assets/128211712/45d43c25-78e7-4d87-b499-58ea71136bc4)Html5 
 ![css-icon](https://github.com/Giyong8504/memberBoard/assets/128211712/f1341976-4afc-4487-97c6-cc709cd2413a)Css 
+![amazon-icon](https://github.com/Giyong8504/memberBoard/assets/128211712/c156fccd-a59b-4f66-aec6-107ba53b11b7)aws+lightsail
+
 
 ### Tools
 ![intellij-icon](https://github.com/Giyong8504/memberBoard/assets/128211712/60bb943d-8b2d-4743-bddf-981463b17fc5)IntelliJ
