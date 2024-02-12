@@ -1,4 +1,7 @@
 # MemberBoard Service
+- 배포 주소 : https://kky9939.site
+
+
 ![image](https://github.com/Giyong8504/memberBoard/assets/128211712/0f6969f8-b80a-4402-9932-6eee667f9c96)
 
 ## 목차
@@ -15,6 +18,7 @@
   - [글 제목과 내용검색, 마이페이지 정보 표시, 비밀번호 변경](#5-글-제목과-내용검색-마이페이지-정보-표시-비밀번호-변경)
   - [회원 탈퇴, 관리자 페이지 접근 권한](#6-회원-탈퇴-관리자-페이지-접근-권한)
   - [USER권한, ADMIN권한](#7-user권한-admin권한)
+  - [배포 후 구글 OAuth 로그인](#8-배포-후-구글-oauth-로그인)
 - [6. 개발 내용](#개발-내용)
 - [7. 만났던 오류](#만났던-오류)
 - [8. 마치며](#마치며)
@@ -27,7 +31,7 @@
 ## 개요
 - 프로젝트명 : MemberBoard Service
 - 개발 인원 : 1명
-- 개발 기간 : 2023.12.01 ~
+- 개발 기간 : 2023.12.01 ~ 2024.02.13
 - 주요 기능
   - 게시판 : CRUD 기능, 댓글, 게시글 검색
   - 일반회원 : Security 회원가입 및 로그인, OAuth2.0 로그인
@@ -36,6 +40,7 @@
     - 마이페이지
     - 비밀번호 찾기, 변경, 탈퇴
   - 관리자 : 권한을 부여하여 일반 회원과 게시글 조회, 삭제
+  - 배포 : AWS lightsail, SSL
 <br>
 
 ---
@@ -48,6 +53,8 @@
 ![js-icon](https://github.com/Giyong8504/memberBoard/assets/128211712/ab022ed4-e0b6-4a58-a5a0-f4224aa933b6)Javascript 
 ![html-icon](https://github.com/Giyong8504/memberBoard/assets/128211712/45d43c25-78e7-4d87-b499-58ea71136bc4)Html5 
 ![css-icon](https://github.com/Giyong8504/memberBoard/assets/128211712/f1341976-4afc-4487-97c6-cc709cd2413a)Css 
+![amazon-icon](https://github.com/Giyong8504/memberBoard/assets/128211712/c156fccd-a59b-4f66-aec6-107ba53b11b7)aws+lightsail
+
 
 ### Tools
 ![intellij-icon](https://github.com/Giyong8504/memberBoard/assets/128211712/60bb943d-8b2d-4743-bddf-981463b17fc5)IntelliJ
@@ -228,6 +235,13 @@
 
 <br>
 
+### 8. 배포 후 구글 OAuth 로그인
+|현재 앱 인증받지 않은 상태 : 테스트 사용자로 등록된 사용자만 가능|
+|---|
+|![배포후구글로그인테스트](https://github.com/Giyong8504/memberBoard/assets/128211712/85b3fe6f-bdcb-421d-8046-3b9a5594dcca)|
+
+
+
 ---
 
 ## 개발 내용
@@ -254,6 +268,12 @@
 - [20. myPage 구현 (유저 정보, 비밀번호 변경, 비밀번호 변경 유효성 검사, 회원탈퇴)](https://blog.naver.com/kky5163/223332429905)<br>
 - [21_1. 관리자 페이지 (회원 게시글 리스트, 관리자 권한 삭제)](https://blog.naver.com/kky5163/223334591018)<br>
 - [21_2. 관리자 페이지 (회원 리스트, 권한 변경, 회원 탈퇴 처리)](https://blog.naver.com/kky5163/223336713641)<br>
+- [22_1. AWS 배포하기](https://blog.naver.com/kky5163/223345686763)<br>
+- [22_2. AWS 배포하기(Java 설치)](https://blog.naver.com/kky5163/223345795407)<br>
+- [22_3. AWS 배포하기(DB설치)](https://blog.naver.com/kky5163/223346503252)<br>
+- [22_4. AWS 배포하기(프로젝트 배포)](https://blog.naver.com/kky5163/223346544945)<br>
+- [23. 도메인 구매후 연결하기](https://blog.naver.com/kky5163/223347573103)<br>
+- [24. OAuth2.0 액세스 차단됨 : 승인 오류 - SSL 인증서 발급하고 적용하기](https://blog.naver.com/kky5163/223351377284)<br>
 
 
 ## 만났던 오류
@@ -270,6 +290,8 @@
 - [11. org.springframework.dao.DataIntegrityViolationException: could not execute statement; SQL](https://blog.naver.com/kky5163/223332393167)<br>
 - [12. 배포 후 발생 오류 - Data truncation: Data too long for column 'password' at row 1](https://blog.naver.com/kky5163/223346954675)<br>
 - [13. 배포 후 발생 오류 - Incorrect string value: '\xEA\xB9\x80\xEA\xB8\xB0...'](https://blog.naver.com/kky5163/223347065843)<br>
+- [14. 배포 후 오류 - 403오류: disallowed_useragent](https://blog.naver.com/kky5163/223351509057)<br>
+- [15. 배포 후 오류 - 403: access_denied](https://blog.naver.com/kky5163/223351527758)<br>
 
 
 ---
@@ -283,7 +305,7 @@
 
 - Session 기반과 OAuth 로그인을 같이 구현하면서 스프링 시큐리티에서 기본적으로 제공하는 csrf 공격 방지 기능은 OAuth 로그인 시 오류로 인해 disable로 해둔 상태입니다.
 - Role에 ADMIN, USER, DISABLE, GOOGLE의 권한이 있는데, 접근 경로가 OAuth 로그인 사용자는 정상 작동하지 않는 문제점이 있어 .authenticated()으로 인증된 회원은 접근 가능하도록 해둔 상태입니다.
-- local에서는 OAuth 구글 로그인이 되지만 배포 후 https의 접근이 아니라서 승인오류가 나오는 상태입니다.
+- ~~local에서는 OAuth 구글 로그인이 되지만 배포 후 https의 접근이 아니라서 승인오류가 나오는 상태입니다.~~(해결 완료)
 
 </details>
 
