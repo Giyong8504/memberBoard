@@ -288,8 +288,8 @@
 - [9. java.lang.IllegalArgumentException: Unexpected user](https://blog.naver.com/kky5163/223330218340)<br>
 - [10. org.thymeleaf.exceptions.TemplateInputException: An error happened during template parsing](https://blog.naver.com/kky5163/223330236120)<br>
 - [11. org.springframework.dao.DataIntegrityViolationException: could not execute statement; SQL](https://blog.naver.com/kky5163/223332393167)<br>
-- [12. 배포 후 발생 오류 - Data truncation: Data too long for column 'password' at row 1](https://blog.naver.com/kky5163/223346954675)<br>
-- [13. 배포 후 발생 오류 - Incorrect string value: '\xEA\xB9\x80\xEA\xB8\xB0...'](https://blog.naver.com/kky5163/223347065843)<br>
+- [12. 배포 후 오류 - Data truncation: Data too long for column 'password' at row 1](https://blog.naver.com/kky5163/223346954675)<br>
+- [13. 배포 후 오류 - Incorrect string value: '\xEA\xB9\x80\xEA\xB8\xB0...'](https://blog.naver.com/kky5163/223347065843)<br>
 - [14. 배포 후 오류 - 403오류: disallowed_useragent](https://blog.naver.com/kky5163/223351509057)<br>
 - [15. 배포 후 오류 - 403: access_denied](https://blog.naver.com/kky5163/223351527758)<br>
 
@@ -310,7 +310,7 @@
 </details>
 
 ## 후기
-현재 재직 중인 회사를 다니며 학원에서 기본적인 학습을 마치고 팀 프로젝트를 진행했었습니다. 완성되지 못한 팀 프로젝트의 기간을 지내보면서 학원 기간 동안 최선을 다해 배우긴 했지만 실제 사용할 수 없던 제 스스로 너무 부족하다는 생각이 들었습니다.<br>
+현재 재직 중인 회사를 다니며 퇴근 후 학원에서 약 7개월 과정 수업이었던 기본적인 학습을 마치고 팀 프로젝트를 진행했었습니다. 완성되지 못한 팀 프로젝트의 기간을 지내보면서 학원 기간 동안 최선을 다해 배우긴 했지만 실제 사용할 수 없던 제 스스로 너무 부족하다는 생각이 들었습니다.<br>
 이래서는 안되겠다 싶어 먼저, 스스로 부족했던 Spring 책을 구입하여 다시 한번 더 공부 후 진행하였습니다.<br>
 이후 기본에 충실해야 한다는 생각으로 백엔드 개발자의 기본이라 할 수 있는 게시판을 꼭 만들어 봐야겠다는 생각과 함께 바로 실행에 옮겼습니다.<br>
 최초 목표는 현재 재직중에 있는 점을 감안하여 퇴근 후 개발을 주된 시간으로 삼아 약 2개월을 생각하고 진행하였으나 각종 오류들과 부족한 부분을 다시 공부하면서 개발하며 1개월이 더 소요되었습니다.<br>
