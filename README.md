@@ -53,7 +53,7 @@
 ![js-icon](https://github.com/Giyong8504/memberBoard/assets/128211712/ab022ed4-e0b6-4a58-a5a0-f4224aa933b6)Javascript 
 ![html-icon](https://github.com/Giyong8504/memberBoard/assets/128211712/45d43c25-78e7-4d87-b499-58ea71136bc4)Html5 
 ![css-icon](https://github.com/Giyong8504/memberBoard/assets/128211712/f1341976-4afc-4487-97c6-cc709cd2413a)Css 
-![amazon-icon](https://github.com/Giyong8504/memberBoard/assets/128211712/c156fccd-a59b-4f66-aec6-107ba53b11b7)aws+lightsail
+![amazon-icon](https://github.com/Giyong8504/memberBoard/assets/128211712/c156fccd-a59b-4f66-aec6-107ba53b11b7)aws
 
 
 ### Tools
