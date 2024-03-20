@@ -1,5 +1,5 @@
 # MemberBoard Service
-- 배포 주소 : https://kky9939.site
+- 배포 주소 : <a href="https://kky9939.site" target="_blank"> https://kky9939.site </a>
 
 
 ![image](https://github.com/Giyong8504/memberBoard/assets/128211712/0f6969f8-b80a-4402-9932-6eee667f9c96)
