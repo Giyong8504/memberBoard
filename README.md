@@ -274,6 +274,7 @@
 - [22_4. AWS 배포하기(프로젝트 배포)](https://blog.naver.com/kky5163/223346544945)<br>
 - [23. 도메인 구매후 연결하기](https://blog.naver.com/kky5163/223347573103)<br>
 - [24. OAuth2.0 액세스 차단됨 : 승인 오류 - SSL 인증서 발급하고 적용하기](https://blog.naver.com/kky5163/223351377284)<br>
+- [25. 일레스틱빈스톡 서비스 배포 해보기](https://blog.naver.com/kky5163/223387729251)<br>
 
 
 ## 만났던 오류
