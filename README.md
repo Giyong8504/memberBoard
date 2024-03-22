@@ -236,7 +236,7 @@
 <br>
 
 ### 8. 배포 후 구글 OAuth 로그인
-|현재 앱 인증받지 않은 상태 : 테스트 사용자로 등록된 사용자만 가능|
+|Chrome 환경에서 로그인|
 |---|
 |![배포후구글로그인테스트](https://github.com/Giyong8504/memberBoard/assets/128211712/85b3fe6f-bdcb-421d-8046-3b9a5594dcca)|
 
