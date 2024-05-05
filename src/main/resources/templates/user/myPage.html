@@ -12,7 +12,7 @@
         <p>전화번호: <span th:text="${currentUser.mobile}"></span></p>
         <button type="button" class="btn btn-primary"
                 th:if="${currentUser.password} != null" th:onclick="|location.href='@{/changePassword}'|" >비밀번호 변경</button>
-        <button type="submit" class="btn btn-primary" th:if="${currentUser.password} != null" th:onclick="|location.href='@{/deleteId}'|">회원탈퇴</button>
+        <button type="submit" class="btn btn-primary" th:onclick="|location.href='@{/deleteId}'|">회원탈퇴</button>
     </div>
 
     <!-- OAuth2 사용자는 password가 null 값으로 비밀번호 변경 표시 숨김 -->
