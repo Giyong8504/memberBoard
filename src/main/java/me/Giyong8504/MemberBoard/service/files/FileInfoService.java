@@ -34,8 +34,41 @@ public class FileInfoService { // 파일 개별조회, 목록조회 기능
     }
 
     public List<FileInfo> getList(Options opts) {
+        List<FileInfo> items = repository.getFiles(opts.getGid(), opts.getLocation(), opts.getMode().name());
+        items.stream().forEach(this::addFileInfo);
 
-        return null;
+        return items;
+    }
+
+    // 전체 조회
+    public List<FileInfo> getListAll(String gid, String location) {
+        Options opts = Options.builder()
+                .gid(gid)
+                .location(location)
+                .mode(SearchMode.ALL)
+                .build();
+
+        return getList(opts);
+    }
+
+    public List<FileInfo> getListAll(String gid) {
+        return getListAll(gid, null);
+    }
+
+    // 완료된 파일만 조회(gid,location)
+    public List<FileInfo> getListDone(String gid, String location) {
+        Options opts = Options.builder()
+                .gid(gid)
+                .location(location)
+                .mode(SearchMode.DONE)
+                .build();
+
+        return getList(opts);
+    }
+
+    // 완료된 파일만 조회(gid)
+    public List<FileInfo> getListDone(String gid) {
+        return getListDone(gid, null);
     }
 
     /**
@@ -63,6 +96,8 @@ public class FileInfoService { // 파일 개별조회, 목록조회 기능
         // 파일 서버 접속 URL (fileUrl)
         String fileUrl = request.getContextPath() + uploadUrl + folder + "/" + fileName;
 
+        item.setFilePath(filePath);
+        item.setFileUrl(fileUrl);
 
     }
     private String getFileName(long id, String extension) {
