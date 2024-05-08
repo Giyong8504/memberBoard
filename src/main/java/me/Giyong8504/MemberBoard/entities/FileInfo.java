@@ -2,6 +2,7 @@ package me.Giyong8504.MemberBoard.entities;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -9,6 +10,7 @@ import java.util.UUID;
 
 @Entity
 @Data
+@Builder
 @NoArgsConstructor @AllArgsConstructor
 @Table(indexes = { // 색인을 통해 성능향상. 조회가 많이 되는 부분
         @Index(name = "idx_fileinfo_gid", columnList = "gid"),
