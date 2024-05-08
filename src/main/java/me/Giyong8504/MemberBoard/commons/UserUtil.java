@@ -31,9 +31,19 @@ public class UserUtil {
     }
 
     /**
-     * 로그인한 회원 정보
+     * 현재 로그인 중인 회원 정보를 가져옴.
      *
-     * @return
+     * @return 현재 로그인 중인 회원 정보 객체 반환
+     */
+    public UserInfo getMember() {
+        UserInfo memberInfo = (UserInfo) session.getAttribute("userInfo");
+        return memberInfo;
+    }
+
+    /**
+     * 현재 로그인한 회원 정보를 엔티티 객체로 변환하여 반환.
+     *
+     * @return 로그인 중인 회원의 정보의 엔티티 객체를 반환. 로그인중이 아닌경우 null 반환
      */
     public User getUser() {
         UserInfo userInfo = (UserInfo) session.getAttribute("userInfo");
@@ -44,4 +54,5 @@ public class UserUtil {
 
         return null;
     }
+
 }
